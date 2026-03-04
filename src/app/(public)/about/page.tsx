@@ -9,8 +9,8 @@ export default function About() {
                 <section className="flex flex-col md:flex-row gap-10 items-start md:items-center py-4">
                     <div className="relative flex-shrink-0">
                         <div className="w-32 h-32 md:w-48 md:h-48 rounded-2xl bg-slate-200 dark:bg-slate-800 overflow-hidden border-4 border-white dark:border-slate-900 shadow-xl">
-                            {/* NOTE: We're keeping the standard Next.js Image approach instead of the raw img tag for optimization if you prefer, but here using the img as provided in design */}
-                            <img alt="Professional Portrait" className="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKvDTYSoK8hfzKWY-6pyM6Pk0OKHA9cVTDtuMycCKmM69IPpyp4SJjS4WpM9JDNyqxT7uLZqGU1-RD4v8hLZjrRvZQJUEicr4aOHz_bwyEJ9np2wBlCT1T5w_BAYlkxozfmhm46BqtH8YYZo0m0igcG_zYzAI3KlsRjQIrkXDczvPq7zZf--p_cx4_1gUHZr6WAYRYkZBvsrZLHJFbOxFep7l_eNGOIEMDA7FaGV_Tm_AaPviS8ep1VuI3_f3C72VoHPYVD5xeM5qw" />
+                            {/* Using standard img tag for simplicity, can be updated to next/image later if preferred */}
+                            <img alt="임진수 프로필 사진" className="w-full h-full object-cover" src="/files/profile_image.png" />
                         </div>
                         <div className="absolute -bottom-2 -right-2 bg-green-500 w-6 h-6 rounded-full border-4 border-[#f5f7f8] dark:border-[#0f1823]"></div>
                     </div>
@@ -19,11 +19,11 @@ export default function About() {
                             <span className="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold tracking-wide uppercase">#SeniorBackend</span>
                             <span className="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold tracking-wide uppercase">#AIAgent</span>
                         </div>
-                        <h1 className="text-slate-900 dark:text-white text-4xl md:text-5xl font-black leading-tight tracking-[-0.033em]">
-                            Engineering Intelligence.
+                        <h1 className="text-slate-900 dark:text-white text-4xl md:text-5xl font-black leading-tight tracking-[-0.033em] break-keep">
+                            도전하며 성장하는 개발자, 임진수입니다.
                         </h1>
-                        <p className="text-slate-600 dark:text-slate-400 text-lg md:text-xl font-normal leading-relaxed">
-                            I'm a Senior Software Engineer specializing in distributed systems and AI integration. With over 8 years of experience, I bridge the gap between robust backend architecture and the cutting edge of Large Language Models.
+                        <p className="text-slate-600 dark:text-slate-400 text-lg md:text-xl font-normal leading-relaxed break-keep">
+                            저는 백엔드(Java, Spring)부터 프론트엔드, 클라우드 운영(Azure, K8s), 그리고 최근의 LangGraph 기반 AI Agent 서비스 개발까지 폭넓은 경험을 갖춘 10년 차 IT 전문가입니다. 기술적 이해를 바탕으로 현업과 긴밀하게 소통하며, 안정적이고 혁신적인 시스템 가치를 창출합니다.
                         </p>
                     </div>
                 </section>
@@ -38,37 +38,41 @@ export default function About() {
                     <div className="relative border-l-2 border-slate-200 dark:border-slate-800 ml-3 space-y-12 pb-4">
                         <div className="relative pl-10">
                             <span className="absolute -left-[13px] top-1 h-6 w-6 rounded-full bg-primary border-4 border-white dark:border-slate-900 z-10"></span>
-                            <div className="flex flex-col mb-2">
-                                <span className="text-sm font-bold text-primary">2021 — Present</span>
-                                <h3 className="text-xl font-bold text-slate-900 dark:text-white">Senior Backend Engineer @ TechGiant Corp</h3>
+                            <div className="flex flex-col mb-4">
+                                <span className="text-sm font-bold text-primary">2025.11 — 현재</span>
+                                <h3 className="text-xl font-bold text-slate-900 dark:text-white mt-1">프리랜서 | AI Agent 개발</h3>
+                                <p className="text-sm text-slate-500 font-medium">인포매니아 (SK AX 파트너)</p>
                             </div>
-                            <ul className="list-disc list-outside ml-4 space-y-2 text-slate-600 dark:text-slate-400">
-                                <li>Architected and deployed a multi-region Go-based microservices architecture, <span className="text-slate-900 dark:text-white font-medium">reducing latency by 40%</span> for 5M+ daily users.</li>
-                                <li>Integrated OpenAI models into the core product, leading to a <span className="text-slate-900 dark:text-white font-medium">25% increase in user retention</span> through AI-powered personalization.</li>
-                                <li>Mentored a team of 6 engineers and established modern CI/CD practices using Terraform and Kubernetes.</li>
+                            <ul className="list-disc list-outside ml-4 space-y-2 text-slate-600 dark:text-slate-400 text-sm">
+                                <li>SK 그룹 내 엔터프라이즈 AI 에이전트 서비스 'A.Biz' 프로젝트의 백엔드 및 MCP(Model Context Protocol) 서버 개발 리딩.</li>
+                                <li>강력한 보안이 요구되는 사내 폐쇄망 환경 요건에 맞추어 외부 LLM 의존성을 제거하고 내부 모델 연동 인프라로 전환.</li>
+                                <li>Microsoft Graph API 기반으로 사내 Office 365(SharePoint 문서 등) 정보를 자동 수집하고 동기화하는 엔터프라이즈 특화 RAG 파이프라인 구현.</li>
                             </ul>
                         </div>
                         <div className="relative pl-10">
                             <span className="absolute -left-[13px] top-1 h-6 w-6 rounded-full bg-slate-300 dark:bg-slate-700 border-4 border-white dark:border-slate-900 z-10"></span>
-                            <div className="flex flex-col mb-2">
-                                <span className="text-sm font-bold text-slate-500">2018 — 2021</span>
-                                <h3 className="text-xl font-bold text-slate-900 dark:text-white">Software Engineer @ DataFlow Systems</h3>
+                            <div className="flex flex-col mb-4">
+                                <span className="text-sm font-bold text-slate-500">2020.01 — 2025.10 (5년 10개월)</span>
+                                <h3 className="text-xl font-bold text-slate-900 dark:text-white mt-1">SK렌터카 | 시스템 개발·운영 / IT 운영·기획 (BA·PM·PL)</h3>
                             </div>
-                            <ul className="list-disc list-outside ml-4 space-y-2 text-slate-600 dark:text-slate-400">
-                                <li>Optimized SQL queries and database indexing, resulting in a <span className="text-slate-900 dark:text-white font-medium">60% improvement in reporting speed</span>.</li>
-                                <li>Led the migration from monolithic architecture to Java Spring Boot microservices.</li>
-                                <li>Developed internal tooling that <span className="text-slate-900 dark:text-white font-medium">cut developer onboarding time by 50%</span>.</li>
+                            <ul className="list-disc list-outside ml-4 space-y-2 text-slate-600 dark:text-slate-400 text-sm">
+                                <li>Java/Spring 기반 백엔드 API와 프론트엔드 요구사항 개발, 데이터 모델 커스텀 설계 및 SQL 최적화를 통한 성능/안정성 지속 향상.</li>
+                                <li>PM/PL 및 BA 역할로 스텝 업 하여, 전사 차세대 전환, 양사 시스템 통합 방안 수립, 계열사 분리(Carve-out) 등 수백억 원대 대규모 SI 프로젝트 리딩 및 안정화.</li>
+                                <li>Azure Cloud 위에서 Kubernetes(AKS) 기반 MSA 아키텍처 및 Azure DevOps CI/CD 자동화 파이프라인을 고도화하여 클라우드 전환 가속화.</li>
+                                <li>ITGC 및 ISMS-P 감사 대응 전담자로서 Jira/Confluence 중심의 협업 프로세스와 전산 통제 체계(ITSM)를 전사에 도입/정착.</li>
                             </ul>
                         </div>
                         <div className="relative pl-10">
                             <span className="absolute -left-[13px] top-1 h-6 w-6 rounded-full bg-slate-300 dark:bg-slate-700 border-4 border-white dark:border-slate-900 z-10"></span>
-                            <div className="flex flex-col mb-2">
-                                <span className="text-sm font-bold text-slate-500">2016 — 2018</span>
-                                <h3 className="text-xl font-bold text-slate-900 dark:text-white">Junior Developer @ StartupNexus</h3>
+                            <div className="flex flex-col mb-4">
+                                <span className="text-sm font-bold text-slate-500">2015.12 — 2019.12 (4년 1개월)</span>
+                                <h3 className="text-xl font-bold text-slate-900 dark:text-white mt-1">AJ렌터카 | 시스템 개발자</h3>
                             </div>
-                            <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
-                                Focused on building responsive frontend components and assisting in Python/Django backend development for a rapidly scaling e-commerce platform.
-                            </p>
+                            <ul className="list-disc list-outside ml-4 space-y-2 text-slate-600 dark:text-slate-400 text-sm">
+                                <li>렌터카·모빌리티 비즈니스를 위한 B2C/B2B 프로덕트의 백엔드 로직부터 프론트엔드 화면, 사내 DB까지 밀착 관리하는 Full-Stack 개발자로 활약.</li>
+                                <li>노후화 된 레거시 시스템을 전면 재구축하는 차세대 프로젝트에 원년 멤버로 합류하여, 현업 인터뷰(분석)부터 설계·구현·오픈 전 과정을 완주.</li>
+                                <li>수납 결제, 회계 처리, 예약 등 비즈니스의 근간이 되는 핵심 도메인의 데이터 흐름을 깊숙이 파악.</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -81,10 +85,10 @@ export default function About() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div className="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow">
                             <h3 className="text-slate-900 dark:text-white font-bold mb-4 flex items-center gap-2">
-                                <span className="material-symbols-outlined text-sm">database</span> Backend
+                                <span className="material-symbols-outlined text-sm">database</span> 백엔드 개발 & DB
                             </h3>
                             <div className="flex flex-wrap gap-2">
-                                {['Java (Spring)', 'Go', 'FastAPI', 'PostgreSQL', 'Redis'].map(skill => (
+                                {['Java / Spring Boot', 'Python / FastAPI', 'MyBatis / JPA', 'Oracle', 'PostgreSQL', 'MySQL'].map(skill => (
                                     <span key={skill} className="px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-sm font-medium">{skill}</span>
                                 ))}
                             </div>
@@ -94,27 +98,27 @@ export default function About() {
                                 <span className="material-symbols-outlined text-sm">psychology</span> AI & LLM
                             </h3>
                             <div className="flex flex-wrap gap-2">
-                                {['LangChain', 'OpenAI', 'Vector DBs', 'PyTorch', 'Prompt Eng.'].map(skill => (
+                                {['LangChain', 'LangGraph', 'OpenAI', 'RAG / Embedding', 'Vector DB', 'Prompt Engineering'].map(skill => (
                                     <span key={skill} className="px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-sm font-medium">{skill}</span>
                                 ))}
                             </div>
                         </div>
                         <div className="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow">
                             <h3 className="text-slate-900 dark:text-white font-bold mb-4 flex items-center gap-2">
-                                <span className="material-symbols-outlined text-sm">cloud</span> Infrastructure
+                                <span className="material-symbols-outlined text-sm">cloud</span> 인프라 & DevOps
                             </h3>
                             <div className="flex flex-wrap gap-2">
-                                {['Kubernetes', 'Terraform', 'AWS', 'Docker'].map(skill => (
+                                {['Azure Cloud', 'Kubernetes (AKS)', 'Docker', 'Linux', 'Helm / ArgoCD', 'DataDog'].map(skill => (
                                     <span key={skill} className="px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-sm font-medium">{skill}</span>
                                 ))}
                             </div>
                         </div>
                         <div className="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow">
                             <h3 className="text-slate-900 dark:text-white font-bold mb-4 flex items-center gap-2">
-                                <span className="material-symbols-outlined text-sm">construction</span> Tooling
+                                <span className="material-symbols-outlined text-sm">construction</span> 프론트엔드 & 협업
                             </h3>
                             <div className="flex flex-wrap gap-2">
-                                {['CI/CD', 'Prometheus', 'Grafana', 'Git'].map(skill => (
+                                {['React / Next.js', 'HTML5 / Javascript', 'Jira / Confluence', 'Git Hub', 'Excel (BA/PM 툴)'].map(skill => (
                                     <span key={skill} className="px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-sm font-medium">{skill}</span>
                                 ))}
                             </div>
@@ -168,10 +172,10 @@ export default function About() {
                 <div className="flex flex-col items-center justify-center py-10 gap-6 border-t border-slate-200 dark:border-slate-800 mt-4">
                     <h3 className="text-2xl font-bold text-slate-900 dark:text-white text-center">Ready to work together?</h3>
                     <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-                        <button className="flex items-center justify-center gap-2 h-12 px-8 bg-primary text-white hover:bg-blue-700 rounded-xl font-bold transition-all shadow-lg hover:shadow-primary/25 cursor-pointer">
+                        <a href="/files/임진수_이력서_경력서.pdf" download className="flex items-center justify-center gap-2 h-12 px-8 bg-primary text-white hover:bg-blue-700 rounded-xl font-bold transition-all shadow-lg hover:shadow-primary/25 cursor-pointer">
                             <span className="material-symbols-outlined">download</span>
-                            Download Resume PDF
-                        </button>
+                            이력서 다운로드
+                        </a>
                         <a className="flex items-center justify-center gap-2 h-12 px-8 bg-white dark:bg-slate-800 text-slate-900 dark:text-white border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 rounded-xl font-bold transition-all cursor-pointer" href="/contact">
                             <span className="material-symbols-outlined">mail</span>
                             Contact Me

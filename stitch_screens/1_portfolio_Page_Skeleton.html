@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Projects - John Doe</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0677f9",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#0f1823",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased">
+    <div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+        <header
+            class="sticky top-0 z-50 w-full border-b border-slate-200 bg-background-light/80 backdrop-blur-md dark:border-slate-800 dark:bg-background-dark/80">
+            <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center gap-3">
+                    <div class="flex size-8 items-center justify-center rounded bg-primary/10 text-primary">
+                        <span class="material-symbols-outlined">code</span>
+                    </div>
+                    <h1 class="text-lg font-bold tracking-tight text-slate-900 dark:text-white">John Doe</h1>
+                </div>
+                <nav class="hidden md:flex items-center gap-8">
+                    <a class="text-sm font-medium text-slate-600 hover:text-primary dark:text-slate-400 dark:hover:text-primary transition-colors"
+                        href="#">Home</a>
+                    <a class="text-sm font-bold text-primary" href="#">Projects</a>
+                    <a class="text-sm font-medium text-slate-600 hover:text-primary dark:text-slate-400 dark:hover:text-primary transition-colors"
+                        href="#">About</a>
+                    <a class="text-sm font-medium text-slate-600 hover:text-primary dark:text-slate-400 dark:hover:text-primary transition-colors"
+                        href="#">Contact</a>
+                </nav>
+                <div class="hidden md:flex gap-3">
+                    <button
+                        class="flex items-center justify-center rounded-lg bg-slate-100 px-4 py-2 text-sm font-semibold text-slate-900 transition-colors hover:bg-slate-200 dark:bg-slate-800 dark:text-white dark:hover:bg-slate-700">
+                        Resume
+                    </button>
+                    <button
+                        class="flex items-center justify-center rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-primary/90 shadow-sm shadow-blue-500/20">
+                        Login
+                    </button>
+                </div>
+                <button class="md:hidden text-slate-600 dark:text-slate-400">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </header>
+        <main class="flex-1">
+            <div class="mx-auto flex w-full max-w-7xl flex-col px-4 py-12 sm:px-6 lg:px-8">
+                <div class="mb-12 flex flex-col gap-4">
+                    <h1 class="text-4xl font-black tracking-tight text-slate-900 dark:text-white sm:text-5xl">Projects
+                    </h1>
+                    <p class="max-w-2xl text-lg text-slate-600 dark:text-slate-400">
+                        Selected works showcasing AI integration, scalable architecture, and full-stack engineering.
+                    </p>
+                </div>
+                <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+                    <a class="group relative flex flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900"
+                        href="#">
+                        <div class="aspect-video w-full overflow-hidden bg-slate-100 dark:bg-slate-800 relative">
+                            <div class="absolute inset-0 flex items-center justify-center p-4">
+                                <div
+                                    class="w-full h-full bg-white dark:bg-slate-800 rounded-lg shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden flex flex-col">
+                                    <div
+                                        class="h-8 border-b border-slate-100 dark:border-slate-700 flex items-center px-3 gap-2">
+                                        <div class="flex gap-1.5">
+                                            <div class="w-2.5 h-2.5 rounded-full bg-red-400"></div>
+                                            <div class="w-2.5 h-2.5 rounded-full bg-amber-400"></div>
+                                            <div class="w-2.5 h-2.5 rounded-full bg-green-400"></div>
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-1">
+                                        <div
+                                            class="w-16 border-r border-slate-100 dark:border-slate-700 p-2 hidden sm:flex flex-col items-center gap-3">
+                                            <div class="w-8 h-8 rounded bg-primary/20"></div>
+                                            <div class="w-8 h-8 rounded bg-slate-100 dark:bg-slate-700"></div>
+                                            <div class="w-8 h-8 rounded bg-slate-100 dark:bg-slate-700"></div>
+                                        </div>
+                                        <div class="flex-1 p-3 flex gap-3">
+                                            <div class="flex-[2] flex flex-col gap-2">
+                                                <div class="h-8 w-32 bg-slate-100 dark:bg-slate-700 rounded mb-2"></div>
+                                                <div
+                                                    class="flex-1 bg-slate-50 dark:bg-slate-800/50 rounded border border-slate-100 dark:border-slate-700 relative">
+                                                    <div
+                                                        class="absolute top-4 left-4 right-4 h-8 bg-blue-100/50 dark:bg-blue-900/20 rounded border-l-4 border-primary flex items-center px-2 text-[8px] text-primary font-medium">
+                                                        10:00 AM - Sprint Planning</div>
+                                                    <div
+                                                        class="absolute top-16 left-4 right-24 h-8 bg-purple-100/50 dark:bg-purple-900/20 rounded border-l-4 border-purple-500 flex items-center px-2 text-[8px] text-purple-600 font-medium">
+                                                        02:00 PM - AI Sync</div>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="flex-1 border-l border-slate-100 dark:border-slate-700 pl-3 flex flex-col gap-2">
+                                                <div class="flex gap-2">
+                                                    <div class="w-6 h-6 rounded-full bg-slate-200 dark:bg-slate-600">
+                                                    </div>
+                                                    <div
+                                                        class="flex-1 h-6 bg-slate-100 dark:bg-slate-700 rounded-tr-lg rounded-br-lg rounded-bl-lg">
+                                                    </div>
+                                                </div>
+                                                <div class="flex gap-2 justify-end">
+                                                    <div
+                                                        class="w-3/4 h-8 bg-primary/10 rounded-tl-lg rounded-bl-lg rounded-br-lg">
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    class="mt-auto h-8 border border-slate-200 dark:border-slate-600 rounded-full">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-1 flex-col p-6 sm:p-8">
+                            <div class="mb-4">
+                                <h3
+                                    class="mb-2 text-xl font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">
+                                    AI 회의실 예약 에이전트</h3>
+                                <p class="text-sm font-medium text-slate-500 dark:text-slate-400">자연어 처리를 통한 사내 회의실 예약
+                                    자동화 시스템</p>
+                            </div>
+                            <div class="mb-6 flex-1">
+                                <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-300">
+                                    <li class="flex items-start gap-2">
+                                        <span
+                                            class="material-symbols-outlined mt-0.5 text-[18px] text-primary">check_circle</span>
+                                        <span>LangGraph 기반 멀티 에이전트 설계로 복잡한 의도 파악</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <span
+                                            class="material-symbols-outlined mt-0.5 text-[18px] text-primary">check_circle</span>
+                                        <span>RAG 파이프라인 구축을 통한 사내 규정 및 예약 현황 실시간 조회</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <span
+                                            class="material-symbols-outlined mt-0.5 text-[18px] text-primary">check_circle</span>
+                                        <span>Slack Bot API 연동으로 접근성 및 사용성 최적화</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="flex flex-wrap gap-2 pt-4 border-t border-slate-100 dark:border-slate-800">
+                                <span
+                                    class="inline-flex items-center rounded-md bg-slate-100 px-2.5 py-1 text-xs font-medium text-slate-600 dark:bg-slate-800 dark:text-slate-400">Python</span>
+                                <span
+                                    class="inline-flex items-center rounded-md bg-slate-100 px-2.5 py-1 text-xs font-medium text-slate-600 dark:bg-slate-800 dark:text-slate-400">LangChain</span>
+                                <span
+                                    class="inline-flex items-center rounded-md bg-slate-100 px-2.5 py-1 text-xs font-medium text-slate-600 dark:bg-slate-800 dark:text-slate-400">FastAPI</span>
+                                <span
+                                    class="inline-flex items-center rounded-md bg-slate-100 px-2.5 py-1 text-xs font-medium text-slate-600 dark:bg-slate-800 dark:text-slate-400">PostgreSQL</span>
+                            </div>
+                        </div>
+                    </a>
+                    <a class="group relative flex flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900"
+                        href="#">
+                        <div class="aspect-video w-full overflow-hidden bg-slate-900 relative">
+                            <div class="absolute inset-0 p-4 flex flex-col gap-2">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex gap-2">
+                                        <div class="w-20 h-4 bg-slate-700 rounded"></div>
+                                        <div class="w-16 h-4 bg-slate-700/50 rounded"></div>
+                                    </div>
+                                    <div
+                                        class="w-24 h-4 bg-green-500/20 rounded text-[8px] text-green-400 flex items-center justify-center font-mono">
+                                        SYSTEM HEALTHY</div>
+                                </div>
+                                <div class="grid grid-cols-3 gap-2 h-full">
+                                    <div
+                                        class="col-span-2 bg-slate-800 rounded border border-slate-700 p-2 flex flex-col gap-1">
+                                        <div class="flex justify-between items-center">
+                                            <div class="w-16 h-2 bg-slate-600 rounded"></div>
+                                            <div class="text-[8px] text-slate-400">99.9% uptime</div>
+                                        </div>
+                                        <div class="flex-1 flex items-end gap-1 px-1 pb-1">
+                                            <div class="w-1/6 h-[40%] bg-blue-500/80 rounded-t-sm"></div>
+                                            <div class="w-1/6 h-[60%] bg-blue-500/80 rounded-t-sm"></div>
+                                            <div class="w-1/6 h-[30%] bg-blue-500/80 rounded-t-sm"></div>
+                                            <div class="w-1/6 h-[80%] bg-blue-500/80 rounded-t-sm"></div>
+                                            <div class="w-1/6 h-[50%] bg-blue-500/80 rounded-t-sm"></div>
+                                            <div class="w-1/6 h-[70%] bg-blue-500/80 rounded-t-sm"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-span-1 flex flex-col gap-2">
+                                        <div
+                                            class="flex-1 bg-slate-800 rounded border border-slate-700 p-2 flex flex-col justify-center">
+                                            <div class="text-[8px] text-slate-400 mb-1">RPS</div>
+                                            <div class="text-sm font-bold text-white">4.2k</div>
+                                            <div class="w-full bg-slate-700 h-1 mt-1 rounded-full overflow-hidden">
+                                                <div class="bg-green-500 h-full w-[80%]"></div>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="flex-1 bg-slate-800 rounded border border-slate-700 p-2 flex flex-col justify-center">
+                                            <div class="text-[8px] text-slate-400 mb-1">Latency</div>
+                                            <div class="text-sm font-bold text-white">12ms</div>
+                                            <div class="w-full bg-slate-700 h-1 mt-1 rounded-full overflow-hidden">
+                                                <div class="bg-primary h-full w-[40%]"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="col-span-3 h-1/3 bg-slate-950 rounded border border-slate-800 p-2 font-mono text-[6px] text-slate-400 leading-tight">
+                                        <div class="text-green-400">&gt; [INFO] Service discovery initiated...</div>
+                                        <div class="text-blue-400">&gt; [DEBUG] Kafka consumer group rebalanced</div>
+                                        <div>&gt; [INFO] Gateway: Routing request to order-service</div>
+                                        <div class="text-amber-400">&gt; [WARN] Cache miss on key: user:1293</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-1 flex-col p-6 sm:p-8">
+                            <div class="mb-4">
+                                <h3
+                                    class="mb-2 text-xl font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">
+                                    엔터프라이즈급 MSA 백엔드 아키텍처</h3>
+                                <p class="text-sm font-medium text-slate-500 dark:text-slate-400">대규모 트래픽 처리를 위한 확장 가능한
+                                    마이크로서비스 설계</p>
+                            </div>
+                            <div class="mb-6 flex-1">
+                                <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-300">
+                                    <li class="flex items-start gap-2">
+                                        <span
+                                            class="material-symbols-outlined mt-0.5 text-[18px] text-primary">check_circle</span>
+                                        <span>Spring Cloud Gateway 및 Eureka를 이용한 서비스 디스커버리 구현</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <span
+                                            class="material-symbols-outlined mt-0.5 text-[18px] text-primary">check_circle</span>
+                                        <span>Kafka 이벤트 기반 아키텍처로 서비스 간 결합도 감소</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <span
+                                            class="material-symbols-outlined mt-0.5 text-[18px] text-primary">check_circle</span>
+                                        <span>Redis 분산 락 및 캐싱 전략을 통한 동시성 제어 및 성능 최적화</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="flex flex-wrap gap-2 pt-4 border-t border-slate-100 dark:border-slate-800">
+                                <span
+                                    class="inline-flex items-center rounded-md bg-slate-100 px-2.5 py-1 text-xs font-medium text-slate-600 dark:bg-slate-800 dark:text-slate-400">Java/Spring
+                                    Boot</span>
+                                <span
+                                    class="inline-flex items-center rounded-md bg-slate-100 px-2.5 py-1 text-xs font-medium text-slate-600 dark:bg-slate-800 dark:text-slate-400">Kafka</span>
+                                <span
+                                    class="inline-flex items-center rounded-md bg-slate-100 px-2.5 py-1 text-xs font-medium text-slate-600 dark:bg-slate-800 dark:text-slate-400">Docker
+                                    &amp; K8s</span>
+                                <span
+                                    class="inline-flex items-center rounded-md bg-slate-100 px-2.5 py-1 text-xs font-medium text-slate-600 dark:bg-slate-800 dark:text-slate-400">Redis</span>
+                            </div>
+                        </div>
+                    </a>
+                    <a class="group relative flex flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900"
+                        href="#">
+                        <div class="aspect-video w-full overflow-hidden bg-slate-50 dark:bg-slate-800 relative">
+                            <div class="absolute inset-0 flex items-center justify-center p-6">
+                                <div
+                                    class="w-[80%] h-full bg-white dark:bg-slate-900 rounded-lg shadow-md border border-slate-200 dark:border-slate-700 flex flex-col overflow-hidden transform rotate-[-2deg] transition-transform group-hover:rotate-0">
+                                    <div
+                                        class="h-10 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between px-3">
+                                        <div class="w-20 h-3 bg-slate-200 dark:bg-slate-700 rounded-full"></div>
+                                        <div class="w-6 h-6 rounded-full bg-slate-100 dark:bg-slate-800"></div>
+                                    </div>
+                                    <div class="p-3 space-y-3">
+                                        <div
+                                            class="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded-lg border border-indigo-100 dark:border-indigo-800">
+                                            <div class="flex gap-2 items-center mb-1.5">
+                                                <div class="w-3 h-3 rounded-full bg-indigo-500"></div>
+                                                <div class="w-16 h-2 bg-indigo-200 dark:bg-indigo-700 rounded"></div>
+                                            </div>
+                                            <div class="space-y-1">
+                                                <div
+                                                    class="w-full h-1.5 bg-indigo-200/50 dark:bg-indigo-700/50 rounded">
+                                                </div>
+                                                <div
+                                                    class="w-[90%] h-1.5 bg-indigo-200/50 dark:bg-indigo-700/50 rounded">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="flex gap-3 items-start">
+                                            <div class="w-10 h-10 rounded bg-slate-200 dark:bg-slate-700 flex-shrink-0">
+                                            </div>
+                                            <div class="flex-1 space-y-1.5">
+                                                <div class="w-3/4 h-2.5 bg-slate-800 dark:bg-slate-300 rounded"></div>
+                                                <div class="w-1/2 h-2 bg-slate-400 dark:bg-slate-600 rounded"></div>
+                                            </div>
+                                        </div>
+                                        <div class="flex gap-3 items-start opacity-60">
+                                            <div class="w-10 h-10 rounded bg-slate-200 dark:bg-slate-700 flex-shrink-0">
+                                            </div>
+                                            <div class="flex-1 space-y-1.5">
+                                                <div class="w-2/3 h-2.5 bg-slate-800 dark:bg-slate-300 rounded"></div>
+                                                <div class="w-1/3 h-2 bg-slate-400 dark:bg-slate-600 rounded"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="absolute -right-4 -bottom-4 w-24 h-24 bg-primary/10 rounded-full blur-xl">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-1 flex-col p-6 sm:p-8">
+                            <div class="mb-4">
+                                <h3
+                                    class="mb-2 text-xl font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">
+                                    자동화 뉴스 큐레이션 봇</h3>
+                                <p class="text-sm font-medium text-slate-500 dark:text-slate-400">사용자 관심사 기반 맞춤형 기술 뉴스
+                                    요약 및 전달 서비스</p>
+                            </div>
+                            <div class="mb-6 flex-1">
+                                <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-300">
+                                    <li class="flex items-start gap-2">
+                                        <span
+                                            class="material-symbols-outlined mt-0.5 text-[18px] text-primary">check_circle</span>
+                                        <span>GPT-4 기반 뉴스 기사 요약 및 핵심 인사이트 추출</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <span
+                                            class="material-symbols-outlined mt-0.5 text-[18px] text-primary">check_circle</span>
+                                        <span>Airflow 워크플로우 자동화로 데이터 수집부터 배포까지 파이프라인 구축</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <span
+                                            class="material-symbols-outlined mt-0.5 text-[18px] text-primary">check_circle</span>
+                                        <span>Vector DB를 활용한 중복 뉴스 필터링 및 유사도 분석</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="flex flex-wrap gap-2 pt-4 border-t border-slate-100 dark:border-slate-800">
+                                <span
+                                    class="inline-flex items-center rounded-md bg-slate-100 px-2.5 py-1 text-xs font-medium text-slate-600 dark:bg-slate-800 dark:text-slate-400">Python</span>
+                                <span
+                                    class="inline-flex items-center rounded-md bg-slate-100 px-2.5 py-1 text-xs font-medium text-slate-600 dark:bg-slate-800 dark:text-slate-400">OpenAI
+                                    API</span>
+                                <span
+                                    class="inline-flex items-center rounded-md bg-slate-100 px-2.5 py-1 text-xs font-medium text-slate-600 dark:bg-slate-800 dark:text-slate-400">Airflow</span>
+                                <span
+                                    class="inline-flex items-center rounded-md bg-slate-100 px-2.5 py-1 text-xs font-medium text-slate-600 dark:bg-slate-800 dark:text-slate-400">Pinecone</span>
+                            </div>
+                        </div>
+                    </a>
+                    <div
+                        class="group relative flex h-full min-h-[480px] flex-col overflow-hidden rounded-xl border border-dashed border-slate-300 bg-slate-50/50 p-6 transition-colors hover:border-primary/50 hover:bg-slate-100 dark:border-slate-700 dark:bg-slate-800/20 dark:hover:bg-slate-800/40">
+                        <div class="flex h-full flex-col items-center justify-center gap-4 text-center">
+                            <div
+                                class="flex size-16 items-center justify-center rounded-full bg-slate-100 text-slate-400 shadow-sm dark:bg-slate-800 dark:text-slate-500">
+                                <span class="material-symbols-outlined text-3xl">add_circle</span>
+                            </div>
+                            <div class="space-y-1">
+                                <h3 class="text-lg font-semibold text-slate-900 dark:text-white">More Projects</h3>
+                                <p class="max-w-xs text-sm text-slate-500 dark:text-slate-400">Currently working on
+                                    exciting new AI experiments and open source contributions.</p>
+                            </div>
+                            <button class="mt-4 text-sm font-semibold text-primary hover:text-primary/80">
+                                Check Github Profile →
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-16 flex justify-center">
+                    <a class="inline-flex items-center gap-2 text-sm font-medium text-slate-500 hover:text-primary transition-colors"
+                        href="#">
+                        <span>View all repositories</span>
+                        <span class="material-symbols-outlined text-lg">arrow_forward</span>
+                    </a>
+                </div>
+            </div>
+        </main>
+        <footer class="mt-auto border-t border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900">
+            <div class="mx-auto flex max-w-7xl flex-col items-center gap-8 px-4 py-12 sm:px-6 lg:px-8">
+                <div class="flex flex-wrap justify-center gap-8">
+                    <a class="text-base text-slate-500 hover:text-primary dark:text-slate-400 dark:hover:text-primary transition-colors"
+                        href="#">Privacy Policy</a>
+                    <a class="text-base text-slate-500 hover:text-primary dark:text-slate-400 dark:hover:text-primary transition-colors"
+                        href="#">Terms of Service</a>
+                </div>
+                <div class="flex items-center justify-center gap-6">
+                    <a class="group text-slate-400 hover:text-primary dark:text-slate-500 dark:hover:text-primary transition-colors"
+                        href="#">
+                        <span class="sr-only">Twitter</span>
+                        <svg aria-hidden="true" class="h-6 w-6 fill-current" viewBox="0 0 24 24">
+                            <path
+                                d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84">
+                            </path>
+                        </svg>
+                    </a>
+                    <a class="group text-slate-400 hover:text-primary dark:text-slate-500 dark:hover:text-primary transition-colors"
+                        href="#">
+                        <span class="sr-only">GitHub</span>
+                        <span class="material-symbols-outlined text-2xl">code</span>
+                    </a>
+                    <a class="group text-slate-400 hover:text-primary dark:text-slate-500 dark:hover:text-primary transition-colors"
+                        href="#">
+                        <span class="sr-only">LinkedIn</span>
+                        <span class="material-symbols-outlined text-2xl">work</span>
+                    </a>
+                </div>
+                <p class="text-center text-sm leading-5 text-slate-500 dark:text-slate-400">
+                    © 2023 John Doe. All rights reserved.
+                </p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

@@ -10,18 +10,18 @@ export default function Home() {
             Available for new projects
           </div>
           <div className="space-y-4">
-            <h1 className="text-[40px] md:text-[56px] font-extrabold tracking-tight leading-[1.1] mb-6 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-600 animate-gradient-x bg-[length:200%_auto]">
-              Architecting the future of autonomous enterprise systems.
+            <h1 className="text-[40px] md:text-[56px] font-extrabold tracking-tight leading-[1.1] mb-6 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-600 animate-gradient-x bg-[length:200%_auto] break-keep">
+              엔터프라이즈 아키텍처부터 AI 에이전트까지, 안정성과 지능을 융합합니다.
             </h1>
-            <p className="text-[18px] md:text-[20px] text-slate-600 dark:text-slate-400 leading-relaxed mb-10 max-w-2xl animate-fade-in-up">
-              Senior Backend & AI Agent Freelance Engineer. I build robust, scalable architectures and integrate intelligent agentic workflows to automate complex business processes.
+            <p className="text-[18px] md:text-[20px] text-slate-600 dark:text-slate-400 leading-relaxed mb-10 max-w-2xl animate-fade-in-up break-keep">
+              모빌리티 도메인에서의 10년 차 풀스택/DevOps 역량과 최신 기반 AI Agent 구현 기술을 결합하여, 실제 프로덕션 환경에서 견고하게 작동하는 지능형 시스템을 설계합니다.
             </p>
             <div className="flex flex-wrap gap-4 pt-4">
               <Link href="/contact" className="inline-flex h-12 items-center justify-center rounded-full bg-blue-600 px-8 text-sm font-semibold text-white transition-all hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-200">
-                Get Started
+                Contact Me
               </Link>
-              <Link href="/projects" className="inline-flex h-12 items-center justify-center rounded-full border border-slate-200 bg-white px-8 text-sm font-semibold text-slate-900 transition-colors hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 dark:hover:bg-slate-700">
-                Case Studies
+              <Link href="/portfolio" className="inline-flex h-12 items-center justify-center rounded-full border border-slate-200 bg-white px-8 text-sm font-semibold text-slate-900 transition-colors hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 dark:hover:bg-slate-700">
+                포트폴리오 보기
               </Link>
             </div>
           </div>
@@ -33,22 +33,22 @@ export default function Home() {
               <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white group-hover:bg-blue-50 group-hover:text-blue-600 dark:group-hover:bg-blue-900/30 dark:group-hover:text-blue-400 transition-colors">
                 <span className="material-symbols-outlined">settings_suggest</span>
               </div>
-              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">Operational Excellence</h3>
-              <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">Streamlined CI/CD pipelines, high-availability clusters, and meticulous monitoring for mission-critical systems.</p>
+              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">안정적인 엔터프라이즈 운영</h3>
+              <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-sm break-keep">대규모 시스템 통합(SI), 데이터 마이그레이션, 계열사 분리(Carve-out) 등 엔터프라이즈 환경에서의 견고한 백엔드 아키텍처 수립 및 유지보수에 강점이 있습니다.</p>
             </div>
             <div className="group p-8 rounded-2xl border border-slate-100 bg-white dark:bg-slate-900 dark:border-slate-800 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_40px_-10px_rgba(59,130,246,0.3)] hover:border-blue-500/30">
               <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white group-hover:bg-blue-50 group-hover:text-blue-600 dark:group-hover:bg-blue-900/30 dark:group-hover:text-blue-400 transition-colors">
                 <span className="material-symbols-outlined">hub</span>
               </div>
-              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">Scalable Architecture</h3>
-              <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">Distributed microservices and event-driven patterns designed to handle millions of requests without breaking a sweat.</p>
+              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">Cloud MSA 아키텍처</h3>
+              <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-sm break-keep">Azure Cloud 인프라와 Kubernetes(AKS), CI/CD 파이프라인을 구축하여 고가용성 마이크로서비스(MSA)를 성공적으로 배포 및 운영합니다.</p>
             </div>
             <div className="group p-8 rounded-2xl border border-slate-100 bg-white dark:bg-slate-900 dark:border-slate-800 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_40px_-10px_rgba(59,130,246,0.3)] hover:border-blue-500/30">
               <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white group-hover:bg-blue-50 group-hover:text-blue-600 dark:group-hover:bg-blue-900/30 dark:group-hover:text-blue-400 transition-colors">
                 <span className="material-symbols-outlined">psychology</span>
               </div>
-              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">AI Agent Integration</h3>
-              <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">Leveraging LLMs to create self-correcting agents that navigate complex workflows and automate decision-making.</p>
+              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">SKT AI Agent 개발</h3>
+              <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-sm break-keep">LangGraph 워크플로우를 기반으로 Private LLM 환경에서 작동하는 엔터프라이즈 AI 스킬(MCP 서버, RAG 파이프라인)을 기획하고 개발합니다.</p>
             </div>
           </div>
         </section>
@@ -56,10 +56,10 @@ export default function Home() {
         <section className="flex flex-col gap-8 border-t border-slate-100 pt-16 dark:border-slate-800">
           <div className="flex items-end justify-between">
             <div>
-              <h2 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">Featured Projects</h2>
+              <h2 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">주요 포트폴리오</h2>
               <p className="mt-2 text-slate-600 dark:text-slate-400">Selected works demonstrating technical depth and product impact.</p>
             </div>
-            <Link href="/projects" className="hidden md:inline-flex items-center gap-1 text-sm font-medium text-primary hover:text-blue-700 transition-colors">
+            <Link href="/portfolio" className="hidden md:inline-flex items-center gap-1 text-sm font-medium text-primary hover:text-blue-700 transition-colors">
               더 보기 <span className="material-symbols-outlined text-base">arrow_forward</span>
             </Link>
           </div>
@@ -67,22 +67,22 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                title: "Enterprise CRM Automation",
-                desc: "Automated sales pipeline management system reducing manual entry by 80% using custom AI agents.",
-                icon: "inventory_2",
-                tags: ["Python", "FastAPI", "LangChain"]
+                title: "SK 'A.Biz' Agent Builder",
+                desc: "엔터프라이즈 환경에서의 AI Agent(LangGraph) 흐름 최적화 및 Microsoft 365 연동 MCP 서버 핵심 기능 개발.",
+                icon: "robot_2",
+                tags: ["Python", "FastAPI", "PostgreSQL", "LangChain"]
               },
               {
-                title: "Distributed Event Bus",
-                desc: "High-throughput event streaming platform capable of handling 1M+ messages per second.",
+                title: "SK렌터카 차세대 MSA 시스템",
+                desc: "Azure Cloud 기반의 마이크로서비스 전환 프로젝트. 단기렌탈 및 결제/수납 서비스 백엔드 전담.",
                 icon: "cloud_sync",
-                tags: ["Go", "Kafka", "Kubernetes"]
+                tags: ["Java", "Spring Boot", "Kafka", "Kubernetes"]
               },
               {
-                title: "Smart FinTech Dashboard",
-                desc: "Real-time financial analytics dashboard with predictive modeling features for investment tracking.",
-                icon: "smart_display",
-                tags: ["React", "TypeScript", "AWS"]
+                title: "Carve-out 및 시스템 통합",
+                desc: "양사 분리 및 흡수 합병 과정에서의 대규모 레거시 ERP/데이터 마이그레이션 전략 구성 및 무결점 오픈 달성.",
+                icon: "database",
+                tags: ["Oracle", "SQL", "Data Migration"]
               }
             ].map((project, idx) => (
               <div key={idx} className="group flex flex-col rounded-xl border border-slate-200 bg-white transition-all duration-300 hover:-translate-y-1 hover:border-blue-500/50 hover:shadow-[0_0_40px_-10px_rgba(59,130,246,0.25)] dark:border-slate-700 dark:bg-slate-800/50">
@@ -107,7 +107,7 @@ export default function Home() {
           </div>
 
           <div className="mt-4 text-center md:hidden">
-            <Link href="/projects" className="inline-flex items-center gap-1 text-sm font-medium text-primary hover:text-blue-700 transition-colors">
+            <Link href="/portfolio" className="inline-flex items-center gap-1 text-sm font-medium text-primary hover:text-blue-700 transition-colors">
               더 보기 <span className="material-symbols-outlined text-base">arrow_forward</span>
             </Link>
           </div>

@@ -1,7 +1,7 @@
 # PROJECT.md — 커리어/포트폴리오 홈페이지 기획서
 
 ## 0) 한 줄 요약
-백엔드·AI Agent 프리랜서의 **신뢰(Resume)** + **실력(Projects)** + **지속성(Blog/News)** 를 한 눈에 보여주고, 방문자가 **연락(Contact)** 으로 자연스럽게 이어지도록 설계된 **상단 메뉴 기반(라우팅) 멀티 페이지형 UI**.
+백엔드·AI Agent 프리랜서의 **신뢰(Resume)** + **실력(포트폴리오)** + **지속성(Blog/News)** 를 한 눈에 보여주고, 방문자가 **연락(Contact)** 으로 자연스럽게 이어지도록 설계된 **상단 메뉴 기반(라우팅) 멀티 페이지형 UI**.
 
 ---
 
@@ -12,7 +12,7 @@
 - 최종 행동(CTA)은 **Contact / 제안 요청 / 미팅 요청**으로 수렴한다.
 
 ### 성공 기준(예시)
-- Home → Projects 클릭률, About(Resume) 클릭률
+- Home → 포트폴리오 클릭률, About(Resume) 클릭률
 - Contact 버튼 클릭률 / 이메일 전송 수
 - 블로그 글 평균 체류 시간, 재방문율(News/Blog 업데이트로 유도)
 
@@ -62,8 +62,9 @@
 ### 공개 URL 설계 (Public)
 - `/` : Home
 - `/about` : Profile + Resume
-- `/projects` : Side Projects 목록
-- `/projects/[slug]` : 프로젝트 상세(선택)
+- `/portfolio` : 주요 포트폴리오 목록
+- `/portfolio/[slug]` : 포트폴리오 상세(선택)
+- `/projects` : 시스템 프로젝트 히스토리 (타임라인)
 - `/blog` : 학습 블로그 목록
 - `/blog/[slug]` : 글 상세
 - `/scrap` : 기술 뉴스 스크랩(북마크/요약)
@@ -80,7 +81,7 @@
 - `/studio/scrap/[id]/edit` : 뉴스 스크랩 수정
 
 ### Top Menu (Public)
-- Home / About / Projects / Blog / Tech Scrap / Contact
+- Home / About / 포트폴리오 / Projects / Blog / Tech Scrap / Contact
 - 우측 상단 보조 액션(선택): GitHub, LinkedIn, Resume PDF 다운로드
 
 ---
@@ -106,7 +107,7 @@
 
 ## 6.1 Home (/)
 ### 목표
-- 10초 내 역할/가치 이해 → **Projects / About / Contact**로 유도
+- 10초 내 역할/가치 이해 → **포트폴리오 / About / Contact**로 유도
 
 ### 구성(상단→하단)
 1) Hero
@@ -117,8 +118,8 @@
 2) Highlights (3~4개 카드)
 - 운영/프로덕션, 설계/개발, 자동화/에이전트, 협업/PM/BA 등
 
-3) Featured Projects (3개)
-- 대표 프로젝트 카드 + “더 보기” → /projects
+3) Featured 포트폴리오 (3개)
+- 대표 프로젝트 카드 + “더 보기” → /portfolio
 
 4) Latest Writing / Scrap (각 2~3개)
 - 최신 블로그/스크랩 노출로 “업데이트/성장” 증명
@@ -134,11 +135,11 @@
 - Resume 섹션(타임라인/성과 중심)
 - Skills(Backend/Infra/AI/Tooling)
 - Proof(숫자 기반 지표 가능하면)
-- CTA: Resume PDF / Projects / Contact
+- CTA: Resume PDF / 포트폴리오 / Contact
 
 ---
 
-## 6.3 Projects (/projects)
+## 6.3 포트폴리오 (/portfolio)
 ### 목표
 - “실력 증거”로서 프로젝트를 빠르게 이해 가능하게
 
@@ -152,9 +153,19 @@
 - “What it solves” 1줄
 - Links: Demo / GitHub / Docs
 
-### 프로젝트 상세(/projects/[slug]) — 선택
+### 프로젝트 상세(/portfolio/[slug]) — 선택
 - Problem → Approach → Architecture(간단) → Result → Learnings
 - “이 프로젝트로 할 수 있는 일”을 명확히 문장화
+
+---
+
+## 6.3.1 Projects (/projects)
+### 목표
+- 그동안 회사를 다니며 진행했던 시스템 프로젝트 이력을 연대기(Timeline) 형태로 나열하여 전문성과 경험의 깊이를 증명.
+
+### UX
+- 연도별(Recent/Past 등) 그룹화 및 좌측 타임라인 선 유지
+- 각 프로젝트마다 기간, 역할, 상세 성과(Bullet), 기술 스택(Badge) 노출
 
 ---
 
@@ -295,13 +306,13 @@
 
 ## 7) 사용자 시나리오(Flow)
 ### A — 채용 담당자
-Home → About(이력 스캔) → Projects(검증) → Contact/Resume PDF
+Home → About(이력 스캔) → 포트폴리오(검증) → Contact/Resume PDF
 
 ### B — 클라이언트
-Home → Projects(유사 문제 탐색) → 상세(결과/운영 경험) → Contact(상담 요청)
+Home → 포트폴리오(유사 문제 탐색) → 상세(결과/운영 경험) → Contact(상담 요청)
 
 ### C — 개발자/커뮤니티
-Blog/Scrap 유입 → 관련 글 탐색 → About/Projects 확장 → GitHub/연락
+Blog/Scrap 유입 → 관련 글 탐색 → About/포트폴리오 확장 → GitHub/연락
 
 ---
 
@@ -309,7 +320,7 @@ Blog/Scrap 유입 → 관련 글 탐색 → About/Projects 확장 → GitHub/연
 - AppShell: Header / Main / Footer
 - Navigation: TopMenu, ActiveIndicator
 - Typography: PageTitle, SectionTitle, BodyText, Caption
-- Cards: ProjectCard, PostCard, ScrapCard, HighlightCard
+- Cards: 포트폴리오Card, PostCard, ScrapCard, HighlightCard
 - Controls: SearchInput, TagFilter, SortDropdown
 - Content: TOC(블로그), MarkdownRenderer
 - Editor(Studio): MarkdownEditor, PreviewPane, MetaSidebar
@@ -342,7 +353,7 @@ Blog/Scrap 유입 → 관련 글 탐색 → About/Projects 확장 → GitHub/연
 - visibility: `public | private`
 - createdAt, updatedAt, publishedAt
 
-### Project
+### 포트폴리오
 - slug, title, summary, tags[], techStack[], role, period, status
 - links{github,demo,docs}
 - problem, approach, result, learnings
@@ -369,8 +380,8 @@ Blog/Scrap 유입 → 관련 글 탐색 → About/Projects 확장 → GitHub/연
 
 ## 13) 작업 우선순위(MVP → v1)
 ### MVP
-- Home / About / Projects / Contact
-- Projects는 리스트 중심(상세는 선택)
+- Home / About / 포트폴리오 / Contact
+- 포트폴리오는 리스트 중심(상세는 선택)
 - 디자인 토큰 + 공통 레이아웃 완성
 
 ### v1
@@ -386,7 +397,7 @@ Blog/Scrap 유입 → 관련 글 탐색 → About/Projects 확장 → GitHub/연
 ## 14) 최종 체크리스트(런칭 전)
 - [ ] 메뉴 라우팅 정상 동작 + 활성 메뉴 표시
 - [ ] 페이지별 제목/설명/CTA 존재
-- [ ] Projects 카드만 봐도 “무슨 가치”인지 이해됨
+- [ ] 포트폴리오 카드만 봐도 “무슨 가치”인지 이해됨
 - [ ] Contact 경로 최소 2개(이메일 + 폼/소셜)
 - [ ] 모바일/태블릿 레이아웃 검증
 - [ ] 색/여백/폰트 일관성 유지

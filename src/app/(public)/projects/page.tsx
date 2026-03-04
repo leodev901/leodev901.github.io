@@ -1,188 +1,262 @@
 import Link from "next/link";
 
 export const metadata = {
-    title: "Projects | Leo - Senior Full-Stack & AI Engineer",
+    title: "프로젝트 히스토리 | Leo - Senior Full-Stack & AI Engineer",
 };
 
-export default function Projects() {
+export default function ProjectsHistory() {
     return (
         <main className="flex-1">
-            <div className="mx-auto flex w-full max-w-7xl flex-col px-4 py-12 sm:px-6 lg:px-8">
-                <div className="mb-12 flex flex-col gap-4">
-                    <h1 className="text-4xl font-black tracking-tight text-slate-900 dark:text-white sm:text-5xl">Projects</h1>
-                    <p className="max-w-2xl text-lg text-slate-600 dark:text-slate-400">
-                        Selected works showcasing AI integration, scalable architecture, and full-stack engineering.
-                    </p>
+            <section className="mx-auto max-w-[1000px] px-6 lg:px-8 py-8 md:py-12">
+                <div className="mb-10">
+                    <h1 className="text-2xl md:text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white mb-2">Projects</h1>
+                    <p className="text-slate-500 dark:text-slate-400 text-sm">Chronological history of strategic engineering projects.</p>
                 </div>
-                <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
 
-                    <Link href="/projects/ai-meeting-agent" className="group relative flex flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900">
-                        <div className="aspect-video w-full overflow-hidden bg-slate-100 dark:bg-slate-800 relative">
-                            <div className="absolute inset-0 flex items-center justify-center p-4">
-                                <div className="w-full h-full bg-white dark:bg-slate-800 rounded-lg shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden flex flex-col">
-                                    {/* Mock Diagram UI */}
-                                    <div className="h-8 border-b border-slate-100 dark:border-slate-700 flex items-center px-3 gap-2">
-                                        <div className="flex gap-1.5">
-                                            <div className="w-2.5 h-2.5 rounded-full bg-red-400"></div>
-                                            <div className="w-2.5 h-2.5 rounded-full bg-amber-400"></div>
-                                            <div className="w-2.5 h-2.5 rounded-full bg-green-400"></div>
+                <div className="relative ml-4 md:ml-0 before:absolute before:left-0 md:before:left-[140px] before:top-0 before:bottom-0 before:w-0.5 before:bg-slate-100 dark:before:bg-slate-800">
+
+                    {/* Recent: 2025 - 2026 */}
+                    <div className="mb-8">
+                        <div className="flex items-center gap-4 mb-4 md:ml-[140px] translate-x-[-1px] relative z-10">
+                            <span className="px-3 py-1 bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-[10px] font-bold rounded-sm uppercase tracking-widest">Recent: 2025 — 2026</span>
+                        </div>
+
+                        <div className="space-y-4">
+                            {/* SK 'A.Biz' Agent Builder */}
+                            <div className="relative grid md:grid-cols-[140px_1fr] gap-6 md:gap-10">
+                                <div className="md:text-right pt-2">
+                                    <span className="text-[11px] font-bold text-primary block">2026.02 — Present</span>
+                                </div>
+                                <div className="relative bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-lg p-5 shadow-sm hover:border-slate-200 dark:hover:border-slate-700 transition-colors">
+                                    <div className="absolute -left-[25px] md:-left-[47px] top-6 w-3 h-3 rounded-full border-2 border-white dark:border-slate-950 bg-primary z-20"></div>
+                                    <div className="mb-3">
+                                        <h3 className="text-base font-bold text-slate-900 dark:text-white">SK 'A.Biz' Agent Builder MCP & AutoRAG</h3>
+                                        <div className="flex items-center gap-2 mt-1">
+                                            <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">AI Agent Backend Developer</span>
+                                            <span className="w-1 h-1 bg-slate-300 dark:bg-slate-700 rounded-full"></span>
+                                            <span className="text-[10px] text-slate-500">M365 & AI Infrastructure</span>
                                         </div>
                                     </div>
-                                    <div className="flex flex-1">
-                                        <div className="w-16 border-r border-slate-100 dark:border-slate-700 p-2 hidden sm:flex flex-col items-center gap-3">
-                                            <div className="w-8 h-8 rounded bg-primary/20"></div>
-                                            <div className="w-8 h-8 rounded bg-slate-100 dark:bg-slate-700"></div>
-                                        </div>
-                                        <div className="flex-1 p-3 flex gap-3">
-                                            <div className="flex-[2] flex flex-col gap-2">
-                                                <div className="h-8 w-32 bg-slate-100 dark:bg-slate-700 rounded mb-2"></div>
-                                                <div className="flex-1 bg-slate-50 dark:bg-slate-800/50 rounded border border-slate-100 dark:border-slate-700 relative">
-                                                    <div className="absolute top-4 left-4 right-4 h-8 bg-blue-100/50 dark:bg-blue-900/20 rounded border-l-4 border-primary flex items-center px-2 text-[8px] text-primary font-medium">10:00 AM - Sprint Planning</div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    <p className="text-slate-600 dark:text-slate-300 text-[13px] mb-4 leading-relaxed">
+                                        Standardized Microsoft 365 linkage as an MCP server for SK's AI Agent; developed a backend for AutoRAG that automatically collects and synchronizes SharePoint documents.
+                                    </p>
+                                    <ul className="space-y-1.5 mb-5">
+                                        <li className="flex items-start gap-2 text-[12px] text-slate-600 dark:text-slate-400">
+                                            <span className="text-primary mt-1 text-[8px] flex-shrink-0">●</span>
+                                            Implemented M365 app functions as MCP Tools based on Microsoft Graph API.
+                                        </li>
+                                        <li className="flex items-start gap-2 text-[12px] text-slate-600 dark:text-slate-400">
+                                            <span className="text-primary mt-1 text-[8px] flex-shrink-0">●</span>
+                                            Designed multi-tenant Azure AD authentication for secure enterprise data access.
+                                        </li>
+                                        <li className="flex items-start gap-2 text-[12px] text-slate-600 dark:text-slate-400">
+                                            <span className="text-primary mt-1 text-[8px] flex-shrink-0">●</span>
+                                            Established SharePoint document ingestion pipelines for real-time RAG updates.
+                                        </li>
+                                        <li className="flex items-start gap-2 text-[12px] text-slate-600 dark:text-slate-400">
+                                            <span className="text-primary mt-1 text-[8px] flex-shrink-0">●</span>
+                                            Automated secret rotation and credential management for external API integration.
+                                        </li>
+                                    </ul>
+                                    <div className="flex flex-wrap gap-1.5">
+                                        <span className="px-1.5 py-0.5 bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 rounded text-[9px] font-bold text-slate-500 dark:text-slate-400">FastAPI</span>
+                                        <span className="px-1.5 py-0.5 bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 rounded text-[9px] font-bold text-slate-500 dark:text-slate-400">MSAL</span>
+                                        <span className="px-1.5 py-0.5 bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 rounded text-[9px] font-bold text-slate-500 dark:text-slate-400">Kubernetes</span>
+                                        <span className="px-1.5 py-0.5 bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 rounded text-[9px] font-bold text-slate-500 dark:text-slate-400">ArgoCD</span>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div className="flex flex-1 flex-col p-6 sm:p-8">
-                            <div className="mb-4">
-                                <h3 className="mb-2 text-xl font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">AI 회의실 예약 에이전트</h3>
-                                <p className="text-sm font-medium text-slate-500 dark:text-slate-400">자연어 처리를 통한 사내 회의실 예약 자동화 시스템</p>
-                            </div>
-                            <div className="mb-6 flex-1">
-                                <ul className="space-y-2 text-sm text-slate-600 dark:text-slate-300">
-                                    <li className="flex items-start gap-2">
-                                        <span className="material-symbols-outlined mt-0.5 text-[18px] text-primary">check_circle</span>
-                                        <span>LangGraph 기반 멀티 에이전트 설계로 복잡한 의도 파악</span>
-                                    </li>
-                                    <li className="flex items-start gap-2">
-                                        <span className="material-symbols-outlined mt-0.5 text-[18px] text-primary">check_circle</span>
-                                        <span>RAG 파이프라인 구축을 통한 사내 규정 및 예약 현황 실시간 조회</span>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div className="flex flex-wrap gap-2 pt-4 border-t border-slate-100 dark:border-slate-800">
-                                {['Python', 'LangChain', 'FastAPI', 'PostgreSQL'].map(tag => (
-                                    <span key={tag} className="inline-flex items-center rounded-md bg-slate-100 px-2.5 py-1 text-xs font-medium text-slate-600 dark:bg-slate-800 dark:text-slate-400">{tag}</span>
-                                ))}
-                            </div>
-                        </div>
-                    </Link>
 
-                    <Link href="/projects/msa-architecture" className="group relative flex flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900">
-                        <div className="aspect-video w-full overflow-hidden bg-slate-900 relative">
-                            <div className="absolute inset-0 p-4 flex flex-col gap-2">
-                                <div className="grid grid-cols-3 gap-2 h-full">
-                                    <div className="col-span-2 bg-slate-800 rounded border border-slate-700 p-2 flex flex-col gap-1">
-                                        <div className="flex justify-between items-center">
-                                            <div className="w-16 h-2 bg-slate-600 rounded"></div>
-                                            <div className="text-[8px] text-slate-400">99.9% uptime</div>
+                            {/* SK Enterprise AI Agent service 'A.Biz' */}
+                            <div className="relative grid md:grid-cols-[140px_1fr] gap-6 md:gap-10">
+                                <div className="md:text-right pt-2">
+                                    <span className="text-[11px] font-bold text-primary block">2025.11 — 2026.02</span>
+                                </div>
+                                <div className="relative bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-lg p-5 shadow-sm hover:border-slate-200 dark:hover:border-slate-700 transition-colors">
+                                    <div className="absolute -left-[25px] md:-left-[47px] top-6 w-3 h-3 rounded-full border-2 border-white dark:border-slate-950 bg-primary z-20"></div>
+                                    <div className="mb-3">
+                                        <h3 className="text-base font-bold text-slate-900 dark:text-white">SK Enterprise AI Agent service 'A.Biz'</h3>
+                                        <div className="flex items-center gap-2 mt-1">
+                                            <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">AI Agent Backend Developer</span>
+                                            <span className="w-1 h-1 bg-slate-300 dark:bg-slate-700 rounded-full"></span>
+                                            <span className="text-[10px] text-slate-500">Private Cloud & LLM Ops</span>
                                         </div>
                                     </div>
-                                    <div className="col-span-1 flex flex-col gap-2">
-                                        <div className="flex-1 bg-slate-800 rounded border border-slate-700 p-2 flex flex-col justify-center">
-                                            <div className="text-[8px] text-slate-400 mb-1">RPS</div>
-                                            <div className="text-sm font-bold text-white">4.2k</div>
-                                        </div>
-                                    </div>
-                                    <div className="col-span-3 h-1/2 bg-slate-950 rounded border border-slate-800 p-2 font-mono text-[8px] text-slate-400 leading-tight">
-                                        <div className="text-green-400">&gt; [INFO] Service discovery initiated...</div>
-                                        <div className="text-blue-400">&gt; [DEBUG] Kafka consumer group rebalanced</div>
+                                    <p className="text-slate-600 dark:text-slate-300 text-[13px] mb-4 leading-relaxed">
+                                        Stabilization of AI Agent service in a private cloud environment and conversion of LLM dependencies to internal models.
+                                    </p>
+                                    <ul className="space-y-1.5 mb-5">
+                                        <li className="flex items-start gap-2 text-[12px] text-slate-600 dark:text-slate-400">
+                                            <span className="text-primary mt-1 text-[8px] flex-shrink-0">●</span>
+                                            Built private CI/CD pipelines in isolated network zones using NKS and ArgoCD.
+                                        </li>
+                                        <li className="flex items-start gap-2 text-[12px] text-slate-600 dark:text-slate-400">
+                                            <span className="text-primary mt-1 text-[8px] flex-shrink-0">●</span>
+                                            Replaced external LLM (GPT) dependencies with internal models (A.X) for security.
+                                        </li>
+                                        <li className="flex items-start gap-2 text-[12px] text-slate-600 dark:text-slate-400">
+                                            <span className="text-primary mt-1 text-[8px] flex-shrink-0">●</span>
+                                            Integrated LangGraph for multi-turn agent flow management and custom state tracking.
+                                        </li>
+                                        <li className="flex items-start gap-2 text-[12px] text-slate-600 dark:text-slate-400">
+                                            <span className="text-primary mt-1 text-[8px] flex-shrink-0">●</span>
+                                            Optimized GPU resource allocation for on-premise model serving clusters.
+                                        </li>
+                                    </ul>
+                                    <div className="flex flex-wrap gap-1.5">
+                                        <span className="px-1.5 py-0.5 bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 rounded text-[9px] font-bold text-slate-500 dark:text-slate-400">Python</span>
+                                        <span className="px-1.5 py-0.5 bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 rounded text-[9px] font-bold text-slate-500 dark:text-slate-400">LangGraph</span>
+                                        <span className="px-1.5 py-0.5 bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 rounded text-[9px] font-bold text-slate-500 dark:text-slate-400">PostgreSQL</span>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div className="flex flex-1 flex-col p-6 sm:p-8">
-                            <div className="mb-4">
-                                <h3 className="mb-2 text-xl font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">엔터프라이즈급 MSA 백엔드 아키텍처</h3>
-                                <p className="text-sm font-medium text-slate-500 dark:text-slate-400">대규모 트래픽 처리를 위한 확장 가능한 마이크로서비스 설계</p>
-                            </div>
-                            <div className="mb-6 flex-1">
-                                <ul className="space-y-2 text-sm text-slate-600 dark:text-slate-300">
-                                    <li className="flex items-start gap-2">
-                                        <span className="material-symbols-outlined mt-0.5 text-[18px] text-primary">check_circle</span>
-                                        <span>Spring Cloud Gateway 및 Eureka를 이용한 서비스 디스커버리 구현</span>
-                                    </li>
-                                    <li className="flex items-start gap-2">
-                                        <span className="material-symbols-outlined mt-0.5 text-[18px] text-primary">check_circle</span>
-                                        <span>Kafka 이벤트 기반 아키텍처로 서비스 간 결합도 감소</span>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div className="flex flex-wrap gap-2 pt-4 border-t border-slate-100 dark:border-slate-800">
-                                {['Java/Spring Boot', 'Kafka', 'Docker & K8s', 'Redis'].map(tag => (
-                                    <span key={tag} className="inline-flex items-center rounded-md bg-slate-100 px-2.5 py-1 text-xs font-medium text-slate-600 dark:bg-slate-800 dark:text-slate-400">{tag}</span>
-                                ))}
-                            </div>
-                        </div>
-                    </Link>
 
-                    <Link href="/projects/news-bot" className="group relative flex flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900">
-                        <div className="aspect-video w-full overflow-hidden bg-slate-50 dark:bg-slate-800 relative">
-                            <div className="absolute inset-0 flex items-center justify-center p-6">
-                                <div className="w-[80%] h-full bg-white dark:bg-slate-900 rounded-lg shadow-md border border-slate-200 dark:border-slate-700 flex flex-col overflow-hidden transform rotate-[-2deg] transition-transform group-hover:rotate-0">
-                                    <div className="h-10 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between px-3">
-                                        <div className="w-20 h-3 bg-slate-200 dark:bg-slate-700 rounded-full"></div>
-                                    </div>
-                                    <div className="p-3 space-y-3">
-                                        <div className="bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded-lg border border-indigo-100 dark:border-indigo-800">
-                                            <div className="flex gap-2 items-center mb-1.5">
-                                                <div className="w-3 h-3 rounded-full bg-indigo-500"></div>
-                                                <div className="w-16 h-2 bg-indigo-200 dark:bg-indigo-700 rounded"></div>
-                                            </div>
+                            {/* LLM Vehicle Manual Chatbot */}
+                            <div className="relative grid md:grid-cols-[140px_1fr] gap-6 md:gap-10">
+                                <div className="md:text-right pt-2">
+                                    <span className="text-[11px] font-bold text-primary block">2025.09 — 2025.10</span>
+                                </div>
+                                <div className="relative bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-lg p-5 shadow-sm hover:border-slate-200 dark:hover:border-slate-700 transition-colors">
+                                    <div className="absolute -left-[25px] md:-left-[47px] top-6 w-3 h-3 rounded-full border-2 border-white dark:border-slate-950 bg-primary z-20"></div>
+                                    <div className="mb-3">
+                                        <h3 className="text-base font-bold text-slate-900 dark:text-white">LLM Vehicle Manual Chatbot RAG PoC</h3>
+                                        <div className="flex items-center gap-2 mt-1">
+                                            <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">PoC Developer</span>
+                                            <span className="w-1 h-1 bg-slate-300 dark:bg-slate-700 rounded-full"></span>
+                                            <span className="text-[10px] text-slate-500">Generative AI R&D</span>
                                         </div>
+                                    </div>
+                                    <p className="text-slate-600 dark:text-slate-300 text-[13px] mb-4 leading-relaxed">
+                                        Construction of a generative AI chatbot pipeline for high-precision search of extensive vehicle manual PDFs.
+                                    </p>
+                                    <ul className="space-y-1.5 mb-5">
+                                        <li className="flex items-start gap-2 text-[12px] text-slate-600 dark:text-slate-400">
+                                            <span className="text-primary mt-1 text-[8px] flex-shrink-0">●</span>
+                                            Developed complex parsing logic for multi-format PDF data extraction using PyMuPDF.
+                                        </li>
+                                        <li className="flex items-start gap-2 text-[12px] text-slate-600 dark:text-slate-400">
+                                            <span className="text-primary mt-1 text-[8px] flex-shrink-0">●</span>
+                                            Implemented Hybrid Search and Reranker using Milvus and pgvector for improved accuracy.
+                                        </li>
+                                        <li className="flex items-start gap-2 text-[12px] text-slate-600 dark:text-slate-400">
+                                            <span className="text-primary mt-1 text-[8px] flex-shrink-0">●</span>
+                                            Designed dynamic prompting strategies to reduce hallucinations in technical queries.
+                                        </li>
+                                        <li className="flex items-start gap-2 text-[12px] text-slate-600 dark:text-slate-400">
+                                            <span className="text-primary mt-1 text-[8px] flex-shrink-0">●</span>
+                                            Evaluated embedding model performance across different chunking strategies.
+                                        </li>
+                                    </ul>
+                                    <div className="flex flex-wrap gap-1.5">
+                                        <span className="px-1.5 py-0.5 bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 rounded text-[9px] font-bold text-slate-500 dark:text-slate-400">Milvus</span>
+                                        <span className="px-1.5 py-0.5 bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 rounded text-[9px] font-bold text-slate-500 dark:text-slate-400">PyMuPDF</span>
+                                        <span className="px-1.5 py-0.5 bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 rounded text-[9px] font-bold text-slate-500 dark:text-slate-400">pgvector</span>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div className="flex flex-1 flex-col p-6 sm:p-8">
-                            <div className="mb-4">
-                                <h3 className="mb-2 text-xl font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">자동화 뉴스 큐레이션 봇</h3>
-                                <p className="text-sm font-medium text-slate-500 dark:text-slate-400">사용자 관심사 기반 맞춤형 기술 뉴스 요약 및 전달 서비스</p>
-                            </div>
-                            <div className="mb-6 flex-1">
-                                <ul className="space-y-2 text-sm text-slate-600 dark:text-slate-300">
-                                    <li className="flex items-start gap-2">
-                                        <span className="material-symbols-outlined mt-0.5 text-[18px] text-primary">check_circle</span>
-                                        <span>GPT-4 기반 뉴스 기사 요약 및 핵심 인사이트 추출</span>
-                                    </li>
-                                    <li className="flex items-start gap-2">
-                                        <span className="material-symbols-outlined mt-0.5 text-[18px] text-primary">check_circle</span>
-                                        <span>Vector DB를 활용한 중복 뉴스 필터링 및 유사도 분석</span>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div className="flex flex-wrap gap-2 pt-4 border-t border-slate-100 dark:border-slate-800">
-                                {['Python', 'OpenAI API', 'Airflow', 'Pinecone'].map(tag => (
-                                    <span key={tag} className="inline-flex items-center rounded-md bg-slate-100 px-2.5 py-1 text-xs font-medium text-slate-600 dark:bg-slate-800 dark:text-slate-400">{tag}</span>
-                                ))}
-                            </div>
-                        </div>
-                    </Link>
 
-                    <div className="group relative flex h-full min-h-[480px] flex-col overflow-hidden rounded-xl border border-dashed border-slate-300 bg-slate-50/50 p-6 transition-colors hover:border-primary/50 hover:bg-slate-100 dark:border-slate-700 dark:bg-slate-800/20 dark:hover:bg-slate-800/40">
-                        <div className="flex h-full flex-col items-center justify-center gap-4 text-center">
-                            <div className="flex size-16 items-center justify-center rounded-full bg-slate-100 text-slate-400 shadow-sm dark:bg-slate-800 dark:text-slate-500">
-                                <span className="material-symbols-outlined text-3xl">add_circle</span>
+                        </div>
+                    </div>
+
+                    {/* Past: 2021 - 2025 */}
+                    <div className="mb-4">
+                        <div className="flex items-center gap-4 mb-4 md:ml-[140px] translate-x-[-1px] relative z-10">
+                            <span className="px-3 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-[10px] font-bold rounded-sm uppercase tracking-widest">Past: 2021 — 2025</span>
+                        </div>
+
+                        <div className="space-y-4">
+                            {/* SK Group Carve-out */}
+                            <div className="relative grid md:grid-cols-[140px_1fr] gap-6 md:gap-10">
+                                <div className="md:text-right pt-2">
+                                    <span className="text-[11px] font-bold text-slate-400 block">2025.01 — 2025.08</span>
+                                </div>
+                                <div className="relative bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-lg p-5 shadow-sm hover:border-slate-200 dark:hover:border-slate-700 transition-colors">
+                                    <div className="absolute -left-[25px] md:-left-[47px] top-6 w-3 h-3 rounded-full border-2 border-white dark:border-slate-950 bg-slate-200 dark:bg-slate-700 z-20"></div>
+                                    <div className="mb-3">
+                                        <h3 className="text-base font-bold text-slate-900 dark:text-white">SK Group Carve-out</h3>
+                                        <div className="flex items-center gap-2 mt-1">
+                                            <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Project PM / Lead Architect</span>
+                                            <span className="w-1 h-1 bg-slate-300 dark:bg-slate-700 rounded-full"></span>
+                                            <span className="text-[10px] text-slate-500">Enterprise Migration</span>
+                                        </div>
+                                    </div>
+                                    <p className="text-slate-600 dark:text-slate-300 text-[13px] mb-4 leading-relaxed">
+                                        Successful launch and migration of 5 core systems during the corporate spin-off process.
+                                    </p>
+                                    <ul className="space-y-1.5 mb-5">
+                                        <li className="flex items-start gap-2 text-[12px] text-slate-600 dark:text-slate-400">
+                                            <span className="text-slate-400 mt-1 text-[8px] flex-shrink-0">●</span>
+                                            Managed migration of legacy data to modern cloud infrastructure with zero downtime.
+                                        </li>
+                                        <li className="flex items-start gap-2 text-[12px] text-slate-600 dark:text-slate-400">
+                                            <span className="text-slate-400 mt-1 text-[8px] flex-shrink-0">●</span>
+                                            Standardized internal collaborative processes using Jira and Confluence.
+                                        </li>
+                                        <li className="flex items-start gap-2 text-[12px] text-slate-600 dark:text-slate-400">
+                                            <span className="text-slate-400 mt-1 text-[8px] flex-shrink-0">●</span>
+                                            Negotiated system requirements across five different business units.
+                                        </li>
+                                        <li className="flex items-start gap-2 text-[12px] text-slate-600 dark:text-slate-400">
+                                            <span className="text-slate-400 mt-1 text-[8px] flex-shrink-0">●</span>
+                                            Implemented high-availability SAP integration for global financial reporting.
+                                        </li>
+                                    </ul>
+                                    <div className="flex flex-wrap gap-1.5">
+                                        <span className="px-1.5 py-0.5 bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 rounded text-[9px] font-bold text-slate-500 dark:text-slate-400">Azure Cloud</span>
+                                        <span className="px-1.5 py-0.5 bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 rounded text-[9px] font-bold text-slate-500 dark:text-slate-400">SAP</span>
+                                        <span className="px-1.5 py-0.5 bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 rounded text-[9px] font-bold text-slate-500 dark:text-slate-400">Migration</span>
+                                    </div>
+                                </div>
                             </div>
-                            <div className="space-y-1">
-                                <h3 className="text-lg font-semibold text-slate-900 dark:text-white">More Projects</h3>
-                                <p className="max-w-xs text-sm text-slate-500 dark:text-slate-400">Currently working on exciting new AI experiments and open source contributions.</p>
+
+                            {/* Azure Cloud & DevOps */}
+                            <div className="relative grid md:grid-cols-[140px_1fr] gap-6 md:gap-10">
+                                <div className="md:text-right pt-2">
+                                    <span className="text-[11px] font-bold text-slate-400 block">2023.12 — 2024.12</span>
+                                </div>
+                                <div className="relative bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-lg p-5 shadow-sm hover:border-slate-200 dark:hover:border-slate-700 transition-colors">
+                                    <div className="absolute -left-[25px] md:-left-[47px] top-6 w-3 h-3 rounded-full border-2 border-white dark:border-slate-950 bg-slate-200 dark:bg-slate-700 z-20"></div>
+                                    <div className="mb-3">
+                                        <h3 className="text-base font-bold text-slate-900 dark:text-white">Azure Cloud & DevOps/DBA</h3>
+                                        <div className="flex items-center gap-2 mt-1">
+                                            <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">DevOps / DBA</span>
+                                            <span className="w-1 h-1 bg-slate-300 dark:bg-slate-700 rounded-full"></span>
+                                            <span className="text-[10px] text-slate-500">Infra Management</span>
+                                        </div>
+                                    </div>
+                                    <p className="text-slate-600 dark:text-slate-300 text-[13px] mb-4 leading-relaxed">
+                                        Dual role managing Azure Cloud infrastructure and PostgreSQL DBA responsibilities for MSA architecture.
+                                    </p>
+                                    <ul className="space-y-1.5 mb-5">
+                                        <li className="flex items-start gap-2 text-[12px] text-slate-600 dark:text-slate-400">
+                                            <span className="text-slate-400 mt-1 text-[8px] flex-shrink-0">●</span>
+                                            Optimized PostgreSQL performance and managed secure schema migration protocols.
+                                        </li>
+                                        <li className="flex items-start gap-2 text-[12px] text-slate-600 dark:text-slate-400">
+                                            <span className="text-slate-400 mt-1 text-[8px] flex-shrink-0">●</span>
+                                            Built robust ITSM workflows integrating Jira and GitHub Actions.
+                                        </li>
+                                        <li className="flex items-start gap-2 text-[12px] text-slate-600 dark:text-slate-400">
+                                            <span className="text-slate-400 mt-1 text-[8px] flex-shrink-0">●</span>
+                                            Automated infrastructure provisioning using Terraform (IaC).
+                                        </li>
+                                        <li className="flex items-start gap-2 text-[12px] text-slate-600 dark:text-slate-400">
+                                            <span className="text-slate-400 mt-1 text-[8px] flex-shrink-0">●</span>
+                                            Reduced cloud operational costs by 20% through resource rightsizing.
+                                        </li>
+                                    </ul>
+                                    <div className="flex flex-wrap gap-1.5">
+                                        <span className="px-1.5 py-0.5 bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 rounded text-[9px] font-bold text-slate-500 dark:text-slate-400">K8s</span>
+                                        <span className="px-1.5 py-0.5 bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 rounded text-[9px] font-bold text-slate-500 dark:text-slate-400">Azure</span>
+                                        <span className="px-1.5 py-0.5 bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 rounded text-[9px] font-bold text-slate-500 dark:text-slate-400">PostgreSQL</span>
+                                    </div>
+                                </div>
                             </div>
-                            <button className="mt-4 text-sm font-semibold text-primary hover:text-primary/80">
-                                Check Github Profile →
-                            </button>
+
                         </div>
                     </div>
                 </div>
-                <div className="mt-16 flex justify-center">
-                    <a className="inline-flex items-center gap-2 text-sm font-medium text-slate-500 hover:text-primary transition-colors" href="https://github.com">
-                        <span>View all repositories</span>
-                        <span className="material-symbols-outlined text-lg">arrow_forward</span>
-                    </a>
-                </div>
-            </div>
+            </section>
         </main>
     );
 }
