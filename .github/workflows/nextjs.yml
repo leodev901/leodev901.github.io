@@ -2,7 +2,7 @@
 #
 # Next.js 시작 가이드: https://nextjs.org/docs/getting-started
 #
-name: Deploy Next.js site to Pages
+name: Deploy Next.js site to Github Pages
 
 on:
   # 'main' 브랜치에 코드가 푸시(push)될 때 실행됩니다.
