@@ -7,12 +7,15 @@ export default function About() {
         <main className="flex-grow flex flex-col items-center justify-start py-12 px-4 md:px-10 w-full">
             <div className="w-full max-w-[860px] mx-auto flex flex-col gap-12 animate-fade-in">
                 <section className="flex flex-col md:flex-row gap-10 items-start md:items-center py-4">
-                    <div className="relative flex-shrink-0">
-                        <div className="w-32 h-32 md:w-48 md:h-48 rounded-2xl bg-slate-200 dark:bg-slate-800 overflow-hidden border-4 border-white dark:border-slate-900 shadow-xl">
-                            {/* Using standard img tag for simplicity, can be updated to next/image later if preferred */}
-                            <img alt="임진수 프로필 사진" className="w-full h-full object-cover" src="/files/profile_image.png" />
+                    <div className="relative flex-shrink-0 flex flex-col items-center">
+                        <div className="relative">
+                            <div className="w-32 h-32 md:w-48 md:h-48 rounded-2xl bg-slate-200 dark:bg-slate-800 overflow-hidden border-4 border-white dark:border-slate-900 shadow-xl">
+                                {/* Using standard img tag for simplicity, can be updated to next/image later if preferred */}
+                                <img alt="임진수 프로필 사진" className="w-full h-full object-cover" src="/files/profile_image.png" />
+                            </div>
+                            <div className="absolute -bottom-2 -right-2 bg-green-500 w-6 h-6 rounded-full border-4 border-[#f5f7f8] dark:border-[#0f1823]"></div>
                         </div>
-                        <div className="absolute -bottom-2 -right-2 bg-green-500 w-6 h-6 rounded-full border-4 border-[#f5f7f8] dark:border-[#0f1823]"></div>
+                        <span className="mt-4 text-2xl font-black tracking-[0.2em] text-slate-900 dark:text-white">임 진 수</span>
                     </div>
                     <div className="flex flex-col gap-4">
                         <div className="flex flex-wrap gap-2">
@@ -20,10 +23,10 @@ export default function About() {
                             <span className="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold tracking-wide uppercase">#AIAgent</span>
                         </div>
                         <h1 className="text-slate-900 dark:text-white text-4xl md:text-5xl font-black leading-tight tracking-[-0.033em] break-keep">
-                            도전하며 성장하는 개발자, 임진수입니다.
+                            대기업 엔터프라이즈 개발·운영 경험 기반 AI Agent 개발자
                         </h1>
                         <p className="text-slate-600 dark:text-slate-400 text-lg md:text-xl font-normal leading-relaxed break-keep">
-                            저는 백엔드(Java, Spring)부터 프론트엔드, 클라우드 운영(Azure, K8s), 그리고 최근의 LangGraph 기반 AI Agent 서비스 개발까지 폭넓은 경험을 갖춘 10년 차 IT 전문가입니다. 기술적 이해를 바탕으로 현업과 긴밀하게 소통하며, 안정적이고 혁신적인 시스템 가치를 창출합니다.
+                            저는 10년간 대기업 IT 조직에서 백엔드(Java, Spring)·프론트엔드·클라우드 운영(Azure, K8s, DevOps)을 개발·운영해 왔고, 최근에는 LLM 기반 AI Agent 서비스 개발로 확장했습니다. 기술 트렌드와 비즈니스 로직을 함께 이해하며 현업과 협업하고, PM·PL로서 안정성과 혁신을 갖춘 시스템 가치를 창출합니다.
                         </p>
                     </div>
                 </section>
@@ -40,7 +43,7 @@ export default function About() {
                             <span className="absolute -left-[13px] top-1 h-6 w-6 rounded-full bg-primary border-4 border-white dark:border-slate-900 z-10"></span>
                             <div className="flex flex-col mb-4">
                                 <span className="text-sm font-bold text-primary">2025.11 — 현재</span>
-                                <h3 className="text-xl font-bold text-slate-900 dark:text-white mt-1">프리랜서 | AI Agent 개발</h3>
+                                <h3 className="text-xl font-bold text-slate-900 dark:text-white mt-1">인포매니아·프리랜서 | AI Agent 개발자</h3>
                                 <p className="text-sm text-slate-500 font-medium">인포매니아 (SK AX 파트너)</p>
                             </div>
                             <ul className="list-disc list-outside ml-4 space-y-2 text-slate-600 dark:text-slate-400 text-sm">
@@ -66,7 +69,7 @@ export default function About() {
                             <span className="absolute -left-[13px] top-1 h-6 w-6 rounded-full bg-slate-300 dark:bg-slate-700 border-4 border-white dark:border-slate-900 z-10"></span>
                             <div className="flex flex-col mb-4">
                                 <span className="text-sm font-bold text-slate-500">2015.12 — 2019.12 (4년 1개월)</span>
-                                <h3 className="text-xl font-bold text-slate-900 dark:text-white mt-1">AJ렌터카 | 시스템 개발자</h3>
+                                <h3 className="text-xl font-bold text-slate-900 dark:text-white mt-1">AJ렌터카 | 시스템 풀스택 개발자</h3>
                             </div>
                             <ul className="list-disc list-outside ml-4 space-y-2 text-slate-600 dark:text-slate-400 text-sm">
                                 <li>렌터카·모빌리티 비즈니스를 위한 B2C/B2B 프로덕트의 백엔드 로직부터 프론트엔드 화면, 사내 DB까지 밀착 관리하는 Full-Stack 개발자로 활약.</li>
@@ -130,41 +133,45 @@ export default function About() {
 
                 <section className="flex flex-col gap-6">
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                        <a href="#" className="flex items-center justify-between p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 group hover:border-primary transition-all shadow-sm">
+                        <a href="https://github.com/leodev901" target="_blank" rel="noopener noreferrer" className="flex items-center justify-between p-5 rounded-2xl bg-slate-200 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 transition-all shadow-sm hover:shadow-md hover:-translate-y-1 group hover:border-slate-400 dark:hover:border-slate-500">
                             <div className="flex items-center gap-3">
-                                <div className="size-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-900 dark:text-white group-hover:bg-primary/10 group-hover:text-primary transition-colors">
-                                    <span className="material-symbols-outlined">terminal</span>
+                                <div className="size-10 rounded-full bg-slate-900 dark:bg-white flex items-center justify-center text-white dark:text-slate-900 transition-colors">
+                                    <svg viewBox="0 0 24 24" fill="currentColor" className="w-[22px] h-[22px]">
+                                        <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+                                    </svg>
                                 </div>
                                 <div>
                                     <h4 className="text-sm font-bold text-slate-900 dark:text-white">GitHub</h4>
-                                    <p className="text-[11px] text-slate-500 uppercase font-bold tracking-wider">Open Source</p>
+                                    <p className="text-[11px] text-slate-600 dark:text-slate-400 uppercase font-bold tracking-wider">Open Source</p>
                                 </div>
                             </div>
-                            <span className="material-symbols-outlined text-slate-400 group-hover:text-primary transition-transform group-hover:translate-x-1">arrow_forward</span>
+                            <span className="material-symbols-outlined text-slate-500 dark:text-slate-400 group-hover:text-slate-900 dark:group-hover:text-white transition-transform group-hover:translate-x-1">arrow_forward</span>
                         </a>
-                        <a href="#" className="flex items-center justify-between p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 group hover:border-primary transition-all shadow-sm">
+                        <a href="https://linkedin.com/in/" target="_blank" rel="noopener noreferrer" className="flex items-center justify-between p-5 rounded-2xl bg-blue-100 dark:bg-blue-900/60 border border-blue-200 dark:border-blue-800 transition-all shadow-sm hover:shadow-md hover:-translate-y-1 group hover:border-blue-400 dark:hover:border-blue-500">
                             <div className="flex items-center gap-3">
-                                <div className="size-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-900 dark:text-white group-hover:bg-primary/10 group-hover:text-primary transition-colors">
-                                    <span className="material-symbols-outlined">work</span>
+                                <div className="size-10 rounded-full bg-blue-600 flex items-center justify-center text-white transition-colors">
+                                    <svg viewBox="0 0 24 24" fill="currentColor" className="w-[18px] h-[18px] mb-0.5">
+                                        <path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z" />
+                                    </svg>
                                 </div>
                                 <div>
                                     <h4 className="text-sm font-bold text-slate-900 dark:text-white">LinkedIn</h4>
-                                    <p className="text-[11px] text-slate-500 uppercase font-bold tracking-wider">Professional</p>
+                                    <p className="text-[11px] text-blue-700 dark:text-blue-300 uppercase font-bold tracking-wider">Professional</p>
                                 </div>
                             </div>
-                            <span className="material-symbols-outlined text-slate-400 group-hover:text-primary transition-transform group-hover:translate-x-1">arrow_forward</span>
+                            <span className="material-symbols-outlined text-blue-500 dark:text-blue-400 group-hover:text-blue-700 dark:group-hover:text-blue-300 transition-transform group-hover:translate-x-1">arrow_forward</span>
                         </a>
-                        <a href="#" className="flex items-center justify-between p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 group hover:border-primary transition-all shadow-sm">
+                        <a href="#" target="_blank" rel="noopener noreferrer" className="flex items-center justify-between p-5 rounded-2xl bg-zinc-100 dark:bg-zinc-800/60 border border-zinc-200 dark:border-zinc-700 transition-all shadow-sm hover:shadow-md hover:-translate-y-1 group hover:border-zinc-400 dark:hover:border-zinc-500">
                             <div className="flex items-center gap-3">
-                                <div className="size-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-900 dark:text-white group-hover:bg-primary/10 group-hover:text-primary transition-colors">
+                                <div className="size-10 rounded-full bg-zinc-500 flex items-center justify-center text-white transition-colors">
                                     <span className="material-symbols-outlined">person</span>
                                 </div>
                                 <div>
                                     <h4 className="text-sm font-bold text-slate-900 dark:text-white">Remember</h4>
-                                    <p className="text-[11px] text-slate-500 uppercase font-bold tracking-wider">Career Hub</p>
+                                    <p className="text-[11px] text-zinc-600 dark:text-zinc-400 uppercase font-bold tracking-wider">Career Hub</p>
                                 </div>
                             </div>
-                            <span className="material-symbols-outlined text-slate-400 group-hover:text-primary transition-transform group-hover:translate-x-1">arrow_forward</span>
+                            <span className="material-symbols-outlined text-zinc-500 dark:text-zinc-400 group-hover:text-zinc-700 dark:group-hover:text-zinc-300 transition-transform group-hover:translate-x-1">arrow_forward</span>
                         </a>
                     </div>
                 </section>

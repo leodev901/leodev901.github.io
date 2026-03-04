@@ -9,7 +9,7 @@ export default function ProjectsHistory() {
         <main className="flex-1">
             <section className="mx-auto max-w-[1000px] px-6 lg:px-8 py-8 md:py-12">
                 <div className="mb-10">
-                    <h1 className="text-2xl md:text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white mb-2">Projects</h1>
+                    <h1 className="text-2xl md:text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white mb-2">Project History</h1>
                     <p className="text-slate-500 dark:text-slate-400 text-sm">Chronological history of strategic engineering projects.</p>
                 </div>
 
