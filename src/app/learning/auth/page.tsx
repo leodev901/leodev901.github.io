@@ -14,6 +14,8 @@ export default function AuthPage() {
     // ============================================================
     const [email, setEmail] = useState('');           // 이메일 입력값
     const [password, setPassword] = useState('');     // 비밀번호 입력값
+    const [username, setUsername] = useState('');     // 이름 입력값
+    const [role, setRole] = useState<string | null>(null);             // 유저 역할
     const [user, setUser] = useState<User | null>(null); // 현재 로그인된 유저 정보 (없으면 null)
     const [loading, setLoading] = useState(false);    // 로딩 중인지 여부
     const [message, setMessage] = useState('');       // 성공/에러 메시지
@@ -49,6 +51,29 @@ export default function AuthPage() {
         return () => subscription.unsubscribe();
     }, []); // ← 빈 배열: "딱 한 번만 실행해줘!"
 
+
+    // 유저 정보가 바뀔 때 (supbase라이브러리) -> 유저의 role을 가져와서 state에 저장
+    useEffect(() => {
+        const fetchUserRole = async () => {
+            // user 정보가 있을 때만 DB를 조회합니다.
+            if (user) {
+                const { data, error } = await supabase
+                    .from('user_roles') // 💡 우리가 만든 역할 테이블
+                    .select('role')      // 💡 role 컬럼만 가져옴
+                    .eq('user_id', user.id) // 💡 현재 로그인된 유저의 UID와 일치하는 행 조회
+                    .single();          // 💡 결과는 무조건 1개여야 함
+                if (!error && data) {
+                    setRole(data.role); // 성공하면 role 상태에 저장
+                } else {
+                    setRole('user');    // DB에 정보가 없으면 기본값 'user' 부여
+                }
+            } else {
+                setRole(null); // 로그아웃 상태면 role도 초기화
+            }
+        };
+        fetchUserRole();
+    }, [user]); // 💡 user 정보가 바뀔 때마다('인증 성공' 시점 포함) 이 함수가 실행됩니다!
+
     // ============================================================
     // 🔑 핵심 함수들: 회원가입, 로그인, 로그아웃
     // ============================================================
@@ -63,6 +88,11 @@ export default function AuthPage() {
         const { error } = await supabase.auth.signUp({
             email,
             password,
+            options: {
+                data: {
+                    username
+                }
+            }
         });
 
         if (error) {
@@ -95,6 +125,7 @@ export default function AuthPage() {
             setMessage('✅ 로그인 성공!');
             setIsError(false);
         }
+
         setLoading(false);
     };
 
@@ -108,6 +139,7 @@ export default function AuthPage() {
         setIsError(false);
         setEmail('');
         setPassword('');
+        setUsername('');
     };
 
     // 폼 제출 핸들러 (회원가입 or 로그인)
@@ -150,6 +182,10 @@ export default function AuthPage() {
                             {/* 유저 정보 테이블 */}
                             <div className="bg-slate-50 rounded-xl p-5 text-left space-y-3 mb-8">
                                 <div className="flex items-center gap-3">
+                                    <span className="text-xs font-bold text-slate-400 uppercase w-16">Username</span>
+                                    <span className="text-sm font-semibold text-slate-700 truncate">{user.user_metadata.username}</span>
+                                </div>
+                                <div className="flex items-center gap-3">
                                     <span className="text-xs font-bold text-slate-400 uppercase w-16">Email</span>
                                     <span className="text-sm font-semibold text-slate-700 truncate">{user.email}</span>
                                 </div>
@@ -161,6 +197,12 @@ export default function AuthPage() {
                                     <span className="text-xs font-bold text-slate-400 uppercase w-16">가입일</span>
                                     <span className="text-sm text-slate-600">
                                         {new Date(user.created_at).toLocaleDateString('ko-KR')}
+                                    </span>
+                                </div>
+                                <div className="flex items-center gap-3">
+                                    <span className="text-xs font-bold text-slate-400 uppercase w-16">권한</span>
+                                    <span className="text-sm text-slate-600">
+                                        {user.user_metadata.role === 'admin' ? '관리자' : '사용자'}
                                     </span>
                                 </div>
                             </div>
@@ -182,8 +224,8 @@ export default function AuthPage() {
                             <button
                                 onClick={() => { setIsSignUp(false); setMessage(''); }}
                                 className={`flex-1 py-3 rounded-lg font-bold text-sm transition-all ${!isSignUp
-                                        ? 'bg-white text-indigo-600 shadow-sm'
-                                        : 'text-slate-500 hover:text-slate-700'
+                                    ? 'bg-white text-indigo-600 shadow-sm'
+                                    : 'text-slate-500 hover:text-slate-700'
                                     }`}
                             >
                                 🔑 로그인
@@ -191,8 +233,8 @@ export default function AuthPage() {
                             <button
                                 onClick={() => { setIsSignUp(true); setMessage(''); }}
                                 className={`flex-1 py-3 rounded-lg font-bold text-sm transition-all ${isSignUp
-                                        ? 'bg-white text-indigo-600 shadow-sm'
-                                        : 'text-slate-500 hover:text-slate-700'
+                                    ? 'bg-white text-indigo-600 shadow-sm'
+                                    : 'text-slate-500 hover:text-slate-700'
                                     }`}
                             >
                                 ✨ 회원가입
@@ -201,6 +243,21 @@ export default function AuthPage() {
 
                         {/* 이메일 / 비밀번호 입력 폼 */}
                         <form onSubmit={handleSubmit} className="space-y-5">
+                            {isSignUp && (
+                                <div>
+                                    <label className="block text-sm font-bold text-slate-700 mb-2">이름</label>
+                                    <input
+                                        id="username"
+                                        type="text"
+                                        value={username}
+                                        onChange={(e) => setUsername(e.target.value)}
+                                        placeholder="이름을 입력해 주세요"
+                                        required
+                                        minLength={2}
+                                        className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all text-slate-800 placeholder-slate-400"
+                                    />
+                                </div>
+                            )}
                             <div>
                                 <label className="block text-sm font-bold text-slate-700 mb-2">이메일</label>
                                 <input
@@ -232,10 +289,10 @@ export default function AuthPage() {
                                 type="submit"
                                 disabled={loading}
                                 className={`w-full py-4 rounded-xl font-bold transition-all text-white ${loading
-                                        ? 'bg-slate-300 cursor-not-allowed'
-                                        : isSignUp
-                                            ? 'bg-emerald-500 hover:bg-emerald-600 shadow-lg shadow-emerald-200'
-                                            : 'bg-indigo-600 hover:bg-indigo-700 shadow-lg shadow-indigo-200'
+                                    ? 'bg-slate-300 cursor-not-allowed'
+                                    : isSignUp
+                                        ? 'bg-emerald-500 hover:bg-emerald-600 shadow-lg shadow-emerald-200'
+                                        : 'bg-indigo-600 hover:bg-indigo-700 shadow-lg shadow-indigo-200'
                                     }`}
                             >
                                 {loading
@@ -249,8 +306,8 @@ export default function AuthPage() {
                         {/* 결과 메시지 */}
                         {message && (
                             <div className={`mt-6 p-4 rounded-xl text-sm font-semibold animate-fade-in ${isError
-                                    ? 'bg-red-50 text-red-700 border border-red-100'
-                                    : 'bg-green-50 text-green-700 border border-green-100'
+                                ? 'bg-red-50 text-red-700 border border-red-100'
+                                : 'bg-green-50 text-green-700 border border-green-100'
                                 }`}>
                                 {message}
                             </div>

@@ -20,9 +20,9 @@ export default function Projects() {
                         <div className="aspect-video w-full overflow-hidden bg-slate-100 dark:bg-slate-800 relative">
                             {/* 프로젝트 스크린샷 활용 */}
                             <img
-                                src="/portfolio-smart-home.png"
-                                alt="Smart Home AI Dashboard"
-                                className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                                src="/portfolio-smart-home-abstract.png"
+                                alt="Smart Home AI Mockup"
+                                className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         </div>
