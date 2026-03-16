@@ -62,6 +62,7 @@ export default function AuthPage() {
                     .select('role')      // 💡 role 컬럼만 가져옴
                     .eq('user_id', user.id) // 💡 현재 로그인된 유저의 UID와 일치하는 행 조회
                     .single();          // 💡 결과는 무조건 1개여야 함
+                console.log(data);
                 if (!error && data) {
                     setRole(data.role); // 성공하면 role 상태에 저장
                 } else {
@@ -202,7 +203,7 @@ export default function AuthPage() {
                                 <div className="flex items-center gap-3">
                                     <span className="text-xs font-bold text-slate-400 uppercase w-16">권한</span>
                                     <span className="text-sm text-slate-600">
-                                        {user.user_metadata.role === 'admin' ? '관리자' : '사용자'}
+                                        {role === 'admin' ? '관리자' : role === 'user' ? '사용자' : '알 수 없음'}
                                     </span>
                                 </div>
                             </div>
