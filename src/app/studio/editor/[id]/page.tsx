@@ -4,6 +4,10 @@ export const metadata = {
   title: '포스트 수정 - CMS Studio',
 };
 
+export function generateStaticParams() {
+  return [];
+}
+
 /**
  * 💡 [학습노트] 에디터 수정 페이지
  * URL: /studio/editor/[id]
