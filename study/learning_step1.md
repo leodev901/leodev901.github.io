@@ -300,6 +300,10 @@ function ParentPage() {
 }
 ```
 
+> 💡 `{ name, age }` 뒤의 `: { name: string; age: number }` 는 **TypeScript 타입 선언**입니다.
+> "name은 문자열, age는 숫자를 받아야 해!" 라고 TypeScript에게 알려주는 것입니다.
+> 함수 파라미터는 외부에서 값이 들어오는 곳이라 TypeScript가 타입을 스스로 알 수 없어서 **직접 선언해야** 합니다.
+
 ---
 
 ### (7) 이벤트 핸들러 패턴 정리
@@ -326,4 +330,34 @@ onKeyDown   // 키보드 누름
 onFocus     // 포커스 들어옴
 onBlur      // 포커스 나감
 onMouseOver // 마우스 올림
+```
+
+---
+
+### (8) TypeScript 타입 선언 — 언제 필수? 언제 생략 가능?
+
+TypeScript는 타입을 직접 선언하지 않아도 **추론(Inference)** 할 수 있는 경우엔 생략 가능합니다:
+
+```tsx
+// ✅ 초기값이 있으면 TypeScript가 알아서 추론 → 생략 가능
+const count = 0;               // → 타입: number (자동 추론)
+const name = "레오";            // → 타입: string (자동 추론)
+const [value] = useState(0);   // → 타입: number (자동 추론)
+const isOn = true;             // → 타입: boolean (자동 추론)
+
+// ❌ 함수 파라미터 = 외부에서 들어오는 값 → TypeScript가 알 방법 없음 → 선언 필수!
+function greet({ name }: { name: string }) { ... }
+//                       ↑ 이게 없으면 TypeScript 오류!
+```
+
+| 상황 | 타입 선언 | 이유 |
+|------|:--------:|------|
+| 함수 **파라미터** | **필수** | 외부에서 뭐가 들어올지 모름 |
+| 변수 + **초기값** | 생략 가능 | TypeScript가 값 보고 추론 |
+| 함수 **return 값** | 대부분 생략 | return 값 보고 추론 |
+
+```tsx
+// 콜론(:) 뒤가 타입 선언 자리
+const age: number = 25;           // 변수 타입 (초기값 있으므로 생략해도 됨)
+function fn(x: number): string    // 파라미터 타입, return 타입
 ```

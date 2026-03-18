@@ -252,3 +252,70 @@ posts 테이블
     0 || '기본값'    // → '기본값'  ← 의도치 않은 동작! (0개짜리가 사라짐)
     0 ?? '기본값'    // → 0         ← 의도한 동작! (0도 유효한 값으로 처리)
     ```
+
+---
+
+## 7. 🔄 복습 Q&A — layout.tsx + children + TypeScript 기초
+
+**Q. `/learning/blog`로 접근하면 `layout.tsx`가 자동으로 인식되나요?**
+*   **A.** 네, 자동으로 인식됩니다. Next.js는 **파일 이름 자체를 약속**으로 삼아, 같은 폴더에 `layout.tsx`가 있으면 해당 경로의 모든 페이지에 자동 적용합니다. 개발자가 어디에도 "이 레이아웃 써줘"라고 선언할 필요가 없습니다:
+    ```
+    /learning/blog/
+      layout.tsx   ← /learning/blog/* 모든 경로에 자동 적용 (약속!)
+      page.tsx     ← /learning/blog 의 본문
+      [id]/
+        page.tsx   ← /learning/blog/42 의 본문
+    ```
+
+**Q. `layout.tsx`의 `children`은 어떻게 동작하나요? `page.tsx`와 서로 선언/참조가 없어 보이는데요?**
+*   **A.** 이것이 **Next.js 파일 시스템 기반 라우팅(File-system Based Routing)** 의 핵심입니다. Next.js가 내부적으로 자동으로 조립합니다:
+    ```
+    [브라우저가 /learning/blog 요청]
+         ↓
+    Next.js가 폴더를 스캔 → layout.tsx 발견!
+         ↓
+    layout의 {children} 자리에 page.tsx 결과물 자동 삽입
+         ↓
+    완성된 HTML을 브라우저로 전송
+    ```
+    개발자가 `<BlogLayout><BlogListPage /></BlogLayout>` 이렇게 직접 코드를 짜지 않아도, 파일 이름만 보고 Next.js가 알아서 조립합니다. `children`에 무엇이 들어오는지 URL에 따라 자동으로 결정됩니다:
+    ```
+    /learning/blog 접속     →  children = page.tsx 의 return 값
+    /learning/blog/42 접속  →  children = [id]/page.tsx 의 return 값
+    ```
+
+**Q. `{ children }: { children: React.ReactNode }` 왜 이렇게 선언하나요?**
+*   **A.** 두 부분으로 나뉩니다:
+    ```tsx
+    function BlogLayout(
+        { children }                    // ① 구조 분해 할당 — props에서 children만 꺼냄
+        :                               // ② 콜론(:) — "이 값의 타입은?"
+        { children: React.ReactNode }   // ③ TypeScript 타입 선언 — ReactNode 타입
+    )
+    ```
+    `React.ReactNode`는 "React가 화면에 그릴 수 있는 건 뭐든 OK" 라는 가장 넓은 타입입니다. children에 어떤 page.tsx가 들어올지 모르기 때문에 이 타입을 씁니다.
+
+**Q. TypeScript에서 `:` 뒤에 타입을 무조건 선언해야 하나요?**
+*   **A.** 꼭 그렇지 않습니다. **추론(Inference)** 이 가능한 경우엔 생략할 수 있습니다:
+    ```tsx
+    // ✅ 초기값이 있으면 TypeScript가 스스로 타입 추론 → 선언 생략 가능
+    const count = 0;           // → 타입: number (자동 추론)
+    const name = "레오";        // → 타입: string (자동 추론)
+    const [value] = useState(0); // → 타입: number (자동 추론)
+
+    // ❌ 함수 파라미터는 외부에서 들어오는 값 → TypeScript가 모름 → 선언 필수!
+    function BlogLayout({ children }: { children: React.ReactNode }) { ... }
+    ```
+
+    | 상황 | 타입 선언 |
+    |------|----------|
+    | 함수 **파라미터** (외부에서 들어오는 값) | **필수** |
+    | 변수에 **초기값** 있을 때 | 생략 가능 (추론) |
+    | 함수 **return 값** | 대부분 생략 가능 (추론) |
+
+**Q. 결국 `children = page.tsx` 라는 건 약속인가요?**
+*   **A.** 네, 정확히 두 가지 약속이 합쳐진 것입니다:
+    - **React 약속**: 부모 컴포넌트가 자식을 감쌀 때 `children` prop으로 전달
+    - **Next.js 약속**: `layout.tsx` + `page.tsx` 가 같은 폴더에 있으면, layout이 page를 자동으로 children에 삽입
+
+    개발자가 명시적으로 연결하지 않아도 **"파일 이름과 폴더 위치가 곧 조립 규칙"** 입니다. 이것이 Next.js App Router의 핵심 철학입니다 🗂️

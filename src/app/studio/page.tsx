@@ -1,10 +1,33 @@
 import Link from "next/link";
+import { supabase } from "../lib/supabase";
+
+
 
 export const metadata = {
     title: "Leo Studio - Management Dashboard",
 };
 
-export default function StudioDashboard() {
+
+
+export default async function StudioDashboard() {
+
+    const { data: { user } } = await supabase.auth.getUser();
+
+    if (!user) {
+        return (
+            <div className="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden bg-background-light dark:bg-background-dark">
+                <div className="layout-container flex h-full grow flex-col">
+                    <div className="flex items-center justify-center h-full">
+                        <div className="text-center">
+                            <h1 className="text-2xl font-bold text-slate-900 dark:text-white">Please log in to access the studio</h1>
+                            <Link href="/learning/auth" className="mt-4 inline-block px-4 py-2 bg-primary text-white rounded-lg">Log in</Link>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
     return (
         <div className="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden bg-background-light dark:bg-background-dark">
             <div className="layout-container flex h-full grow flex-col">
