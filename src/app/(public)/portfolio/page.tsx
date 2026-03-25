@@ -10,11 +10,91 @@ export default function Projects() {
             <div className="mx-auto flex w-full max-w-7xl flex-col px-4 py-12 sm:px-6 lg:px-8">
                 <div className="mb-12 flex flex-col gap-4">
                     <h1 className="text-4xl font-black tracking-tight text-slate-900 dark:text-white sm:text-5xl">포트폴리오</h1>
-                    <p className="max-w-2xl text-lg text-slate-600 dark:text-slate-400">
-                        Selected works showcasing AI integration, scalable architecture, and full-stack engineering.
+                    <p className="max-w-3xl text-lg text-slate-600 dark:text-slate-400 leading-relaxed break-keep">
+                        AI 에이전트(AI Agent) 기술을 집중적으로 연구하고, 이를 바탕으로 구현한 실무형 프로젝트 모음입니다.<br className="hidden sm:block" />
+                        각 프로젝트 카드를 클릭하시면 <strong className="font-semibold text-slate-900 dark:text-white">실제 동작을 테스트해 볼 수 있는 라이브 사이트</strong>로 연결되어,<br className="hidden sm:block" />
+                        AI 에이전트 서비스가 어떻게 유기적으로 동작하는지 직접 경험해 보실 수 있습니다.
                     </p>
                 </div>
                 <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+                    {/* Clinical Sanctuary AI Project Entry */}
+                    <a href="https://yards-appointed-primary-buy.trycloudflare.com/" target="_blank" rel="noopener noreferrer" className="group relative flex flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900">
+                        <div className="aspect-video w-full overflow-hidden bg-teal-50/50 dark:bg-slate-800 relative">
+                            <div className="absolute inset-0 flex items-center justify-center p-4">
+                                {/* Mock Chat UI */}
+                                <div className="w-full h-full bg-white dark:bg-slate-900 rounded-lg shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden flex flex-col group-hover:scale-105 transition-transform duration-500">
+                                    <div className="h-8 border-b border-slate-100 dark:border-slate-800 flex items-center px-3 gap-2">
+                                        <span className="material-symbols-outlined text-[14px] text-teal-700 dark:text-teal-500">local_hospital</span>
+                                        <div className="text-[10px] font-bold text-teal-900 dark:text-teal-400">The Clinical Sanctuary</div>
+                                    </div>
+                                    <div className="flex-1 p-3 flex flex-col gap-2 relative bg-slate-50/50 dark:bg-slate-900/50">
+                                        {/* Bot message */}
+                                        <div className="flex gap-2">
+                                            <div className="w-6 h-6 rounded-full bg-teal-100 dark:bg-teal-900/50 flex items-center justify-center text-teal-700 dark:text-teal-400 shrink-0">
+                                                <span className="material-symbols-outlined text-[12px]">smart_toy</span>
+                                            </div>
+                                            <div className="bg-slate-200/70 dark:bg-slate-800 rounded-lg p-2 text-[8px] text-slate-700 dark:text-slate-300 max-w-[85%]">
+                                                안녕하세요! 어떤 도움을 드릴까요? 진료 예약부터 결과 확인까지 실시간으로 도와드립니다.
+                                            </div>
+                                        </div>
+                                        {/* Options grid */}
+                                        <div className="grid grid-cols-2 gap-1.5 mt-1 pl-8">
+                                            <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded p-1.5 flex items-center gap-1 shadow-sm">
+                                                <span className="material-symbols-outlined text-[10px] text-teal-700 dark:text-teal-500">calendar_month</span>
+                                                <span className="text-[7px] font-medium text-slate-700 dark:text-slate-300">진료 예약</span>
+                                            </div>
+                                            <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded p-1.5 flex items-center gap-1 shadow-sm">
+                                                <span className="material-symbols-outlined text-[10px] text-teal-700 dark:text-teal-500">hourglass_empty</span>
+                                                <span className="text-[7px] font-medium text-slate-700 dark:text-slate-300">대기 순번 확인</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="h-8 border-t border-slate-100 dark:border-slate-800 flex items-center px-2 bg-white dark:bg-slate-900">
+                                        <div className="w-full bg-slate-100 dark:bg-slate-800 rounded-full h-5 px-2 flex items-center justify-between">
+                                            <div className="flex items-center gap-1.5">
+                                                <span className="material-symbols-outlined text-[10px] text-slate-400">add_circle</span>
+                                                <span className="text-[7px] text-slate-400">메시지를 입력하세요...</span>
+                                            </div>
+                                            <div className="w-4 h-4 rounded-full bg-teal-500 flex items-center justify-center">
+                                                <span className="material-symbols-outlined text-[8px] text-white">send</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            </div>
+                        </div>
+                        <div className="flex flex-1 flex-col p-6 sm:p-8">
+                            <div className="mb-4">
+                                {/* 병원 편의 제공 챗봇 시스템 타이틀 */}
+                                <h3 className="mb-2 text-xl font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">health-chat (의료 AI 챗봇)</h3>
+                                {/* 사용자가 요청한 설명 문구 반영 */}
+                                <p className="text-sm font-medium text-slate-500 dark:text-slate-400">환자의 병원 이용의 편의를 제공해주는 챗 봇</p>
+                            </div>
+                            <div className="mb-6 flex-1">
+                                <ul className="space-y-2 text-sm text-slate-600 dark:text-slate-300">
+                                    <li className="flex items-start gap-2">
+                                        <span className="material-symbols-outlined mt-0.5 text-[18px] text-primary">check_circle</span>
+                                        <span>사용자 질의에 따른 의도 분류 및 도구 실행 계획을 LLM으로 수립</span>
+                                    </li>
+                                    <li className="flex items-start gap-2">
+                                        <span className="material-symbols-outlined mt-0.5 text-[18px] text-primary">check_circle</span>
+                                        <span>Langchain 프롬프트를 사용하여 자연스러운 멀티턴 대화 유지</span>
+                                    </li>
+                                    <li className="flex items-start gap-2">
+                                        <span className="material-symbols-outlined mt-0.5 text-[18px] text-primary">check_circle</span>
+                                        <span>LangGraph로 planner-executor-reporter 구조의 state 반복 수행 구현</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div className="flex flex-wrap gap-2 pt-4 border-t border-slate-100 dark:border-slate-800">
+                                {['LangChain', 'LangGraph', 'LLM', 'AI Chatbot'].map(tag => (
+                                    <span key={tag} className="inline-flex items-center rounded-md bg-slate-100 px-2.5 py-1 text-xs font-medium text-slate-600 dark:bg-slate-800 dark:text-slate-400">{tag}</span>
+                                ))}
+                            </div>
+                        </div>
+                    </a>
+
                     {/* Smart Home AI Project Entry */}
                     <a href="https://rats-pod-screensaver-advisors.trycloudflare.com/" target="_blank" rel="noopener noreferrer" className="group relative flex flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900">
                         <div className="aspect-video w-full overflow-hidden bg-slate-100 dark:bg-slate-800 relative">
