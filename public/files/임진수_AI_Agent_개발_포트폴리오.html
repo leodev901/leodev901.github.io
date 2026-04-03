@@ -1,0 +1,3301 @@
+<!DOCTYPE html><html lang="ko"><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>임진수_포트폴리오_Document</title>
+  <style>
+    :root {
+      --bg: #F5F5F0;
+      --paper: #FBFAF5;
+      --text: #4A4A4A;
+      --muted: #7B756D;
+      --accent: #8B7355;
+      --accent-soft: #E7DED1;
+      --line: #D9D1C4;
+      --code-bg: #F1ECE4;
+      --caption: #6F675E;
+      --shadow: 0 12px 32px rgba(93, 76, 53, 0.06);
+    }
+
+    .image-frame {
+      width: 100%;
+      margin: 18px 0 22px;
+      padding: 14px;
+      background: #fffdf8;
+      border: 1px solid rgba(139, 115, 85, 0.18);
+      border-radius: 16px;
+      text-align: center;
+    }
+
+    .content-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .caption {
+      margin-top: 10px;
+      font-size: 13px;
+      color: #6f675e;
+    }
+
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      font-family: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+      line-height: 1.68;
+      background: var(--bg);
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .document {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 22px 16px 48px;
+    }
+
+    .page {
+      background: #FCFAF5;
+      border: 1px solid rgba(139, 115, 85, 0.16);
+      box-shadow: var(--shadow);
+      border-radius: 20px;
+      padding: 48px 48px 44px;
+      margin: 0 auto 28px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page::before {
+      content: none;
+      display: none;
+    }
+
+    .page>* {
+      position: relative;
+      z-index: 1;
+    }
+
+    .cover {
+      min-height: 92vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--accent);
+      letter-spacing: 0.18em;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before,
+    .eyebrow::after {
+      content: "";
+      display: inline-block;
+      width: 28px;
+      height: 1px;
+      background: var(--accent);
+      opacity: 0.45;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      margin: 0 0 14px;
+      color: #3E3A36;
+      letter-spacing: -0.02em;
+      line-height: 1.35;
+    }
+
+    h1 {
+      font-size: 38px;
+      font-weight: 800;
+    }
+
+    h2 {
+      font-size: 25px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(139, 115, 85, 0.22);
+      margin-top: 8px;
+    }
+
+    h3 {
+      font-size: 16px;
+      margin-top: 34px;
+    }
+
+    h4 {
+      font-size: 16px;
+      margin-top: 24px;
+    }
+
+    p {
+      margin: 0 0 14px;
+    }
+
+    ul,
+    ol {
+      margin: 10px 0 14px 20px;
+    }
+
+    li {
+      margin: 5px 0;
+    }
+
+    .lead {
+      max-width: 740px;
+      margin: 0 auto;
+      font-size: 16px;
+      color: #514C46;
+    }
+
+    .sublead {
+      max-width: 720px;
+      margin: 0 auto;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .meta-grid,
+    .summary-grid,
+    .card-grid,
+    .two-col,
+    .three-col {
+      display: grid;
+      gap: 16px;
+    }
+
+    .meta-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      max-width: 760px;
+      margin: 18px auto 0;
+    }
+
+    .summary-grid {
+      grid-template-columns: 1fr;
+      margin-top: 20px;
+    }
+
+    .card-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      margin-top: 14px;
+    }
+
+    .two-col {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .three-col {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .meta-card,
+    .card,
+    .figure-slot,
+    .note-box,
+    .ascii-box,
+    .abstract-box,
+    .toc-box,
+    .code-note,
+    .quote-box {
+      background: #FFFCF8;
+      border: 1px solid rgba(139, 115, 85, 0.18);
+      border-radius: 16px;
+      padding: 16px 16px 14px;
+    }
+
+    .meta-card small,
+    .caption,
+    .muted,
+    .toc-box small,
+    .kicker {
+      color: var(--caption);
+    }
+
+    .meta-card strong {
+      display: block;
+      margin-top: 8px;
+      font-size: 12px;
+    }
+
+    .abstract-box {
+      margin-top: 18px;
+      background: #FFFDF8;
+    }
+
+    .tag-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(139, 115, 85, 0.11);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+    }
+
+    .section-intro {
+      font-size: 12px;
+      color: #5A544D;
+      margin-bottom: 8px;
+    }
+
+    .toc-box ol {
+      list-style: none;
+      padding-left: 0;
+      margin-left: 0;
+      columns: 2;
+      column-gap: 40px;
+    }
+
+    .toc-box li {
+      break-inside: avoid;
+      margin-bottom: 8px;
+    }
+
+    .chapter-label {
+      display: inline-block;
+      margin-bottom: 10px;
+      padding: 6px 11px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      background: rgba(139, 115, 85, 0.10);
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px dashed rgba(139, 115, 85, 0.35);
+      margin: 28px 0;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      margin: 16px 0 18px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+      background: #FFFDF9;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(139, 115, 85, 0.18);
+    }
+
+    th,
+    td {
+      padding: 10px 10px;
+      border-bottom: 1px solid rgba(139, 115, 85, 0.14);
+      vertical-align: top;
+      text-align: left;
+    }
+
+    th {
+      background: rgba(139, 115, 85, 0.10);
+      color: #4A433D;
+      font-size: 12px;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    .figure-slot {
+      min-height: 210px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      border-style: dashed;
+      background: #FFFDF8;
+      color: var(--caption);
+    }
+
+    .figure-slot.tall {
+      min-height: 300px;
+    }
+
+    .figure-slot.short {
+      min-height: 150px;
+    }
+
+    .figure-slot strong {
+      font-size: 16px;
+      margin-bottom: 6px;
+      color: #544C44;
+    }
+
+    .caption {
+      font-size: 12px;
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    pre,
+    code {
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    }
+
+    pre.code {
+      margin: 14px 0 18px;
+      padding: 16px 16px;
+      background: var(--code-bg);
+      border: 1px solid rgba(139, 115, 85, 0.22);
+      border-radius: 16px;
+      overflow: auto;
+      font-size: 12px;
+      line-height: 1.65;
+      color: #433D38;
+    }
+
+    .ascii-box pre {
+      margin: 0;
+      white-space: pre-wrap;
+      font-size: 12px;
+      line-height: 1.6;
+      color: #4A453F;
+    }
+
+    .quote-box {
+      border-left: 5px solid var(--accent);
+      background: #F7F1E8;
+      margin: 16px 0 18px;
+    }
+
+    .metric-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .metric {
+      padding: 16px 14px;
+      background: #FFFDF9;
+      border: 1px solid rgba(139, 115, 85, 0.16);
+      border-radius: 14px;
+      text-align: center;
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 22px;
+      color: #433D37;
+      margin-bottom: 5px;
+    }
+
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .pill {
+      padding: 8px 12px;
+      border: 1px solid rgba(139, 115, 85, 0.22);
+      border-radius: 999px;
+      font-size: 12px;
+      color: #5A5148;
+      background: #FFFDF9;
+    }
+
+    .footnote {
+      font-size: 12px;
+      color: var(--caption);
+      margin-top: 14px;
+    }
+
+    .appendix-list li {
+      margin-bottom: 7px;
+    }
+
+    .notion-tip {
+      margin-top: 18px;
+      font-size: 12px;
+      color: #5D554C;
+      text-align: center;
+    }
+
+    .center {
+      text-align: center;
+    }
+
+    .right {
+      text-align: right;
+    }
+
+    .mermaid-wrap {
+      margin: 18px 0;
+      padding: 18px;
+      background: #FFFDF9;
+      border-radius: 16px;
+      border: 1px solid rgba(139, 115, 85, 0.18);
+    }
+
+    .mermaid {
+      text-align: center;
+    }
+
+
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 16px;
+      background: rgba(245, 245, 240, 0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(139, 115, 85, 0.18);
+    }
+
+    .toolbar button {
+      appearance: none;
+      border: 1px solid rgba(139, 115, 85, 0.22);
+      background: #FFFDF8;
+      color: #4A4A4A;
+      border-radius: 999px;
+      padding: 8px 14px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .toolbar button.primary {
+      background: #8B7355;
+      color: #fff;
+      border-color: #8B7355;
+    }
+
+    .editing .page {
+      outline: 2px dashed rgba(139, 115, 85, 0.28);
+      outline-offset: 4px;
+    }
+
+    .editing .page[contenteditable="true"] {
+      cursor: text;
+    }
+
+    @media (max-width: 860px) {
+      .page {
+        padding: 28px 18px;
+      }
+
+      .meta-grid,
+      .summary-grid,
+      .card-grid,
+      .two-col,
+      .three-col,
+      .metric-list {
+        grid-template-columns: 1fr;
+      }
+
+      .toc-box ol {
+        columns: 1;
+      }
+
+      h1 {
+        font-size: 34px;
+      }
+
+      h2 {
+        font-size: 24px;
+      }
+    }
+
+    @media print {
+      @page {
+        size: A4;
+        margin: 12mm;
+      }
+
+      html,
+      body {
+        background: #ffffff !important;
+        color: #222222 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      * {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        color-adjust: exact;
+      }
+
+      .toolbar {
+        display: none !important;
+      }
+
+      .document {
+        padding: 0;
+        max-width: none;
+      }
+
+      .page {
+        margin: 0 0 8mm 0;
+        min-height: auto;
+        page-break-after: always;
+        border-radius: 0;
+        box-shadow: none;
+        border: 1px solid #d9d1c4;
+        background: #fffdf9 !important;
+      }
+
+      .page::before {
+        display: none !important;
+        content: none !important;
+      }
+
+      .meta-card,
+      .card,
+      .figure-slot,
+      .note-box,
+      .ascii-box,
+      .abstract-box,
+      .toc-box,
+      .code-note,
+      .quote-box,
+      .mermaid-wrap,
+      pre.code,
+      table,
+      th,
+      td,
+      .metric,
+      .pill {
+        background: #ffffff !important;
+        color: #333333 !important;
+        border-color: #d9d1c4 !important;
+      }
+
+      .figure-slot {
+        background: #fbfaf5 !important;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .page:last-child {
+        page-break-after: auto;
+      }
+    }
+  </style>
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({
+      startOnLoad: true, theme: 'base', themeVariables: {
+        primaryColor: '#F5F5F0',
+        primaryTextColor: '#4A4A4A',
+        primaryBorderColor: '#8B7355',
+        lineColor: '#8B7355',
+        secondaryColor: '#FBFAF5',
+        tertiaryColor: '#E7DED1',
+        background: '#FBFAF5',
+        fontFamily: 'Noto Sans KR, sans-serif'
+      }
+    });
+  </script>
+</head>
+
+<body class="">
+  
+  <main class="document">
+    <section class="page cover" id="cover">
+      <div class="eyebrow">PORTFOLIO</div>
+      <h1>임진수 | AI Agent 개발 경험 포트폴리오</h1>
+      <p class="lead">대규모 엔터프라이즈 시스템 개발·운영 경험을 바탕으로, <strong>폐쇄망 AI Agent 플랫폼 적용 및 운영</strong>, <strong>Microsoft 365
+          MCP Platform 설계</strong>, <strong>문서 검색형 RAG PoC 구현</strong>을 직접 다뤄온 내용의 포트폴리오입니다.</p>
+      <p class="sublead">본 문서는 제출용 문서 특성상 일부 내부 정보·식별자·접속 정보는 비식별화하거나 축약해 정리했습니다.</p>
+      <div class="meta-grid">
+        <div class="meta-card"><small>지원 분야</small><strong>AI Agent Developer</strong></div>
+        <div class="meta-card"><small>핵심 키워드</small><strong>MCP · LangGraph · RAG</strong></div>
+        <div class="meta-card"><small>기술 기반</small><strong>Python / FastAPI / Azure / K8s<br>Java / Postgresql
+          </strong></div>
+      </div>
+      <div class="abstract-box" style="max-width:760px;">
+        <h3 class="center" style="margin-top:0;">개요</h3>
+        <p>저는 오랜 기간 대기업 엔터프라이즈 환경에서 업무시스템을 개발·운영하며, 데이터 정합성, 배포 통제, 장애 대응, 복잡한 요구사항의 구조화를 경험해 왔습니다. 최근에는 이러한 운영형 개발 역량을
+          바탕으로 Python/FastAPI, LangGraph, MCP, RAG 기반의 AI Agent 시스템을 실제 업무와 시스템에 연결하는 일에 집중하고 있습니다.</p>
+        <p>이 포트폴리오는 크게 세 부분으로 구성했습니다. 첫 번째는 폐쇄망 환경에서 Enterprise AI Agent 플랫폼을 운영 가능한 구조로 정착시키고, Supervisor–Task
+          Agent–Prompt–State–Streaming 흐름을 이해하며 확장한 경험입니다. 두 번째는 Microsoft 365 기능을 AI Agent에서 안전하게 재사용할 수 있도록 공통
+          인증·로깅·토큰 컨텍스트를 분리한 MCP Platform 설계 경험입니다. 마지막은 차량 매뉴얼 PDF를 의미 단위로 파싱하고, 임베딩 적재와 하이브리드 검색까지 직접 구현한 문서 검색형 RAG
+          PoC입니다.</p>
+        <div class="tag-row">
+          <span class="tag">Enterprise AI Agent</span>
+          <span class="tag">Closed Network</span>
+          <span class="tag">LangGraph Workflow</span>
+          <span class="tag">Dynamic Prompt</span>
+          <span class="tag">Microsoft Graph + MCP</span>
+          <span class="tag">Document RAG</span>
+        </div>
+      </div>
+    </section>
+    <section class="page" id="toc">
+      <span class="chapter-label">Document Overview</span>
+      <h2>목차</h2>
+      <p class="section-intro">본 문서는 브로셔형 요약 포트폴리오를 장문형 문서로 확장한 작업본입니다. 프로젝트별 배경, 문제 정의, 아키텍처, 설계 판단, 코드 예시, 캡처 삽입 자리까지
+        함께 정리했습니다.</p>
+      <div class="toc-box">
+        <ol>
+          <li><a href="file:///Users/jinsoo/Desktop/workspace/portfolio_html/%EC%9E%84%EC%A7%84%EC%88%98_%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4_Document_%EA%B5%90%EC%A0%95%EB%B3%B8_0402.html#profile">
+              1. 자기소개 및 커리어 요약</a></li>
+          <li><a href="file:///Users/jinsoo/Desktop/workspace/portfolio_html/%EC%9E%84%EC%A7%84%EC%88%98_%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4_Document_%EA%B5%90%EC%A0%95%EB%B3%B8_0402.html#portfolio-map">
+              2. 포트폴리오 구성과 주요 기술</a></li>
+          <li><a href="file:///Users/jinsoo/Desktop/workspace/portfolio_html/%EC%9E%84%EC%A7%84%EC%88%98_%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4_Document_%EA%B5%90%EC%A0%95%EB%B3%B8_0402.html#chapter-enterprise-agent">
+              3. Project I. 폐쇄망 Enterprise AI Agent 적용 및 운영</a></li>
+          <li><a href="file:///Users/jinsoo/Desktop/workspace/portfolio_html/%EC%9E%84%EC%A7%84%EC%88%98_%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4_Document_%EA%B5%90%EC%A0%95%EB%B3%B8_0402.html#enterprise-background">
+              3-1. 프로젝트 배경과 목표</a></li>
+          <li><a href="file:///Users/jinsoo/Desktop/workspace/portfolio_html/%EC%9E%84%EC%A7%84%EC%88%98_%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4_Document_%EA%B5%90%EC%A0%95%EB%B3%B8_0402.html#enterprise-architecture">
+              3-2. 플랫폼 아키텍처</a></li>
+          <li><a href="file:///Users/jinsoo/Desktop/workspace/portfolio_html/%EC%9E%84%EC%A7%84%EC%88%98_%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4_Document_%EA%B5%90%EC%A0%95%EB%B3%B8_0402.html#enterprise-workflow">
+              3-3. LangGraph Workflow와 상태 관리</a></li>
+          <li><a href="file:///Users/jinsoo/Desktop/workspace/portfolio_html/%EC%9E%84%EC%A7%84%EC%88%98_%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4_Document_%EA%B5%90%EC%A0%95%EB%B3%B8_0402.html#enterprise-prompts">
+              3-4. Dynamic Prompt와 Safety Guard</a></li>
+          <li><a href="file:///Users/jinsoo/Desktop/workspace/portfolio_html/%EC%9E%84%EC%A7%84%EC%88%98_%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4_Document_%EA%B5%90%EC%A0%95%EB%B3%B8_0402.html#enterprise-news">
+              3-5. 뉴스 큐레이션 Agent</a></li>
+          <li><a href="file:///Users/jinsoo/Desktop/workspace/portfolio_html/%EC%9E%84%EC%A7%84%EC%88%98_%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4_Document_%EA%B5%90%EC%A0%95%EB%B3%B8_0402.html#enterprise-legal">
+              3-6. 법무서비스 Agent</a></li>
+          <li><a href="file:///Users/jinsoo/Desktop/workspace/portfolio_html/%EC%9E%84%EC%A7%84%EC%88%98_%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4_Document_%EA%B5%90%EC%A0%95%EB%B3%B8_0402.html#enterprise-learnings">
+              3-7. 설계 판단과 회고</a></li>
+          <li><a href="file:///Users/jinsoo/Desktop/workspace/portfolio_html/%EC%9E%84%EC%A7%84%EC%88%98_%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4_Document_%EA%B5%90%EC%A0%95%EB%B3%B8_0402.html#chapter-mcp">
+              4. Project II. Microsoft 365 MCP Platform 설계 및 구현</a></li>
+          <li><a href="file:///Users/jinsoo/Desktop/workspace/portfolio_html/%EC%9E%84%EC%A7%84%EC%88%98_%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4_Document_%EA%B5%90%EC%A0%95%EB%B3%B8_0402.html#mcp-problem">
+              4-1. 문제 정의와 설계 원칙</a></li>
+          <li><a href="file:///Users/jinsoo/Desktop/workspace/portfolio_html/%EC%9E%84%EC%A7%84%EC%88%98_%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4_Document_%EA%B5%90%EC%A0%95%EB%B3%B8_0402.html#mcp-auth">
+              4-2. 위임 권한 / 앱 권한 분리 전략</a></li>
+          <li><a href="file:///Users/jinsoo/Desktop/workspace/portfolio_html/%EC%9E%84%EC%A7%84%EC%88%98_%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4_Document_%EA%B5%90%EC%A0%95%EB%B3%B8_0402.html#mcp-architecture">
+              4-3. 공통 서비스 + 도메인별 FastMCP 구조</a></li>
+          <li><a href="file:///Users/jinsoo/Desktop/workspace/portfolio_html/%EC%9E%84%EC%A7%84%EC%88%98_%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4_Document_%EA%B5%90%EC%A0%95%EB%B3%B8_0402.html#mcp-logging">
+              4-4. 요청 상태, 로깅, 추적성 설계</a></li>
+          <li><a href="file:///Users/jinsoo/Desktop/workspace/portfolio_html/%EC%9E%84%EC%A7%84%EC%88%98_%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4_Document_%EA%B5%90%EC%A0%95%EB%B3%B8_0402.html#chapter-rag">
+              5. Project III. 차량 매뉴얼 문서 검색형 RAG PoC</a></li>
+          <li><a href="file:///Users/jinsoo/Desktop/workspace/portfolio_html/%EC%9E%84%EC%A7%84%EC%88%98_%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4_Document_%EA%B5%90%EC%A0%95%EB%B3%B8_0402.html#rag-problem">
+              5-1. 문제 정의</a></li>
+          <li><a href="file:///Users/jinsoo/Desktop/workspace/portfolio_html/%EC%9E%84%EC%A7%84%EC%88%98_%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4_Document_%EA%B5%90%EC%A0%95%EB%B3%B8_0402.html#rag-parser">
+              5-2. PDF 파싱과 청킹 전략</a></li>
+          <li><a href="file:///Users/jinsoo/Desktop/workspace/portfolio_html/%EC%9E%84%EC%A7%84%EC%88%98_%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4_Document_%EA%B5%90%EC%A0%95%EB%B3%B8_0402.html#rag-embedding">
+              5-3. 임베딩 적재 파이프라인</a></li>
+          <li><a href="file:///Users/jinsoo/Desktop/workspace/portfolio_html/%EC%9E%84%EC%A7%84%EC%88%98_%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4_Document_%EA%B5%90%EC%A0%95%EB%B3%B8_0402.html#rag-search">
+              5-4. 하이브리드 검색 설계</a></li>
+          <li><a href="file:///Users/jinsoo/Desktop/workspace/portfolio_html/%EC%9E%84%EC%A7%84%EC%88%98_%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4_Document_%EA%B5%90%EC%A0%95%EB%B3%B8_0402.html#rag-learnings">
+              5-5. 결과, 한계, 확장 아이디어</a></li>
+          <li><a href="file:///Users/jinsoo/Desktop/workspace/portfolio_html/%EC%9E%84%EC%A7%84%EC%88%98_%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4_Document_%EA%B5%90%EC%A0%95%EB%B3%B8_0402.html#summary">
+              6. 종합 정리: 구현하고 싶은 엔지니어링 가치</a></li>
+          <li><a href="file:///Users/jinsoo/Desktop/workspace/portfolio_html/%EC%9E%84%EC%A7%84%EC%88%98_%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4_Document_%EA%B5%90%EC%A0%95%EB%B3%B8_0402.html#appendix">
+              7. 부록</a></li>
+        </ol>
+      </div>
+    </section>
+    <section class="page" id="profile">
+      <span class="chapter-label">Candidate Summary</span>
+      <h2>1. 자기소개 및 커리어 요약</h2>
+      <div class="summary-grid">
+        <div>
+          <p>
+            제 커리어의 출발점은 전형적인 업무시스템 개발이었습니다. 청구·수납·회계·예약·차량 가용성 같은 비즈니스 핵심 로직을 백엔드, 화면, DB 수준에서 구현했고,
+            차세대 전환, 시스템 통합, 데이터 마이그레이션, 운영 안정화까지 경험했습니다. 이 과정에서 기능 구현만으로는 서비스가 완성되지 않는다는 점을 반복적으로 배웠습니다.
+          </p>
+          <p>
+            실제 서비스는 <strong>데이터가 맞아야 하고</strong>, <strong>배포가 가능해야 하며</strong>, <strong>장애가 나면 복구할 수 있어야 하고</strong>,
+            <strong>복잡한 업무 요구사항을 구조화하여 운영 가능한 수준까지 연결</strong>할 수 있어야 합니다. 최근 AI Agent 프로젝트에 참여하면서도 이 관점은 그대로 유지되었습니다.
+            저는 LLM 응답 자체보다, LLM이 <em>업무 시스템과 데이터를 안전하게 호출하고 실제 흐름 속에서 동작할 수 있게 만드는 구조</em>에 더 관심을 두고 있습니다.
+          </p>
+        </div>
+        <div class="note-box">
+          <h3 style="margin-top:0;">핵심 역량 요약</h3>
+          <ul>
+            <li>대규모 엔터프라이즈 환경의 백엔드·DB·운영 안정화 경험</li>
+            <li>폐쇄망/보안 제약 환경에서의 AI Agent 적용 경험</li>
+            <li>LangGraph로 Planner–Executor–Reporter 흐름 직접 구현</li>
+            <li>MCP, Microsoft Graph, 인증·로깅·토큰 컨텍스트 설계</li>
+            <li>문서 검색형 RAG PoC에서 파싱–임베딩–검색 파이프라인 구현</li>
+          </ul>
+        </div>
+      </div>
+      <div class="metric-list">
+        <div class="metric"><strong>10년+</strong><span>엔터프라이즈 시스템 개발·운영 경험</span></div>
+        <div class="metric"><strong>3개 주제</strong><span>Enterprise Agent · MCP · Document RAG</span></div>
+        <div class="metric"><strong>1가지 원칙</strong><span>실험이 아닌 운영 가능한 구조</span></div>
+      </div>
+      <div class="quote-box">
+        <p>
+          <strong>제가 만드는 AI는 “답을 잘하는 모델”에서 끝나지 않습니다.</strong><br>
+          실제 시스템과 데이터를 연결하고, 운영 제약을 반영하며, 로그와 권한, 재시도와 상태를 고려한 뒤에도 서비스로 버틸 수 있어야 한다고 생각합니다.
+        </p>
+      </div>
+    </section>
+    <section class="page" id="portfolio-map">
+      <span class="chapter-label">Portfolio Map</span>
+      <h2>2. 포트폴리오 구성과 주요 기술</h2>
+      <p class="section-intro">이번 포트폴리오는 여러 프로젝트를 나열하기보다, 크게 세 부분으로 나누어 정리했습니다. 첫 번째는 실제 업무 환경에 적용한 Enterprise AI Agent
+        프로젝트, 두 번째는 외부 시스템 연동을 위한 MCP Platform 설계, 마지막은 문서 검색형 RAG PoC입니다.</p>
+      <!-- 3개 프로젝트 카드 -->
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin:24px 0 0;">
+
+        <!-- Project I -->
+        <div style="background:#FFFDF9; border:1px solid #DDD6CC; border-radius:10px; overflow:hidden;">
+          <div style="background:#6A7FA0; padding:12px 16px;">
+            <span style="font-size:10px; font-weight:700; color:rgba(255,255,255,0.7); letter-spacing:0.08em;">PROJECT
+              I</span>
+            <p style="margin:4px 0 0; font-size:13px; font-weight:700; color:#fff; line-height:1.4;">폐쇄망
+              Enterprise<br>AI Agent 적용</p>
+          </div>
+          <div style="padding:14px 16px;">
+            <ul style="margin:0; padding:0; list-style:none; font-size:12px; color:#5A5550; line-height:2;">
+              <li style="border-bottom:1px solid #EDE8E0; padding-bottom:5px; margin-bottom:5px;">Supervisor ·
+                Task-Agent · SSE 스트리밍</li>
+              <li style="border-bottom:1px solid #EDE8E0; padding-bottom:5px; margin-bottom:5px;">LangGraph Workflow ·
+                State 관리</li>
+              <li style="border-bottom:1px solid #EDE8E0; padding-bottom:5px; margin-bottom:5px;">Dynamic Prompt ·
+                Prompt Guard</li>
+              <li>뉴스 큐레이션 · 법무 Agent — 구조 파악 </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Project II -->
+        <div style="background:#FFFDF9; border:1px solid #DDD6CC; border-radius:10px; overflow:hidden;">
+          <div style="background:#5F8A62; padding:12px 16px;">
+            <span style="font-size:10px; font-weight:700; color:rgba(255,255,255,0.7); letter-spacing:0.08em;">PROJECT
+              II</span>
+            <p style="margin:4px 0 0; font-size:13px; font-weight:700; color:#fff; line-height:1.4;">Microsoft
+              365<br>MCP Platform 설계</p>
+          </div>
+          <div style="padding:14px 16px;">
+            <ul style="margin:0; padding:0; list-style:none; font-size:12px; color:#5A5550; line-height:2;">
+              <li style="border-bottom:1px solid #EDE8E0; padding-bottom:5px; margin-bottom:5px;">공통 인증 · 로깅 · 토큰 컨텍스트
+              </li>
+              <li style="border-bottom:1px solid #EDE8E0; padding-bottom:5px; margin-bottom:5px;">Delegated /
+                Application 권한 분리</li>
+              <li style="border-bottom:1px solid #EDE8E0; padding-bottom:5px; margin-bottom:5px;">FastAPI + FastMCP MSA
+                구조</li>
+              <li>request.state 기반의 요청 추적과 모니터링</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Project III -->
+        <div style="background:#FFFDF9; border:1px solid #DDD6CC; border-radius:10px; overflow:hidden;">
+          <div style="background:#A06055; padding:12px 16px;">
+            <span style="font-size:10px; font-weight:700; color:rgba(255,255,255,0.7); letter-spacing:0.08em;">PROJECT
+              III</span>
+            <p style="margin:4px 0 0; font-size:13px; font-weight:700; color:#fff; line-height:1.4;">차량 매뉴얼<br>문서 검색형
+              RAG PoC</p>
+          </div>
+          <div style="padding:14px 16px;">
+            <ul style="margin:0; padding:0; list-style:none; font-size:12px; color:#5A5550; line-height:2;">
+              <li style="border-bottom:1px solid #EDE8E0; padding-bottom:5px; margin-bottom:5px;">PDF 파싱 · 표 Markdown 변환
+              </li>
+              <li style="border-bottom:1px solid #EDE8E0; padding-bottom:5px; margin-bottom:5px;">청킹 전략 · 헤더/푸터 제거</li>
+              <li style="border-bottom:1px solid #EDE8E0; padding-bottom:5px; margin-bottom:5px;">임베딩 적재 · 모델 필터링</li>
+              <li>Hybrid Search</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>구성</th>
+              <th>핵심 질문</th>
+              <th>주요 기술</th>
+              <th>강조하고 싶은 점</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Enterprise AI Agent</td>
+              <td>복잡한 업무 요청을 어떻게 안전하고 운영 가능한 흐름으로 풀 것인가?</td>
+              <td>FastAPI, LangGraph, Dynamic Prompt, Prompt Guard, SSE</td>
+              <td>상태, 계획, 도구 실행, 피드백 루프가 있는 실제 서비스 구조 이해</td>
+            </tr>
+            <tr>
+              <td>MCP Platform</td>
+              <td>외부 시스템 기능을 AI Agent에서 어떻게 표준화해 재사용할 것인가?</td>
+              <td>MCP, Microsoft Graph, MSAL, FastAPI, FastMCP</td>
+              <td>공통 인증/로깅/추적성 + 도메인 기능 분리 설계</td>
+            </tr>
+            <tr>
+              <td>Document RAG</td>
+              <td>복잡한 PDF 문서를 검색 가능한 지식으로 어떻게 바꿀 것인가?</td>
+              <td>PyMuPDF, e5-large, Supabase, Hybrid Search</td>
+              <td>파싱 → 청킹 → 적재 → 검색까지 직접 구현</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="figure-slot tall">
+        <div class="image-frame">
+          <img src="./captures/01_site.png" alt="사이트 홈" class="content-image">
+          <div class="caption">포트폴리오 사이트 홈</div>
+        </div>
+      </div>
+    </section>
+    <section class="page" id="chapter-enterprise-agent">
+      <span class="chapter-label">Project I</span>
+      <h2>3. 폐쇄망 Enterprise AI Agent 적용 및 운영</h2>
+      <p>이 장은 제가 가장 넓은 범위로 참여한 프로젝트를 다룹니다. 핵심은 하나의 챗봇을 만드는 데 그치지 않고, 엔터프라이즈급 AI Agent 플랫폼을 폐쇄망 환경에 정착시키고 여러 업무에 적용할 수 있는
+        구조를 이해하고 확장하는 일이었습니다.</p>
+      <p>플랫폼 수준에서는 AI-Chat, Task-Agent, File Manager, Scheduler로 역할을 나누고, 사용자 요청은 Supervisor 패턴을 통해 적절한 Agent로 라우팅합니다.
+        Task-Agent 내부에서는 LangGraph 기반 워크플로우가 동작하며, Planner–Executor–Reporter 구조와 상태(State) 공유, 확인(Confirm) 흐름, Prompt
+        Guard, Dynamic Prompt, SSE 스트리밍, 회사별 스키마 분리 같은 운영 요소가 포함됩니다.</p>
+      <div class="ascii-box">
+        <pre>[사용자 요청]
+   │
+   ▼
+[AI-Chat / Supervisor]
+   ├─ Prompt Guard
+   ├─ Intent Routing
+   └─ Session / History / Streaming Control
+   │
+   ▼
+[Task-Agent Service]
+   ├─ LangGraph Workflow
+   │   ├─ StateInit
+   │   ├─ Router
+   │   ├─ Selector
+   │   ├─ Planner
+   │   ├─ Executor
+   │   ├─ Manager
+   │   └─ Reporter
+   └─ 업무별 Agent 적용
+       ├─ 뉴스 큐레이션
+       ├─ 법무서비스
+       ├─ 회의실/일정 Agent
+       └─ 기타 도구형 Agent
+        </pre>
+      </div>
+      <div class="pill-list">
+        <span class="pill">Closed Network</span>
+        <span class="pill">Supervisor Pattern</span>
+        <span class="pill">LangGraph State</span>
+        <span class="pill">Dynamic Prompt</span>
+        <span class="pill">Prompt Guard</span>
+        <span class="pill">SSE Streaming</span>
+        <span class="pill">Multi-tenant Schema</span>
+      </div>
+    </section>
+    <section class="page" id="enterprise-background">
+      <span class="chapter-label">3.1 Background</span>
+      <h2>3-1. 프로젝트 배경과 목표</h2>
+      <p>
+        폐쇄망 환경에서의 AI Agent 프로젝트는 일반적인 웹 기반 AI 서비스와 성격이 다릅니다. 외부 API 연결이 제한되고, 모델 선택과 배포 경로가 바뀌며,
+        로그·토큰·사용자 정보·대화 상태를 추적하는 방식도 별도로 정리해야 합니다. 또한 사내 서비스로 자리 잡기 위해서는 단순한 답변 품질만이 아니라,
+        요청이 어디로 라우팅되고 어떤 도구가 호출되며 어떤 상태가 저장되는지까지 관리되어야 합니다.
+      </p>
+      <p>
+        제 역할은 이러한 플랫폼을 이해하고, <strong>FastAPI 백엔드, LangGraph 워크플로우, Prompt 체계, 스트리밍 응답, 모델 전환, 배포 환경 정착</strong>을 중심으로
+        실제로 돌아가게 만드는 것이었습니다. 특히 모델 전환 시 프롬프트와 응답 형식이 바뀌면 서비스 품질에 바로 영향을 줬기 때문에,
+        워크플로우와 Prompt를 함께 바라보는 시각이 중요했습니다.
+      </p>
+      <div class="summary-grid">
+        <div class="card">
+          <h3 style="margin-top:0;">해결해야 했던 문제</h3>
+          <ul>
+            <li>폐쇄망 환경으로의 서비스 이관과 운영 안정화</li>
+            <li>Supervisor–Task Agent 구조 이해 및 영향 범위 분석</li>
+            <li>모델 변경에 따른 Prompt 및 응답 품질 보정</li>
+            <li>업무별 Agent 적용을 위한 공통 구조 파악</li>
+            <li>로그, 상태, 이력, 스트리밍 응답을 함께 관리하는 구조 정리</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3 style="margin-top:0;">이 프로젝트에서 강조하고 싶은 점</h3>
+          <ul>
+            <li>AI 서비스를 백엔드/운영 관점에서 이해하는 능력</li>
+            <li>LangGraph를 “샘플”이 아닌 “서비스 워크플로우”로 해석하는 능력</li>
+            <li>Prompt, State, Tool, Streaming을 하나의 흐름으로 묶는 시각</li>
+            <li>업무별 Agent 적용 시 공통부와 개별부를 구분하는 설계 감각</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <section class="page" id="enterprise-architecture">
+      <span class="chapter-label">3.2 Architecture</span>
+      <h2>3-2. 플랫폼 아키텍처</h2>
+      <p>
+        플랫폼은 크게 네 개의 서비스로 나뉩니다. AI-Chat은 사용자 대화 진입점이자 Supervisor 역할을, Task-Agent는 실제 LangGraph 워크플로우 실행을 담당합니다.
+        File Manager는 파일 업로드/다운로드, Scheduler는 배치 작업을 처리합니다. 사용자 경험, LLM 처리, 파일 처리, 비동기 작업이 서비스별로 분리되어
+        각 역할이 섞이지 않습니다.
+      </p>
+      <div class="mermaid-wrap">
+        <div class="mermaid" data-processed="true"><svg aria-roledescription="flowchart-v2" id="mermaid-1775034910582" role="graphics-document document" style="max-width: 1003.609375px;" viewBox="-8 -8 1003.609375 575.1375122070312" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <style>
+              #mermaid-1775034910582 {
+                font-family: Noto Sans KR, sans-serif;
+                font-size: 16px;
+                fill: #4A4A4A;
+              }
+
+              #mermaid-1775034910582 .error-icon {
+                fill: #E7DED1;
+              }
+
+              #mermaid-1775034910582 .error-text {
+                fill: #18212e;
+                stroke: #18212e;
+              }
+
+              #mermaid-1775034910582 .edge-thickness-normal {
+                stroke-width: 2px;
+              }
+
+              #mermaid-1775034910582 .edge-thickness-thick {
+                stroke-width: 3.5px;
+              }
+
+              #mermaid-1775034910582 .edge-pattern-solid {
+                stroke-dasharray: 0;
+              }
+
+              #mermaid-1775034910582 .edge-pattern-dashed {
+                stroke-dasharray: 3;
+              }
+
+              #mermaid-1775034910582 .edge-pattern-dotted {
+                stroke-dasharray: 2;
+              }
+
+              #mermaid-1775034910582 .marker {
+                fill: #8B7355;
+                stroke: #8B7355;
+              }
+
+              #mermaid-1775034910582 .marker.cross {
+                stroke: #8B7355;
+              }
+
+              #mermaid-1775034910582 svg {
+                font-family: Noto Sans KR, sans-serif;
+                font-size: 16px;
+              }
+
+              #mermaid-1775034910582 .label {
+                font-family: Noto Sans KR, sans-serif;
+                color: #4A4A4A;
+              }
+
+              #mermaid-1775034910582 .cluster-label text {
+                fill: #18212e;
+              }
+
+              #mermaid-1775034910582 .cluster-label span,
+              #mermaid-1775034910582 p {
+                color: #18212e;
+              }
+
+              #mermaid-1775034910582 .label text,
+              #mermaid-1775034910582 span,
+              #mermaid-1775034910582 p {
+                fill: #4A4A4A;
+                color: #4A4A4A;
+              }
+
+              #mermaid-1775034910582 .node rect,
+              #mermaid-1775034910582 .node circle,
+              #mermaid-1775034910582 .node ellipse,
+              #mermaid-1775034910582 .node polygon,
+              #mermaid-1775034910582 .node path {
+                fill: #F5F5F0;
+                stroke: #8B7355;
+                stroke-width: 1px;
+              }
+
+              #mermaid-1775034910582 .flowchart-label text {
+                text-anchor: middle;
+              }
+
+              #mermaid-1775034910582 .node .katex path {
+                fill: #000;
+                stroke: #000;
+                stroke-width: 1px;
+              }
+
+              #mermaid-1775034910582 .node .label {
+                text-align: center;
+              }
+
+              #mermaid-1775034910582 .node.clickable {
+                cursor: pointer;
+              }
+
+              #mermaid-1775034910582 .arrowheadPath {
+                fill: #04050a;
+              }
+
+              #mermaid-1775034910582 .edgePath .path {
+                stroke: #8B7355;
+                stroke-width: 2.0px;
+              }
+
+              #mermaid-1775034910582 .flowchart-link {
+                stroke: #8B7355;
+                fill: none;
+              }
+
+              #mermaid-1775034910582 .edgeLabel {
+                background-color: #FBFAF5;
+                text-align: center;
+              }
+
+              #mermaid-1775034910582 .edgeLabel rect {
+                opacity: 0.5;
+                background-color: #FBFAF5;
+                fill: #FBFAF5;
+              }
+
+              #mermaid-1775034910582 .labelBkg {
+                background-color: rgba(251, 250, 245, 0.5);
+              }
+
+              #mermaid-1775034910582 .cluster rect {
+                fill: #E7DED1;
+                stroke: hsl(35.4545454545, 0%, 76.2745098039%);
+                stroke-width: 1px;
+              }
+
+              #mermaid-1775034910582 .cluster text {
+                fill: #18212e;
+              }
+
+              #mermaid-1775034910582 .cluster span,
+              #mermaid-1775034910582 p {
+                color: #18212e;
+              }
+
+              #mermaid-1775034910582 div.mermaidTooltip {
+                position: absolute;
+                text-align: center;
+                max-width: 200px;
+                padding: 2px;
+                font-family: Noto Sans KR, sans-serif;
+                font-size: 12px;
+                background: #E7DED1;
+                border: 1px solid hsl(35.4545454545, 0%, 76.2745098039%);
+                border-radius: 2px;
+                pointer-events: none;
+                z-index: 100;
+              }
+
+              #mermaid-1775034910582 .flowchartTitleText {
+                text-anchor: middle;
+                font-size: 18px;
+                fill: #4A4A4A;
+              }
+
+              #mermaid-1775034910582 :root {
+                --mermaid-font-family: "trebuchet ms", verdana, arial, sans-serif;
+              }
+            </style>
+            <g>
+              <marker class="marker flowchart" id="mermaid-1775034910582_flowchart-pointEnd" markerHeight="12" markerUnits="userSpaceOnUse" markerWidth="12" orient="auto" refX="6" refY="5" viewBox="0 0 10 10">
+                <path class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path>
+              </marker>
+              <marker class="marker flowchart" id="mermaid-1775034910582_flowchart-pointStart" markerHeight="12" markerUnits="userSpaceOnUse" markerWidth="12" orient="auto" refX="4.5" refY="5" viewBox="0 0 10 10">
+                <path class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path>
+              </marker>
+              <marker class="marker flowchart" id="mermaid-1775034910582_flowchart-circleEnd" markerHeight="11" markerUnits="userSpaceOnUse" markerWidth="11" orient="auto" refX="11" refY="5" viewBox="0 0 10 10">
+                <circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 1; stroke-dasharray: 1, 0;">
+                </circle>
+              </marker>
+              <marker class="marker flowchart" id="mermaid-1775034910582_flowchart-circleStart" markerHeight="11" markerUnits="userSpaceOnUse" markerWidth="11" orient="auto" refX="-1" refY="5" viewBox="0 0 10 10">
+                <circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 1; stroke-dasharray: 1, 0;">
+                </circle>
+              </marker>
+              <marker class="marker cross flowchart" id="mermaid-1775034910582_flowchart-crossEnd" markerHeight="11" markerUnits="userSpaceOnUse" markerWidth="11" orient="auto" refX="12" refY="5.2" viewBox="0 0 11 11">
+                <path class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path>
+              </marker>
+              <marker class="marker cross flowchart" id="mermaid-1775034910582_flowchart-crossStart" markerHeight="11" markerUnits="userSpaceOnUse" markerWidth="11" orient="auto" refX="-1" refY="5.2" viewBox="0 0 11 11">
+                <path class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path>
+              </marker>
+              <g class="root">
+                <g class="clusters"></g>
+                <g class="edgePaths">
+                  <path class="edge-thickness-normal edge-pattern-solid flowchart-link LS-U LE-C" d="M59.172,348.875L63.339,348.875C67.505,348.875,75.839,348.875,83.289,348.875C90.739,348.875,97.305,348.875,100.589,348.875L103.872,348.875" id="L-U-C-0" marker-end="url(#mermaid-1775034910582_flowchart-pointEnd)" style="fill:none;"></path>
+                  <path class="edge-thickness-normal edge-pattern-solid flowchart-link LS-C LE-G" d="M194.175,327.141L205.591,315.185C217.007,303.229,239.84,279.318,254.539,267.362C269.239,255.406,275.805,255.406,279.089,255.406L282.372,255.406" id="L-C-G-0" marker-end="url(#mermaid-1775034910582_flowchart-pointEnd)" style="fill:none;"></path>
+                  <path class="edge-thickness-normal edge-pattern-solid flowchart-link LS-G LE-T" d="M505.063,255.406L509.229,255.406C513.396,255.406,521.729,255.406,529.179,255.406C536.629,255.406,543.196,255.406,546.479,255.406L549.763,255.406" id="L-G-T-0" marker-end="url(#mermaid-1775034910582_flowchart-pointEnd)" style="fill:none;"></path>
+                  <path class="edge-thickness-normal edge-pattern-solid flowchart-link LS-C LE-F" d="M237.672,348.875L241.839,348.875C246.005,348.875,254.339,348.875,270.679,348.875C287.02,348.875,311.368,348.875,323.542,348.875L335.716,348.875" id="L-C-F-0" marker-end="url(#mermaid-1775034910582_flowchart-pointEnd)" style="fill:none;"></path>
+                  <path class="edge-thickness-normal edge-pattern-solid flowchart-link LS-C LE-S" d="M194.175,370.609L205.591,382.565C217.007,394.521,239.84,418.432,265.111,430.388C290.382,442.344,318.092,442.344,331.947,442.344L345.802,442.344" id="L-C-S-0" marker-end="url(#mermaid-1775034910582_flowchart-pointEnd)" style="fill:none;"></path>
+                  <path class="edge-thickness-normal edge-pattern-solid flowchart-link LS-T LE-W1" d="M642.694,233.672L658.271,198.349C673.848,163.026,705.002,92.38,732.365,57.057C759.728,21.734,783.3,21.734,795.086,21.734L806.872,21.734" id="L-T-W1-0" marker-end="url(#mermaid-1775034910582_flowchart-pointEnd)" style="fill:none;"></path>
+                  <path class="edge-thickness-normal edge-pattern-solid flowchart-link LS-T LE-W2" d="M649.084,233.672L663.596,213.927C678.108,194.182,707.132,154.693,726.847,134.948C746.561,115.203,756.967,115.203,762.169,115.203L767.372,115.203" id="L-T-W2-0" marker-end="url(#mermaid-1775034910582_flowchart-pointEnd)" style="fill:none;"></path>
+                  <path class="edge-thickness-normal edge-pattern-solid flowchart-link LS-T LE-W3" d="M681.033,233.672L690.22,229.505C699.407,225.339,717.782,217.005,738.763,212.839C759.744,208.672,783.331,208.672,795.125,208.672L806.919,208.672" id="L-T-W3-0" marker-end="url(#mermaid-1775034910582_flowchart-pointEnd)" style="fill:none;"></path>
+                  <path class="edge-thickness-normal edge-pattern-solid flowchart-link LS-T LE-W4" d="M681.033,277.141L690.22,281.307C699.407,285.474,717.782,293.807,738.118,297.974C758.455,302.141,780.753,302.141,791.902,302.141L803.052,302.141" id="L-T-W4-0" marker-end="url(#mermaid-1775034910582_flowchart-pointEnd)" style="fill:none;"></path>
+                  <path class="edge-thickness-normal edge-pattern-solid flowchart-link LS-T LE-DB" d="M646.735,277.141L661.639,300.913C676.542,324.684,706.349,372.228,724.536,396C742.723,419.772,749.29,419.772,752.573,419.772L755.856,419.772" id="L-T-DB-0" marker-end="url(#mermaid-1775034910582_flowchart-pointEnd)" style="fill:none;"></path>
+                  <path class="edge-thickness-normal edge-pattern-solid flowchart-link LS-T LE-LLM" d="M641.052,277.141L656.902,320.518C672.753,363.895,704.455,450.649,723.81,494.026C743.166,537.403,750.175,537.403,753.68,537.403L757.184,537.403" id="L-T-LLM-0" marker-end="url(#mermaid-1775034910582_flowchart-pointEnd)" style="fill:none;">
+                  </path>
+                </g>
+                <g class="edgeLabels">
+                  <g class="edgeLabel">
+                    <g class="label" transform="translate(0, 0)">
+                      <foreignObject height="0" width="0">
+                        <div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml">
+                          <span class="edgeLabel"></span>
+                        </div>
+                      </foreignObject>
+                    </g>
+                  </g>
+                  <g class="edgeLabel">
+                    <g class="label" transform="translate(0, 0)">
+                      <foreignObject height="0" width="0">
+                        <div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml">
+                          <span class="edgeLabel"></span>
+                        </div>
+                      </foreignObject>
+                    </g>
+                  </g>
+                  <g class="edgeLabel">
+                    <g class="label" transform="translate(0, 0)">
+                      <foreignObject height="0" width="0">
+                        <div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml">
+                          <span class="edgeLabel"></span>
+                        </div>
+                      </foreignObject>
+                    </g>
+                  </g>
+                  <g class="edgeLabel">
+                    <g class="label" transform="translate(0, 0)">
+                      <foreignObject height="0" width="0">
+                        <div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml">
+                          <span class="edgeLabel"></span>
+                        </div>
+                      </foreignObject>
+                    </g>
+                  </g>
+                  <g class="edgeLabel">
+                    <g class="label" transform="translate(0, 0)">
+                      <foreignObject height="0" width="0">
+                        <div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml">
+                          <span class="edgeLabel"></span>
+                        </div>
+                      </foreignObject>
+                    </g>
+                  </g>
+                  <g class="edgeLabel">
+                    <g class="label" transform="translate(0, 0)">
+                      <foreignObject height="0" width="0">
+                        <div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml">
+                          <span class="edgeLabel"></span>
+                        </div>
+                      </foreignObject>
+                    </g>
+                  </g>
+                  <g class="edgeLabel">
+                    <g class="label" transform="translate(0, 0)">
+                      <foreignObject height="0" width="0">
+                        <div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml">
+                          <span class="edgeLabel"></span>
+                        </div>
+                      </foreignObject>
+                    </g>
+                  </g>
+                  <g class="edgeLabel">
+                    <g class="label" transform="translate(0, 0)">
+                      <foreignObject height="0" width="0">
+                        <div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml">
+                          <span class="edgeLabel"></span>
+                        </div>
+                      </foreignObject>
+                    </g>
+                  </g>
+                  <g class="edgeLabel">
+                    <g class="label" transform="translate(0, 0)">
+                      <foreignObject height="0" width="0">
+                        <div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml">
+                          <span class="edgeLabel"></span>
+                        </div>
+                      </foreignObject>
+                    </g>
+                  </g>
+                  <g class="edgeLabel">
+                    <g class="label" transform="translate(0, 0)">
+                      <foreignObject height="0" width="0">
+                        <div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml">
+                          <span class="edgeLabel"></span>
+                        </div>
+                      </foreignObject>
+                    </g>
+                  </g>
+                  <g class="edgeLabel">
+                    <g class="label" transform="translate(0, 0)">
+                      <foreignObject height="0" width="0">
+                        <div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml">
+                          <span class="edgeLabel"></span>
+                        </div>
+                      </foreignObject>
+                    </g>
+                  </g>
+                </g>
+                <g class="nodes">
+                  <g class="node default default flowchart-label" data-id="U" data-node="true" id="flowchart-U-24" transform="translate(29.5859375, 348.875)">
+                    <rect class="basic label-container" height="43.46875" rx="0" ry="0" style="" width="59.171875" x="-29.5859375" y="-21.734375"></rect>
+                    <g class="label" style="" transform="translate(-22.0859375, -14.234375)">
+                      <rect></rect>
+                      <foreignObject height="28.46875" width="44.171875">
+                        <div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml">
+                          <span class="nodeLabel">사용자</span>
+                        </div>
+                      </foreignObject>
+                    </g>
+                  </g>
+                  <g class="node default default flowchart-label" data-id="C" data-node="true" id="flowchart-C-25" transform="translate(173.421875, 348.875)">
+                    <rect class="basic label-container" height="43.46875" rx="0" ry="0" style="" width="128.5" x="-64.25" y="-21.734375"></rect>
+                    <g class="label" style="" transform="translate(-56.75, -14.234375)">
+                      <rect></rect>
+                      <foreignObject height="28.46875" width="113.5">
+                        <div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml">
+                          <span class="nodeLabel">AI-Chat Service</span>
+                        </div>
+                      </foreignObject>
+                    </g>
+                  </g>
+                  <g class="node default default flowchart-label" data-id="G" data-node="true" id="flowchart-G-27" transform="translate(396.3671875, 255.40625)">
+                    <rect class="basic label-container" height="43.46875" rx="0" ry="0" style="" width="217.390625" x="-108.6953125" y="-21.734375"></rect>
+                    <g class="label" style="" transform="translate(-101.1953125, -14.234375)">
+                      <rect></rect>
+                      <foreignObject height="28.46875" width="202.390625">
+                        <div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml">
+                          <span class="nodeLabel">Supervisor / Prompt Guard</span>
+                        </div>
+                      </foreignObject>
+                    </g>
+                  </g>
+                  <g class="node default default flowchart-label" data-id="T" data-node="true" id="flowchart-T-29" transform="translate(633.109375, 255.40625)">
+                    <rect class="basic label-container" height="43.46875" rx="0" ry="0" style="" width="156.09375" x="-78.046875" y="-21.734375"></rect>
+                    <g class="label" style="" transform="translate(-70.546875, -14.234375)">
+                      <rect></rect>
+                      <foreignObject height="28.46875" width="141.09375">
+                        <div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml">
+                          <span class="nodeLabel">Task-Agent Service</span>
+                        </div>
+                      </foreignObject>
+                    </g>
+                  </g>
+                  <g class="node default default flowchart-label" data-id="F" data-node="true" id="flowchart-F-31" transform="translate(396.3671875, 348.875)">
+                    <rect class="basic label-container" height="43.46875" rx="0" ry="0" style="" width="110.703125" x="-55.3515625" y="-21.734375"></rect>
+                    <g class="label" style="" transform="translate(-47.8515625, -14.234375)">
+                      <rect></rect>
+                      <foreignObject height="28.46875" width="95.703125">
+                        <div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml">
+                          <span class="nodeLabel">File Manager</span>
+                        </div>
+                      </foreignObject>
+                    </g>
+                  </g>
+                  <g class="node default default flowchart-label" data-id="S" data-node="true" id="flowchart-S-33" transform="translate(396.3671875, 442.34375)">
+                    <rect class="basic label-container" height="43.46875" rx="0" ry="0" style="" width="90.53125" x="-45.265625" y="-21.734375"></rect>
+                    <g class="label" style="" transform="translate(-37.765625, -14.234375)">
+                      <rect></rect>
+                      <foreignObject height="28.46875" width="75.53125">
+                        <div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml">
+                          <span class="nodeLabel">Scheduler</span>
+                        </div>
+                      </foreignObject>
+                    </g>
+                  </g>
+                  <g class="node default default flowchart-label" data-id="W1" data-node="true" id="flowchart-W1-35" transform="translate(874.3828125, 21.734375)">
+                    <rect class="basic label-container" height="43.46875" rx="0" ry="0" style="" width="124.421875" x="-62.2109375" y="-21.734375"></rect>
+                    <g class="label" style="" transform="translate(-54.7109375, -14.234375)">
+                      <rect></rect>
+                      <foreignObject height="28.46875" width="109.421875">
+                        <div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml">
+                          <span class="nodeLabel">Chat with Web</span>
+                        </div>
+                      </foreignObject>
+                    </g>
+                  </g>
+                  <g class="node default default flowchart-label" data-id="W2" data-node="true" id="flowchart-W2-37" transform="translate(874.3828125, 115.203125)">
+                    <rect class="basic label-container" height="43.46875" rx="0" ry="0" style="" width="203.421875" x="-101.7109375" y="-21.734375"></rect>
+                    <g class="label" style="" transform="translate(-94.2109375, -14.234375)">
+                      <rect></rect>
+                      <foreignObject height="28.46875" width="188.421875">
+                        <div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml">
+                          <span class="nodeLabel">MeetingRoom / Schedule</span>
+                        </div>
+                      </foreignObject>
+                    </g>
+                  </g>
+                  <g class="node default default flowchart-label" data-id="W3" data-node="true" id="flowchart-W3-39" transform="translate(874.3828125, 208.671875)">
+                    <rect class="basic label-container" height="43.46875" rx="0" ry="0" style="" width="124.328125" x="-62.1640625" y="-21.734375"></rect>
+                    <g class="label" style="" transform="translate(-54.6640625, -14.234375)">
+                      <rect></rect>
+                      <foreignObject height="28.46875" width="109.328125">
+                        <div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml">
+                          <span class="nodeLabel">News Curation</span>
+                        </div>
+                      </foreignObject>
+                    </g>
+                  </g>
+                  <g class="node default default flowchart-label" data-id="W4" data-node="true" id="flowchart-W4-41" transform="translate(874.3828125, 302.140625)">
+                    <rect class="basic label-container" height="43.46875" rx="0" ry="0" style="" width="132.0625" x="-66.03125" y="-21.734375"></rect>
+                    <g class="label" style="" transform="translate(-58.53125, -14.234375)">
+                      <rect></rect>
+                      <foreignObject height="28.46875" width="117.0625">
+                        <div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml">
+                          <span class="nodeLabel">Legal AI Service</span>
+                        </div>
+                      </foreignObject>
+                    </g>
+                  </g>
+                  <g class="node default default flowchart-label" data-id="DB" data-node="true" id="flowchart-DB-43" transform="translate(874.3828125, 419.7718925476074)">
+                    <path d="M 0,16.10834481838794 a 113.2265625,16.10834481838794 0,0,0 226.453125 0 a 113.2265625,16.10834481838794 0,0,0 -226.453125 0 l 0,59.57709481838794 a 113.2265625,16.10834481838794 0,0,0 226.453125 0 l 0,-59.57709481838794" style="" transform="translate(-113.2265625,-45.896892227581915)"></path>
+                    <g class="label" style="" transform="translate(-105.7265625, -14.234375)">
+                      <rect></rect>
+                      <foreignObject height="28.46875" width="211.453125">
+                        <div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml">
+                          <span class="nodeLabel">PostgreSQL / State / Session</span>
+                        </div>
+                      </foreignObject>
+                    </g>
+                  </g>
+                  <g class="node default default flowchart-label" data-id="LLM" data-node="true" id="flowchart-LLM-45" transform="translate(874.3828125, 537.4031600952148)">
+                    <rect class="basic label-container" height="43.46875" rx="0" ry="0" style="" width="223.796875" x="-111.8984375" y="-21.734375"></rect>
+                    <g class="label" style="" transform="translate(-104.3984375, -14.234375)">
+                      <rect></rect>
+                      <foreignObject height="28.46875" width="208.796875">
+                        <div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml">
+                          <span class="nodeLabel">LLM / Search / External APIs</span>
+                        </div>
+                      </foreignObject>
+                    </g>
+                  </g>
+                </g>
+              </g>
+            </g>
+          </svg></div>
+      </div>
+      <p class="caption">Figure 2. 폐쇄망 Enterprise AI Agent 플랫폼의 개략 구조</p>
+      <h3>아키텍처 해석 포인트</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>구성 요소</th>
+              <th>주요 역할</th>
+              <th>왜 중요한가</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>AI-Chat / Supervisor</td>
+              <td>사용자 요청 수신, 세션 초기화, Agent 선택, SSE 응답 중계</td>
+              <td>사용자 경험과 Task-Agent의 실행 흐름을 분리함</td>
+            </tr>
+            <tr>
+              <td>Task-Agent</td>
+              <td>LangGraph 기반 상태·계획·도구 실행의 실제 처리</td>
+              <td>업무별 Agent 적용의 핵심 엔진</td>
+            </tr>
+            <tr>
+              <td>File Manager</td>
+              <td>첨부파일 로딩, 검증, 토큰 제한 체크</td>
+              <td>파일 포함 대화의 컨텍스트 신뢰도를 높임</td>
+            </tr>
+            <tr>
+              <td>Scheduler</td>
+              <td>배치 및 예약 작업 관리</td>
+              <td>뉴스 큐레이션 같은 정기성 업무를 지원</td>
+            </tr>
+            <tr>
+              <td>DB / Checkpoint</td>
+              <td>세션 이력, 상태 저장, 복원</td>
+              <td>Confirm 플로우와 멀티턴 연속성 유지에 필수</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="figure-slot tall">
+        <div class="image-frame">
+          <img src="./captures/02_sequence_diagram.png" alt=" Enterprise AI Agent 플랫폼  퀀스 다이어그램" class="content-image">
+          <div class="caption">Enterprise AI Agent 플랫폼 시퀀스 다이어그램</div>
+        </div>
+      </div>
+    </section>
+    <section class="page" id="enterprise-workflow">
+      <span class="chapter-label">3.3 Workflow</span>
+      <h2>3-3. LangGraph Workflow와 상태 관리</h2>
+      <p>
+        이 플랫폼에서 실제로 흥미로웠던 부분은 LangGraph를 튜토리얼 예제 수준이 아니라 업무 플로우 엔진으로 쓴다는 점이었습니다.
+        요청은 `state_init → router → selector → planner → executor → manager → reporter` 순으로 흘러가며,
+        각 노드는 공유 State를 읽고 쓰면서 다음 노드를 결정합니다. 특히 confirm 플로우가 필요한 경우에는 ReverseQuestioner와 Checkpointer가 함께 동작합니다.
+      </p>
+      <div class="mermaid-wrap">
+        <div class="mermaid" data-processed="true"><svg aria-roledescription="flowchart-v2" id="mermaid-1775034910647" role="graphics-document document" style="max-width: 452.90625px;" viewBox="-8 -8 452.90625 1169.109375" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <style>
+              #mermaid-1775034910647 {
+                font-family: Noto Sans KR, sans-serif;
+                font-size: 16px;
+                fill: #4A4A4A;
+              }
+
+              #mermaid-1775034910647 .error-icon {
+                fill: #E7DED1;
+              }
+
+              #mermaid-1775034910647 .error-text {
+                fill: #18212e;
+                stroke: #18212e;
+              }
+
+              #mermaid-1775034910647 .edge-thickness-normal {
+                stroke-width: 2px;
+              }
+
+              #mermaid-1775034910647 .edge-thickness-thick {
+                stroke-width: 3.5px;
+              }
+
+              #mermaid-1775034910647 .edge-pattern-solid {
+                stroke-dasharray: 0;
+              }
+
+              #mermaid-1775034910647 .edge-pattern-dashed {
+                stroke-dasharray: 3;
+              }
+
+              #mermaid-1775034910647 .edge-pattern-dotted {
+                stroke-dasharray: 2;
+              }
+
+              #mermaid-1775034910647 .marker {
+                fill: #8B7355;
+                stroke: #8B7355;
+              }
+
+              #mermaid-1775034910647 .marker.cross {
+                stroke: #8B7355;
+              }
+
+              #mermaid-1775034910647 svg {
+                font-family: Noto Sans KR, sans-serif;
+                font-size: 16px;
+              }
+
+              #mermaid-1775034910647 .label {
+                font-family: Noto Sans KR, sans-serif;
+                color: #4A4A4A;
+              }
+
+              #mermaid-1775034910647 .cluster-label text {
+                fill: #18212e;
+              }
+
+              #mermaid-1775034910647 .cluster-label span,
+              #mermaid-1775034910647 p {
+                color: #18212e;
+              }
+
+              #mermaid-1775034910647 .label text,
+              #mermaid-1775034910647 span,
+              #mermaid-1775034910647 p {
+                fill: #4A4A4A;
+                color: #4A4A4A;
+              }
+
+              #mermaid-1775034910647 .node rect,
+              #mermaid-1775034910647 .node circle,
+              #mermaid-1775034910647 .node ellipse,
+              #mermaid-1775034910647 .node polygon,
+              #mermaid-1775034910647 .node path {
+                fill: #F5F5F0;
+                stroke: #8B7355;
+                stroke-width: 1px;
+              }
+
+              #mermaid-1775034910647 .flowchart-label text {
+                text-anchor: middle;
+              }
+
+              #mermaid-1775034910647 .node .katex path {
+                fill: #000;
+                stroke: #000;
+                stroke-width: 1px;
+              }
+
+              #mermaid-1775034910647 .node .label {
+                text-align: center;
+              }
+
+              #mermaid-1775034910647 .node.clickable {
+                cursor: pointer;
+              }
+
+              #mermaid-1775034910647 .arrowheadPath {
+                fill: #04050a;
+              }
+
+              #mermaid-1775034910647 .edgePath .path {
+                stroke: #8B7355;
+                stroke-width: 2.0px;
+              }
+
+              #mermaid-1775034910647 .flowchart-link {
+                stroke: #8B7355;
+                fill: none;
+              }
+
+              #mermaid-1775034910647 .edgeLabel {
+                background-color: #FBFAF5;
+                text-align: center;
+              }
+
+              #mermaid-1775034910647 .edgeLabel rect {
+                opacity: 0.5;
+                background-color: #FBFAF5;
+                fill: #FBFAF5;
+              }
+
+              #mermaid-1775034910647 .labelBkg {
+                background-color: rgba(251, 250, 245, 0.5);
+              }
+
+              #mermaid-1775034910647 .cluster rect {
+                fill: #E7DED1;
+                stroke: hsl(35.4545454545, 0%, 76.2745098039%);
+                stroke-width: 1px;
+              }
+
+              #mermaid-1775034910647 .cluster text {
+                fill: #18212e;
+              }
+
+              #mermaid-1775034910647 .cluster span,
+              #mermaid-1775034910647 p {
+                color: #18212e;
+              }
+
+              #mermaid-1775034910647 div.mermaidTooltip {
+                position: absolute;
+                text-align: center;
+                max-width: 200px;
+                padding: 2px;
+                font-family: Noto Sans KR, sans-serif;
+                font-size: 12px;
+                background: #E7DED1;
+                border: 1px solid hsl(35.4545454545, 0%, 76.2745098039%);
+                border-radius: 2px;
+                pointer-events: none;
+                z-index: 100;
+              }
+
+              #mermaid-1775034910647 .flowchartTitleText {
+                text-anchor: middle;
+                font-size: 18px;
+                fill: #4A4A4A;
+              }
+
+              #mermaid-1775034910647 :root {
+                --mermaid-font-family: "trebuchet ms", verdana, arial, sans-serif;
+              }
+            </style>
+            <g>
+              <marker class="marker flowchart" id="mermaid-1775034910647_flowchart-pointEnd" markerHeight="12" markerUnits="userSpaceOnUse" markerWidth="12" orient="auto" refX="6" refY="5" viewBox="0 0 10 10">
+                <path class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path>
+              </marker>
+              <marker class="marker flowchart" id="mermaid-1775034910647_flowchart-pointStart" markerHeight="12" markerUnits="userSpaceOnUse" markerWidth="12" orient="auto" refX="4.5" refY="5" viewBox="0 0 10 10">
+                <path class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path>
+              </marker>
+              <marker class="marker flowchart" id="mermaid-1775034910647_flowchart-circleEnd" markerHeight="11" markerUnits="userSpaceOnUse" markerWidth="11" orient="auto" refX="11" refY="5" viewBox="0 0 10 10">
+                <circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 1; stroke-dasharray: 1, 0;">
+                </circle>
+              </marker>
+              <marker class="marker flowchart" id="mermaid-1775034910647_flowchart-circleStart" markerHeight="11" markerUnits="userSpaceOnUse" markerWidth="11" orient="auto" refX="-1" refY="5" viewBox="0 0 10 10">
+                <circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 1; stroke-dasharray: 1, 0;">
+                </circle>
+              </marker>
+              <marker class="marker cross flowchart" id="mermaid-1775034910647_flowchart-crossEnd" markerHeight="11" markerUnits="userSpaceOnUse" markerWidth="11" orient="auto" refX="12" refY="5.2" viewBox="0 0 11 11">
+                <path class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path>
+              </marker>
+              <marker class="marker cross flowchart" id="mermaid-1775034910647_flowchart-crossStart" markerHeight="11" markerUnits="userSpaceOnUse" markerWidth="11" orient="auto" refX="-1" refY="5.2" viewBox="0 0 11 11">
+                <path class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path>
+              </marker>
+              <g class="root">
+                <g class="clusters"></g>
+                <g class="edgePaths">
+                  <path class="edge-thickness-normal edge-pattern-solid flowchart-link LS-A LE-B" d="M252.879,43.469L252.879,47.635C252.879,51.802,252.879,60.135,252.879,67.585C252.879,75.035,252.879,81.602,252.879,84.885L252.879,88.169" id="L-A-B-0" marker-end="url(#mermaid-1775034910647_flowchart-pointEnd)" style="fill:none;"></path>
+                  <path class="edge-thickness-normal edge-pattern-solid flowchart-link LS-B LE-C" d="M252.879,136.938L252.879,141.104C252.879,145.271,252.879,153.604,252.879,161.054C252.879,168.504,252.879,175.071,252.879,178.354L252.879,181.638" id="L-B-C-0" marker-end="url(#mermaid-1775034910647_flowchart-pointEnd)" style="fill:none;"></path>
+                  <path class="edge-thickness-normal edge-pattern-solid flowchart-link LS-C LE-D" d="M252.879,230.406L252.879,234.573C252.879,238.74,252.879,247.073,252.879,254.523C252.879,261.973,252.879,268.54,252.879,271.823L252.879,275.106" id="L-C-D-0" marker-end="url(#mermaid-1775034910647_flowchart-pointEnd)" style="fill:none;"></path>
+                  <path class="edge-thickness-normal edge-pattern-solid flowchart-link LS-D LE-E" d="M252.879,323.875L252.879,328.042C252.879,332.208,252.879,340.542,252.879,347.992C252.879,355.442,252.879,362.008,252.879,365.292L252.879,368.575" id="L-D-E-0" marker-end="url(#mermaid-1775034910647_flowchart-pointEnd)" style="fill:none;"></path>
+                  <path class="edge-thickness-normal edge-pattern-solid flowchart-link LS-E LE-F" d="M226.065,417.344L220.925,421.51C215.784,425.677,205.503,434.01,200.429,441.544C195.355,449.077,195.487,455.811,195.553,459.178L195.619,462.545" id="L-E-F-0" marker-end="url(#mermaid-1775034910647_flowchart-pointEnd)" style="fill:none;"></path>
+                  <path class="edge-thickness-normal edge-pattern-solid flowchart-link LS-F LE-G" d="M162.611,595.357L154.069,607.331C145.527,619.306,128.443,643.254,119.901,660.884C111.359,678.515,111.359,689.826,111.359,695.482L111.359,701.138" id="L-F-G-0" marker-end="url(#mermaid-1775034910647_flowchart-pointEnd)" style="fill:none;"></path>
+                  <path class="edge-thickness-normal edge-pattern-solid flowchart-link LS-F LE-H" d="M235.123,589.068L247.661,602.091C260.199,615.113,285.275,641.158,297.813,659.836C310.352,678.515,310.352,689.826,310.352,695.482L310.352,701.138" id="L-F-H-0" marker-end="url(#mermaid-1775034910647_flowchart-pointEnd)" style="fill:none;"></path>
+                  <path class="edge-thickness-normal edge-pattern-solid flowchart-link LS-G LE-I" d="M111.359,749.906L111.359,754.073C111.359,758.24,111.359,766.573,111.359,781.884C111.359,797.194,111.359,819.482,111.359,830.626L111.359,841.77" id="L-G-I-0" marker-end="url(#mermaid-1775034910647_flowchart-pointEnd)" style="fill:none;"></path>
+                  <path class="edge-thickness-normal edge-pattern-solid flowchart-link LS-H LE-J" d="M310.352,749.906L310.352,754.073C310.352,758.24,310.352,766.573,315.211,778.607C320.071,790.64,329.791,806.374,334.651,814.241L339.511,822.108" id="L-H-J-0" marker-end="url(#mermaid-1775034910647_flowchart-pointEnd)" style="fill:none;"></path>
+                  <path class="edge-thickness-normal edge-pattern-solid flowchart-link LS-J LE-E" d="M388.131,820.03L391.01,812.509C393.888,804.989,399.645,789.947,402.524,774.638C405.402,759.328,405.402,743.75,405.402,725.799C405.402,707.849,405.402,687.526,405.402,657.44C405.402,627.354,405.402,587.505,405.402,550.029C405.402,512.552,405.402,477.448,387.479,454.404C369.555,431.36,333.708,420.376,315.784,414.884L297.86,409.392" id="L-J-E-0" marker-end="url(#mermaid-1775034910647_flowchart-pointEnd)" style="fill:none;"></path>
+                  <path class="edge-thickness-normal edge-pattern-solid flowchart-link LS-J LE-K" d="M368.508,938.203L368.424,944.659C368.341,951.115,368.174,964.026,368.091,976.137C368.008,988.249,368.008,999.56,368.008,1005.216L368.008,1010.872" id="L-J-K-0" marker-end="url(#mermaid-1775034910647_flowchart-pointEnd)" style="fill:none;"></path>
+                  <path class="edge-thickness-normal edge-pattern-solid flowchart-link LS-K LE-L" d="M368.008,1059.641L368.008,1063.807C368.008,1067.974,368.008,1076.307,368.008,1083.757C368.008,1091.207,368.008,1097.774,368.008,1101.057L368.008,1104.341" id="L-K-L-0" marker-end="url(#mermaid-1775034910647_flowchart-pointEnd)" style="fill:none;"></path>
+                </g>
+                <g class="edgeLabels">
+                  <g class="edgeLabel">
+                    <g class="label" transform="translate(0, 0)">
+                      <foreignObject height="0" width="0">
+                        <div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml">
+                          <span class="edgeLabel"></span>
+                        </div>
+                      </foreignObject>
+                    </g>
+                  </g>
+                  <g class="edgeLabel">
+                    <g class="label" transform="translate(0, 0)">
+                      <foreignObject height="0" width="0">
+                        <div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml">
+                          <span class="edgeLabel"></span>
+                        </div>
+                      </foreignObject>
+                    </g>
+                  </g>
+                  <g class="edgeLabel">
+                    <g class="label" transform="translate(0, 0)">
+                      <foreignObject height="0" width="0">
+                        <div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml">
+                          <span class="edgeLabel"></span>
+                        </div>
+                      </foreignObject>
+                    </g>
+                  </g>
+                  <g class="edgeLabel">
+                    <g class="label" transform="translate(0, 0)">
+                      <foreignObject height="0" width="0">
+                        <div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml">
+                          <span class="edgeLabel"></span>
+                        </div>
+                      </foreignObject>
+                    </g>
+                  </g>
+                  <g class="edgeLabel">
+                    <g class="label" transform="translate(0, 0)">
+                      <foreignObject height="0" width="0">
+                        <div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml">
+                          <span class="edgeLabel"></span>
+                        </div>
+                      </foreignObject>
+                    </g>
+                  </g>
+                  <g class="edgeLabel" transform="translate(111.359375, 667.203125)">
+                    <g class="label" transform="translate(-12.0390625, -14.234375)">
+                      <foreignObject height="28.46875" width="24.078125">
+                        <div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml">
+                          <span class="edgeLabel">Yes</span>
+                        </div>
+                      </foreignObject>
+                    </g>
+                  </g>
+                  <g class="edgeLabel" transform="translate(310.3515625, 667.203125)">
+                    <g class="label" transform="translate(-10.6328125, -14.234375)">
+                      <foreignObject height="28.46875" width="21.265625">
+                        <div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml">
+                          <span class="edgeLabel">No</span>
+                        </div>
+                      </foreignObject>
+                    </g>
+                  </g>
+                  <g class="edgeLabel">
+                    <g class="label" transform="translate(0, 0)">
+                      <foreignObject height="0" width="0">
+                        <div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml">
+                          <span class="edgeLabel"></span>
+                        </div>
+                      </foreignObject>
+                    </g>
+                  </g>
+                  <g class="edgeLabel">
+                    <g class="label" transform="translate(0, 0)">
+                      <foreignObject height="0" width="0">
+                        <div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml">
+                          <span class="edgeLabel"></span>
+                        </div>
+                      </foreignObject>
+                    </g>
+                  </g>
+                  <g class="edgeLabel" transform="translate(405.40234375, 667.203125)">
+                    <g class="label" transform="translate(-12.0390625, -14.234375)">
+                      <foreignObject height="28.46875" width="24.078125">
+                        <div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml">
+                          <span class="edgeLabel">Yes</span>
+                        </div>
+                      </foreignObject>
+                    </g>
+                  </g>
+                  <g class="edgeLabel" transform="translate(368.0078125, 976.9375)">
+                    <g class="label" transform="translate(-10.6328125, -14.234375)">
+                      <foreignObject height="28.46875" width="21.265625">
+                        <div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml">
+                          <span class="edgeLabel">No</span>
+                        </div>
+                      </foreignObject>
+                    </g>
+                  </g>
+                  <g class="edgeLabel">
+                    <g class="label" transform="translate(0, 0)">
+                      <foreignObject height="0" width="0">
+                        <div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml">
+                          <span class="edgeLabel"></span>
+                        </div>
+                      </foreignObject>
+                    </g>
+                  </g>
+                </g>
+                <g class="nodes">
+                  <g class="node default default flowchart-label" data-id="A" data-node="true" id="flowchart-A-46" transform="translate(252.87890625, 21.734375)">
+                    <rect class="basic label-container" height="43.46875" rx="0" ry="0" style="" width="77.890625" x="-38.9453125" y="-21.734375"></rect>
+                    <g class="label" style="" transform="translate(-31.4453125, -14.234375)">
+                      <rect></rect>
+                      <foreignObject height="28.46875" width="62.890625">
+                        <div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml">
+                          <span class="nodeLabel">StateInit</span>
+                        </div>
+                      </foreignObject>
+                    </g>
+                  </g>
+                  <g class="node default default flowchart-label" data-id="B" data-node="true" id="flowchart-B-47" transform="translate(252.87890625, 115.203125)">
+                    <rect class="basic label-container" height="43.46875" rx="0" ry="0" style="" width="65.171875" x="-32.5859375" y="-21.734375"></rect>
+                    <g class="label" style="" transform="translate(-25.0859375, -14.234375)">
+                      <rect></rect>
+                      <foreignObject height="28.46875" width="50.171875">
+                        <div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml">
+                          <span class="nodeLabel">Router</span>
+                        </div>
+                      </foreignObject>
+                    </g>
+                  </g>
+                  <g class="node default default flowchart-label" data-id="C" data-node="true" id="flowchart-C-49" transform="translate(252.87890625, 208.671875)">
+                    <rect class="basic label-container" height="43.46875" rx="0" ry="0" style="" width="76.390625" x="-38.1953125" y="-21.734375"></rect>
+                    <g class="label" style="" transform="translate(-30.6953125, -14.234375)">
+                      <rect></rect>
+                      <foreignObject height="28.46875" width="61.390625">
+                        <div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml">
+                          <span class="nodeLabel">Selector</span>
+                        </div>
+                      </foreignObject>
+                    </g>
+                  </g>
+                  <g class="node default default flowchart-label" data-id="D" data-node="true" id="flowchart-D-51" transform="translate(252.87890625, 302.140625)">
+                    <rect class="basic label-container" height="43.46875" rx="0" ry="0" style="" width="73.28125" x="-36.640625" y="-21.734375"></rect>
+                    <g class="label" style="" transform="translate(-29.140625, -14.234375)">
+                      <rect></rect>
+                      <foreignObject height="28.46875" width="58.28125">
+                        <div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml">
+                          <span class="nodeLabel">Planner</span>
+                        </div>
+                      </foreignObject>
+                    </g>
+                  </g>
+                  <g class="node default default flowchart-label" data-id="E" data-node="true" id="flowchart-E-53" transform="translate(252.87890625, 395.609375)">
+                    <rect class="basic label-container" height="43.46875" rx="0" ry="0" style="" width="79.828125" x="-39.9140625" y="-21.734375"></rect>
+                    <g class="label" style="" transform="translate(-32.4140625, -14.234375)">
+                      <rect></rect>
+                      <foreignObject height="28.46875" width="64.828125">
+                        <div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml">
+                          <span class="nodeLabel">Executor</span>
+                        </div>
+                      </foreignObject>
+                    </g>
+                  </g>
+                  <g class="node default default flowchart-label" data-id="F" data-node="true" id="flowchart-F-55" transform="translate(195.22265625, 547.65625)">
+                    <polygon class="label-container" points="80.3125,0 160.625,-80.3125 80.3125,-160.625 0,-80.3125" style="" transform="translate(-80.3125,80.3125)"></polygon>
+                    <g class="label" style="" transform="translate(-51.078125, -14.234375)">
+                      <rect></rect>
+                      <foreignObject height="28.46875" width="102.15625">
+                        <div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml">
+                          <span class="nodeLabel">confirm_flag?</span>
+                        </div>
+                      </foreignObject>
+                    </g>
+                  </g>
+                  <g class="node default default flowchart-label" data-id="G" data-node="true" id="flowchart-G-57" transform="translate(111.359375, 728.171875)">
+                    <rect class="basic label-container" height="43.46875" rx="0" ry="0" style="" width="155.875" x="-77.9375" y="-21.734375"></rect>
+                    <g class="label" style="" transform="translate(-70.4375, -14.234375)">
+                      <rect></rect>
+                      <foreignObject height="28.46875" width="140.875">
+                        <div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml">
+                          <span class="nodeLabel">ReverseQuestioner</span>
+                        </div>
+                      </foreignObject>
+                    </g>
+                  </g>
+                  <g class="node default default flowchart-label" data-id="H" data-node="true" id="flowchart-H-59" transform="translate(310.3515625, 728.171875)">
+                    <rect class="basic label-container" height="43.46875" rx="0" ry="0" style="" width="79.578125" x="-39.7890625" y="-21.734375"></rect>
+                    <g class="label" style="" transform="translate(-32.2890625, -14.234375)">
+                      <rect></rect>
+                      <foreignObject height="28.46875" width="64.578125">
+                        <div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml">
+                          <span class="nodeLabel">Manager</span>
+                        </div>
+                      </foreignObject>
+                    </g>
+                  </g>
+                  <g class="node default default flowchart-label" data-id="I" data-node="true" id="flowchart-I-61" transform="translate(111.359375, 868.8046875)">
+                    <rect class="basic label-container" height="43.46875" rx="0" ry="0" style="" width="222.71875" x="-111.359375" y="-21.734375"></rect>
+                    <g class="label" style="" transform="translate(-103.859375, -14.234375)">
+                      <rect></rect>
+                      <foreignObject height="28.46875" width="207.71875">
+                        <div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml">
+                          <span class="nodeLabel">Finish / User Feedback Wait</span>
+                        </div>
+                      </foreignObject>
+                    </g>
+                  </g>
+                  <g class="node default default flowchart-label" data-id="J" data-node="true" id="flowchart-J-63" transform="translate(368.0078125, 868.8046875)">
+                    <polygon class="label-container" points="68.8984375,0 137.796875,-68.8984375 68.8984375,-137.796875 0,-68.8984375" style="" transform="translate(-68.8984375,68.8984375)"></polygon>
+                    <g class="label" style="" transform="translate(-39.6640625, -14.234375)">
+                      <rect></rect>
+                      <foreignObject height="28.46875" width="79.328125">
+                        <div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml">
+                          <span class="nodeLabel">Next Plan?</span>
+                        </div>
+                      </foreignObject>
+                    </g>
+                  </g>
+                  <g class="node default default flowchart-label" data-id="K" data-node="true" id="flowchart-K-67" transform="translate(368.0078125, 1037.90625)">
+                    <rect class="basic label-container" height="43.46875" rx="0" ry="0" style="" width="80.453125" x="-40.2265625" y="-21.734375"></rect>
+                    <g class="label" style="" transform="translate(-32.7265625, -14.234375)">
+                      <rect></rect>
+                      <foreignObject height="28.46875" width="65.453125">
+                        <div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml">
+                          <span class="nodeLabel">Reporter</span>
+                        </div>
+                      </foreignObject>
+                    </g>
+                  </g>
+                  <g class="node default default flowchart-label" data-id="L" data-node="true" id="flowchart-L-69" transform="translate(368.0078125, 1131.375)">
+                    <rect class="basic label-container" height="43.46875" rx="0" ry="0" style="" width="59.59375" x="-29.796875" y="-21.734375"></rect>
+                    <g class="label" style="" transform="translate(-22.296875, -14.234375)">
+                      <rect></rect>
+                      <foreignObject height="28.46875" width="44.59375">
+                        <div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml">
+                          <span class="nodeLabel">Finish</span>
+                        </div>
+                      </foreignObject>
+                    </g>
+                  </g>
+                </g>
+              </g>
+            </g>
+          </svg></div>
+      </div>
+      <p class="caption">Figure 3. Planner–Executor–Reporter 루프와 Confirm 플로우</p>
+      <div class="two-col">
+        <div class="card">
+          <h3 style="margin-top:0;">State가 중요한 이유</h3>
+          <p>
+            LangGraph에서 State는 단순한 변수 묶음이 아니라, 각 노드가 이어받는 공유 칠판에 가깝습니다.
+            `next`, `plan`, `current_step`, `function_response`, `tool_calling_history`, `dynamic_prompts`,
+            `comeback_node` 같은 필드가
+            실제 서비스에서는 모두 의미를 가집니다.
+          </p>
+        </div>
+        <div class="ascii-box">
+          <pre>State = {
+  next: "executor",
+  current_step: 1,
+  plan: [ ... ],
+  function_response: [ ... ],
+  tool_calling_history: [ ... ],
+  dynamic_prompts: [ ... ],
+  comeback_node: "executor"
+}
+          </pre>
+        </div>
+      </div>
+      <h3>체크포인터를 왜 썼는가</h3>
+      <p>
+        Confirm 플로우는 “첫 번째 요청 → 확인 질문 → 사용자 응답 → 두 번째 요청” 구조를 가집니다. 두 번째 응답은 새로운 HTTP 요청으로 들어오기 때문에,
+        메모리 안의 State는 이미 종료된 상태입니다. 따라서 데이터베이스 기반 Checkpointer를 통해 이전 State를 복원하고,
+        `comeback_node`를 기준으로 Router가 재진입 지점을 다시 지정해야 연속적인 경험을 만들 수 있습니다.
+      </p>
+      <pre class="code"># Representative Concept (sanitized)
+# 1) 첫 번째 요청: "내일 3시 회의실 예약해줘"
+state = {
+  "chat_id": "uuid-...",
+  "plan": [...],
+  "confirm_flag": True,
+  "comeback_node": "executor"
+}
+# ReverseQuestioner → Finish
+# checkpoint 저장
+
+# 2) 두 번째 요청: "네"
+# 동일 thread_id로 checkpoint 복원
+state = load_checkpoint(thread_id)
+state["user_query"] = "네"
+state["next"] = state["comeback_node"]
+# Router → Executor 재진입</pre>
+      <div class="figure-slot short">
+        <div class="image-frame">
+          <img src="./captures/03_graph_state.png" alt="LangGraph state 캡처" class="content-image">
+          <div class="caption">LangGraph state 캡처</div>
+        </div>
+      </div>
+    </section>
+    <section class="page" id="enterprise-prompts">
+      <span class="chapter-label">3.4 Prompt System</span>
+      <h2>3-4. Dynamic Prompt와 Safety Guard</h2>
+      <p>이 플랫폼에서 중요했던 또 하나의 부분은 Prompt를 정적으로 하드코딩하지 않고, DB 기반 포맷과 node별 snippet 체계로 운영한 방식입니다. 기본 프롬프트 포맷을 회사·에이전트·기능별로
+        불러온 뒤, Selector 단계에서 사용자 질의와 관련 있는 프롬프트 힌트만 골라 Planner, Executor, Reporter에 반영합니다.</p>
+      <div style="display: flex; flex-direction: column; gap: 20px; margin-bottom: 30px;">
+        <div class="card">
+          <h3 style="margin-top:0;">Dynamic Prompt의 의미</h3>
+          <ul>
+            <li>기본 시스템 프롬프트와 추가 힌트를 분리할 수 있음</li>
+            <li>업무/회사/의도별 Prompt 정책을 DB에서 관리할 수 있음</li>
+            <li>도구 사용 규칙, 응답 형식, 예외 처리 정책을 node 단위로 분리 가능</li>
+            <li>모델 변경 시 Prompt 조정 범위를 좁힐 수 있음</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3 style="margin-top:0;">Safety Guard의 의미</h3>
+          <ul>
+            <li>Supervisor 초입에서 정책 위반 분류를 수행</li>
+            <li>safe일 때만 Task Agent로 진입</li>
+            <li>LLM Hacking, 범죄, 혐오, 자해, 성적 콘텐츠 등 카테고리화</li>
+            <li>단순 보안 장치가 아니라 전체 라우팅의 선행 조건으로 작동</li>
+          </ul>
+        </div>
+      </div>
+      <pre class="code"># Representative Prompt Strategy (sanitized)
+base_prompt = load_prompt_format(company_code, agent_name)
+hints = selector_llm.filter(dynamic_prompt_snippets, user_query)
+final_prompt = compose(
+    base_prompt=base_prompt,
+    user_objective=user_system_prompt,
+    attachments=attachment_block,
+    hints=hints,
+    current_time=now()
+)
+
+# Prompt Guard
+classification = prompt_guard_llm.invoke(user_query)
+if classification["safety"] != "safe":
+    return safe_refusal_message()</pre>
+      <div class="quote-box">
+        <p>
+          Prompt는&nbsp;<strong>업무 규칙과 시스템 제약을 모델이 따를 수 있는 형식으로 번역하는 작업</strong>이라고 생각합니다.
+          특히 Planner / Executor / Reporter를 역할에 나눠지는 구조에서는 각 LLM의 작업마다 Prompt가 역할 분리가 되어야 합니다.</p>
+      </div>
+    </section>
+    <section class="page" id="enterprise-news">
+      <span class="chapter-label">3.5 Expansion Case A</span>
+      <h2>3-5. 뉴스 큐레이션 Agent</h2>
+      <p>
+        뉴스 큐레이션 Agent는 자연어 요청을 키워드 기반 뉴스 검색과 정기 구독 흐름으로 연결하는 Agent입니다.
+        구현 관점에서 보면 <strong>자연어 → 키워드 추출 → 뉴스 수집 → 중복 제거 → LLM 필터링 → 결과 전달</strong>의 파이프라인이며,
+        FastAPI 서비스 레이어, JWT 인증, ContextVar 기반 로깅 격리, 외부 API 연동, 배포·모니터링 구조가 함께 정리되어 있습니다.
+      </p>
+      <div class="mermaid-wrap">
+        <div class="mermaid" data-processed="true"><svg aria-roledescription="sequence" id="mermaid-1775034910714" role="graphics-document document" style="max-width: 1407px;" viewBox="-50 -10 1407 809" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <g>
+              <rect class="actor actor-bottom" fill="#eaeaea" height="65" name="External" rx="3" ry="3" stroke="#666" width="160" x="1147" y="723"></rect><text alignment-baseline="central" class="actor" dominant-baseline="central" style="text-anchor: middle; font-size: 16px; font-weight: 400;" x="1227" y="755.5">
+                <tspan dy="0" x="1227">Naver/DeepSearch</tspan>
+              </text>
+            </g>
+            <g>
+              <rect class="actor actor-bottom" fill="#eaeaea" height="65" name="NewsCollector" rx="3" ry="3" stroke="#666" width="150" x="947" y="723"></rect><text alignment-baseline="central" class="actor" dominant-baseline="central" style="text-anchor: middle; font-size: 16px; font-weight: 400;" x="1022" y="755.5">
+                <tspan dy="0" x="1022">NewsCollector</tspan>
+              </text>
+            </g>
+            <g>
+              <rect class="actor actor-bottom" fill="#eaeaea" height="65" name="LLM" rx="3" ry="3" stroke="#666" width="150" x="720" y="723"></rect><text alignment-baseline="central" class="actor" dominant-baseline="central" style="text-anchor: middle; font-size: 16px; font-weight: 400;" x="795" y="755.5">
+                <tspan dy="0" x="795">LLM</tspan>
+              </text>
+            </g>
+            <g>
+              <rect class="actor actor-bottom" fill="#eaeaea" height="65" name="ChatService" rx="3" ry="3" stroke="#666" width="150" x="520" y="723"></rect><text alignment-baseline="central" class="actor" dominant-baseline="central" style="text-anchor: middle; font-size: 16px; font-weight: 400;" x="595" y="755.5">
+                <tspan dy="0" x="595">ChatService</tspan>
+              </text>
+            </g>
+            <g>
+              <rect class="actor actor-bottom" fill="#eaeaea" height="65" name="API" rx="3" ry="3" stroke="#666" width="150" x="320" y="723"></rect><text alignment-baseline="central" class="actor" dominant-baseline="central" style="text-anchor: middle; font-size: 16px; font-weight: 400;" x="395" y="755.5">
+                <tspan dy="0" x="395">API</tspan>
+              </text>
+            </g>
+            <g>
+              <rect class="actor actor-bottom" fill="#eaeaea" height="65" name="User" rx="3" ry="3" stroke="#666" width="150" x="0" y="723"></rect><text alignment-baseline="central" class="actor" dominant-baseline="central" style="text-anchor: middle; font-size: 16px; font-weight: 400;" x="75" y="755.5">
+                <tspan dy="0" x="75">User</tspan>
+              </text>
+            </g>
+            <g>
+              <line class="200" id="actor5" stroke="#999" stroke-width="0.5px" x1="1227" x2="1227" y1="5" y2="723">
+              </line>
+              <g id="root-5">
+                <rect class="actor actor-top" fill="#eaeaea" height="65" name="External" rx="3" ry="3" stroke="#666" width="160" x="1147" y="0"></rect><text alignment-baseline="central" class="actor" dominant-baseline="central" style="text-anchor: middle; font-size: 16px; font-weight: 400;" x="1227" y="32.5">
+                  <tspan dy="0" x="1227">Naver/DeepSearch</tspan>
+                </text>
+              </g>
+            </g>
+            <g>
+              <line class="200" id="actor4" stroke="#999" stroke-width="0.5px" x1="1022" x2="1022" y1="5" y2="723">
+              </line>
+              <g id="root-4">
+                <rect class="actor actor-top" fill="#eaeaea" height="65" name="NewsCollector" rx="3" ry="3" stroke="#666" width="150" x="947" y="0"></rect><text alignment-baseline="central" class="actor" dominant-baseline="central" style="text-anchor: middle; font-size: 16px; font-weight: 400;" x="1022" y="32.5">
+                  <tspan dy="0" x="1022">NewsCollector</tspan>
+                </text>
+              </g>
+            </g>
+            <g>
+              <line class="200" id="actor3" stroke="#999" stroke-width="0.5px" x1="795" x2="795" y1="5" y2="723"></line>
+              <g id="root-3">
+                <rect class="actor actor-top" fill="#eaeaea" height="65" name="LLM" rx="3" ry="3" stroke="#666" width="150" x="720" y="0"></rect><text alignment-baseline="central" class="actor" dominant-baseline="central" style="text-anchor: middle; font-size: 16px; font-weight: 400;" x="795" y="32.5">
+                  <tspan dy="0" x="795">LLM</tspan>
+                </text>
+              </g>
+            </g>
+            <g>
+              <line class="200" id="actor2" stroke="#999" stroke-width="0.5px" x1="595" x2="595" y1="5" y2="723"></line>
+              <g id="root-2">
+                <rect class="actor actor-top" fill="#eaeaea" height="65" name="ChatService" rx="3" ry="3" stroke="#666" width="150" x="520" y="0"></rect><text alignment-baseline="central" class="actor" dominant-baseline="central" style="text-anchor: middle; font-size: 16px; font-weight: 400;" x="595" y="32.5">
+                  <tspan dy="0" x="595">ChatService</tspan>
+                </text>
+              </g>
+            </g>
+            <g>
+              <line class="200" id="actor1" stroke="#999" stroke-width="0.5px" x1="395" x2="395" y1="5" y2="723"></line>
+              <g id="root-1">
+                <rect class="actor actor-top" fill="#eaeaea" height="65" name="API" rx="3" ry="3" stroke="#666" width="150" x="320" y="0"></rect><text alignment-baseline="central" class="actor" dominant-baseline="central" style="text-anchor: middle; font-size: 16px; font-weight: 400;" x="395" y="32.5">
+                  <tspan dy="0" x="395">API</tspan>
+                </text>
+              </g>
+            </g>
+            <g>
+              <line class="200" id="actor0" stroke="#999" stroke-width="0.5px" x1="75" x2="75" y1="5" y2="723"></line>
+              <g id="root-0">
+                <rect class="actor actor-top" fill="#eaeaea" height="65" name="User" rx="3" ry="3" stroke="#666" width="150" x="0" y="0"></rect><text alignment-baseline="central" class="actor" dominant-baseline="central" style="text-anchor: middle; font-size: 16px; font-weight: 400;" x="75" y="32.5">
+                  <tspan dy="0" x="75">User</tspan>
+                </text>
+              </g>
+            </g>
+            <style>
+              #mermaid-1775034910714 {
+                font-family: Noto Sans KR, sans-serif;
+                font-size: 16px;
+                fill: #4A4A4A;
+              }
+
+              #mermaid-1775034910714 .error-icon {
+                fill: #E7DED1;
+              }
+
+              #mermaid-1775034910714 .error-text {
+                fill: #18212e;
+                stroke: #18212e;
+              }
+
+              #mermaid-1775034910714 .edge-thickness-normal {
+                stroke-width: 2px;
+              }
+
+              #mermaid-1775034910714 .edge-thickness-thick {
+                stroke-width: 3.5px;
+              }
+
+              #mermaid-1775034910714 .edge-pattern-solid {
+                stroke-dasharray: 0;
+              }
+
+              #mermaid-1775034910714 .edge-pattern-dashed {
+                stroke-dasharray: 3;
+              }
+
+              #mermaid-1775034910714 .edge-pattern-dotted {
+                stroke-dasharray: 2;
+              }
+
+              #mermaid-1775034910714 .marker {
+                fill: #8B7355;
+                stroke: #8B7355;
+              }
+
+              #mermaid-1775034910714 .marker.cross {
+                stroke: #8B7355;
+              }
+
+              #mermaid-1775034910714 svg {
+                font-family: Noto Sans KR, sans-serif;
+                font-size: 16px;
+              }
+
+              #mermaid-1775034910714 .actor {
+                stroke: #8B7355;
+                fill: #F5F5F0;
+              }
+
+              #mermaid-1775034910714 text.actor&gt;
+
+              tspan {
+                fill: #4A4A4A;
+                stroke: none;
+              }
+
+              #mermaid-1775034910714 .actor-line {
+                stroke: grey;
+              }
+
+              #mermaid-1775034910714 .messageLine0 {
+                stroke-width: 1.5;
+                stroke-dasharray: none;
+                stroke: #4A4A4A;
+              }
+
+              #mermaid-1775034910714 .messageLine1 {
+                stroke-width: 1.5;
+                stroke-dasharray: 2, 2;
+                stroke: #4A4A4A;
+              }
+
+              #mermaid-1775034910714 #arrowhead path {
+                fill: #4A4A4A;
+                stroke: #4A4A4A;
+              }
+
+              #mermaid-1775034910714 .sequenceNumber {
+                fill: #748caa;
+              }
+
+              #mermaid-1775034910714 #sequencenumber {
+                fill: #4A4A4A;
+              }
+
+              #mermaid-1775034910714 #crosshead path {
+                fill: #4A4A4A;
+                stroke: #4A4A4A;
+              }
+
+              #mermaid-1775034910714 .messageText {
+                fill: #4A4A4A;
+                stroke: none;
+              }
+
+              #mermaid-1775034910714 .labelBox {
+                stroke: #8B7355;
+                fill: #F5F5F0;
+              }
+
+              #mermaid-1775034910714 .labelText,
+              #mermaid-1775034910714 .labelText&gt;
+
+              tspan {
+                fill: #4A4A4A;
+                stroke: none;
+              }
+
+              #mermaid-1775034910714 .loopText,
+              #mermaid-1775034910714 .loopText&gt;
+
+              tspan {
+                fill: #4A4A4A;
+                stroke: none;
+              }
+
+              #mermaid-1775034910714 .loopLine {
+                stroke-width: 2px;
+                stroke-dasharray: 2, 2;
+                stroke: #8B7355;
+                fill: #8B7355;
+              }
+
+              #mermaid-1775034910714 .note {
+                stroke: hsl(52.6829268293, 60%, 73.9215686275%);
+                fill: #fff5ad;
+              }
+
+              #mermaid-1775034910714 .noteText,
+              #mermaid-1775034910714 .noteText&gt;
+
+              tspan {
+                fill: #333;
+                stroke: none;
+              }
+
+              #mermaid-1775034910714 .activation0 {
+                fill: #FBFAF5;
+                stroke: hsl(50, 42.8571428571%, 87.2549019608%);
+              }
+
+              #mermaid-1775034910714 .activation1 {
+                fill: #FBFAF5;
+                stroke: hsl(50, 42.8571428571%, 87.2549019608%);
+              }
+
+              #mermaid-1775034910714 .activation2 {
+                fill: #FBFAF5;
+                stroke: hsl(50, 42.8571428571%, 87.2549019608%);
+              }
+
+              #mermaid-1775034910714 .actorPopupMenu {
+                position: absolute;
+              }
+
+              #mermaid-1775034910714 .actorPopupMenuPanel {
+                position: absolute;
+                fill: #F5F5F0;
+                box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+                filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4));
+              }
+
+              #mermaid-1775034910714 .actor-man line {
+                stroke: #8B7355;
+                fill: #F5F5F0;
+              }
+
+              #mermaid-1775034910714 .actor-man circle,
+              #mermaid-1775034910714 line {
+                stroke: #8B7355;
+                fill: #F5F5F0;
+                stroke-width: 2px;
+              }
+
+              #mermaid-1775034910714 :root {
+                --mermaid-font-family: "trebuchet ms", verdana, arial, sans-serif;
+              }
+            </style>
+            <g></g>
+            <defs>
+              <symbol height="24" id="computer" width="24">
+                <path d="M2 2v13h20v-13h-20zm18 11h-16v-9h16v9zm-10.228 6l.466-1h3.524l.467 1h-4.457zm14.228 3h-24l2-6h2.104l-1.33 4h18.45l-1.297-4h2.073l2 6zm-5-10h-14v-7h14v7z" transform="scale(.5)"></path>
+              </symbol>
+            </defs>
+            <defs>
+              <symbol clip-rule="evenodd" fill-rule="evenodd" id="database">
+                <path d="M12.258.001l.256.004.255.005.253.008.251.01.249.012.247.015.246.016.242.019.241.02.239.023.236.024.233.027.231.028.229.031.225.032.223.034.22.036.217.038.214.04.211.041.208.043.205.045.201.046.198.048.194.05.191.051.187.053.183.054.18.056.175.057.172.059.168.06.163.061.16.063.155.064.15.066.074.033.073.033.071.034.07.034.069.035.068.035.067.035.066.035.064.036.064.036.062.036.06.036.06.037.058.037.058.037.055.038.055.038.053.038.052.038.051.039.05.039.048.039.047.039.045.04.044.04.043.04.041.04.04.041.039.041.037.041.036.041.034.041.033.042.032.042.03.042.029.042.027.042.026.043.024.043.023.043.021.043.02.043.018.044.017.043.015.044.013.044.012.044.011.045.009.044.007.045.006.045.004.045.002.045.001.045v17l-.001.045-.002.045-.004.045-.006.045-.007.045-.009.044-.011.045-.012.044-.013.044-.015.044-.017.043-.018.044-.02.043-.021.043-.023.043-.024.043-.026.043-.027.042-.029.042-.03.042-.032.042-.033.042-.034.041-.036.041-.037.041-.039.041-.04.041-.041.04-.043.04-.044.04-.045.04-.047.039-.048.039-.05.039-.051.039-.052.038-.053.038-.055.038-.055.038-.058.037-.058.037-.06.037-.06.036-.062.036-.064.036-.064.036-.066.035-.067.035-.068.035-.069.035-.07.034-.071.034-.073.033-.074.033-.15.066-.155.064-.16.063-.163.061-.168.06-.172.059-.175.057-.18.056-.183.054-.187.053-.191.051-.194.05-.198.048-.201.046-.205.045-.208.043-.211.041-.214.04-.217.038-.22.036-.223.034-.225.032-.229.031-.231.028-.233.027-.236.024-.239.023-.241.02-.242.019-.246.016-.247.015-.249.012-.251.01-.253.008-.255.005-.256.004-.258.001-.258-.001-.256-.004-.255-.005-.253-.008-.251-.01-.249-.012-.247-.015-.245-.016-.243-.019-.241-.02-.238-.023-.236-.024-.234-.027-.231-.028-.228-.031-.226-.032-.223-.034-.22-.036-.217-.038-.214-.04-.211-.041-.208-.043-.204-.045-.201-.046-.198-.048-.195-.05-.19-.051-.187-.053-.184-.054-.179-.056-.176-.057-.172-.059-.167-.06-.164-.061-.159-.063-.155-.064-.151-.066-.074-.033-.072-.033-.072-.034-.07-.034-.069-.035-.068-.035-.067-.035-.066-.035-.064-.036-.063-.036-.062-.036-.061-.036-.06-.037-.058-.037-.057-.037-.056-.038-.055-.038-.053-.038-.052-.038-.051-.039-.049-.039-.049-.039-.046-.039-.046-.04-.044-.04-.043-.04-.041-.04-.04-.041-.039-.041-.037-.041-.036-.041-.034-.041-.033-.042-.032-.042-.03-.042-.029-.042-.027-.042-.026-.043-.024-.043-.023-.043-.021-.043-.02-.043-.018-.044-.017-.043-.015-.044-.013-.044-.012-.044-.011-.045-.009-.044-.007-.045-.006-.045-.004-.045-.002-.045-.001-.045v-17l.001-.045.002-.045.004-.045.006-.045.007-.045.009-.044.011-.045.012-.044.013-.044.015-.044.017-.043.018-.044.02-.043.021-.043.023-.043.024-.043.026-.043.027-.042.029-.042.03-.042.032-.042.033-.042.034-.041.036-.041.037-.041.039-.041.04-.041.041-.04.043-.04.044-.04.046-.04.046-.039.049-.039.049-.039.051-.039.052-.038.053-.038.055-.038.056-.038.057-.037.058-.037.06-.037.061-.036.062-.036.063-.036.064-.036.066-.035.067-.035.068-.035.069-.035.07-.034.072-.034.072-.033.074-.033.151-.066.155-.064.159-.063.164-.061.167-.06.172-.059.176-.057.179-.056.184-.054.187-.053.19-.051.195-.05.198-.048.201-.046.204-.045.208-.043.211-.041.214-.04.217-.038.22-.036.223-.034.226-.032.228-.031.231-.028.234-.027.236-.024.238-.023.241-.02.243-.019.245-.016.247-.015.249-.012.251-.01.253-.008.255-.005.256-.004.258-.001.258.001zm-9.258 20.499v.01l.001.021.003.021.004.022.005.021.006.022.007.022.009.023.01.022.011.023.012.023.013.023.015.023.016.024.017.023.018.024.019.024.021.024.022.025.023.024.024.025.052.049.056.05.061.051.066.051.07.051.075.051.079.052.084.052.088.052.092.052.097.052.102.051.105.052.11.052.114.051.119.051.123.051.127.05.131.05.135.05.139.048.144.049.147.047.152.047.155.047.16.045.163.045.167.043.171.043.176.041.178.041.183.039.187.039.19.037.194.035.197.035.202.033.204.031.209.03.212.029.216.027.219.025.222.024.226.021.23.02.233.018.236.016.24.015.243.012.246.01.249.008.253.005.256.004.259.001.26-.001.257-.004.254-.005.25-.008.247-.011.244-.012.241-.014.237-.016.233-.018.231-.021.226-.021.224-.024.22-.026.216-.027.212-.028.21-.031.205-.031.202-.034.198-.034.194-.036.191-.037.187-.039.183-.04.179-.04.175-.042.172-.043.168-.044.163-.045.16-.046.155-.046.152-.047.148-.048.143-.049.139-.049.136-.05.131-.05.126-.05.123-.051.118-.052.114-.051.11-.052.106-.052.101-.052.096-.052.092-.052.088-.053.083-.051.079-.052.074-.052.07-.051.065-.051.06-.051.056-.05.051-.05.023-.024.023-.025.021-.024.02-.024.019-.024.018-.024.017-.024.015-.023.014-.024.013-.023.012-.023.01-.023.01-.022.008-.022.006-.022.006-.022.004-.022.004-.021.001-.021.001-.021v-4.127l-.077.055-.08.053-.083.054-.085.053-.087.052-.09.052-.093.051-.095.05-.097.05-.1.049-.102.049-.105.048-.106.047-.109.047-.111.046-.114.045-.115.045-.118.044-.12.043-.122.042-.124.042-.126.041-.128.04-.13.04-.132.038-.134.038-.135.037-.138.037-.139.035-.142.035-.143.034-.144.033-.147.032-.148.031-.15.03-.151.03-.153.029-.154.027-.156.027-.158.026-.159.025-.161.024-.162.023-.163.022-.165.021-.166.02-.167.019-.169.018-.169.017-.171.016-.173.015-.173.014-.175.013-.175.012-.177.011-.178.01-.179.008-.179.008-.181.006-.182.005-.182.004-.184.003-.184.002h-.37l-.184-.002-.184-.003-.182-.004-.182-.005-.181-.006-.179-.008-.179-.008-.178-.01-.176-.011-.176-.012-.175-.013-.173-.014-.172-.015-.171-.016-.17-.017-.169-.018-.167-.019-.166-.02-.165-.021-.163-.022-.162-.023-.161-.024-.159-.025-.157-.026-.156-.027-.155-.027-.153-.029-.151-.03-.15-.03-.148-.031-.146-.032-.145-.033-.143-.034-.141-.035-.14-.035-.137-.037-.136-.037-.134-.038-.132-.038-.13-.04-.128-.04-.126-.041-.124-.042-.122-.042-.12-.044-.117-.043-.116-.045-.113-.045-.112-.046-.109-.047-.106-.047-.105-.048-.102-.049-.1-.049-.097-.05-.095-.05-.093-.052-.09-.051-.087-.052-.085-.053-.083-.054-.08-.054-.077-.054v4.127zm0-5.654v.011l.001.021.003.021.004.021.005.022.006.022.007.022.009.022.01.022.011.023.012.023.013.023.015.024.016.023.017.024.018.024.019.024.021.024.022.024.023.025.024.024.052.05.056.05.061.05.066.051.07.051.075.052.079.051.084.052.088.052.092.052.097.052.102.052.105.052.11.051.114.051.119.052.123.05.127.051.131.05.135.049.139.049.144.048.147.048.152.047.155.046.16.045.163.045.167.044.171.042.176.042.178.04.183.04.187.038.19.037.194.036.197.034.202.033.204.032.209.03.212.028.216.027.219.025.222.024.226.022.23.02.233.018.236.016.24.014.243.012.246.01.249.008.253.006.256.003.259.001.26-.001.257-.003.254-.006.25-.008.247-.01.244-.012.241-.015.237-.016.233-.018.231-.02.226-.022.224-.024.22-.025.216-.027.212-.029.21-.03.205-.032.202-.033.198-.035.194-.036.191-.037.187-.039.183-.039.179-.041.175-.042.172-.043.168-.044.163-.045.16-.045.155-.047.152-.047.148-.048.143-.048.139-.05.136-.049.131-.05.126-.051.123-.051.118-.051.114-.052.11-.052.106-.052.101-.052.096-.052.092-.052.088-.052.083-.052.079-.052.074-.051.07-.052.065-.051.06-.05.056-.051.051-.049.023-.025.023-.024.021-.025.02-.024.019-.024.018-.024.017-.024.015-.023.014-.023.013-.024.012-.022.01-.023.01-.023.008-.022.006-.022.006-.022.004-.021.004-.022.001-.021.001-.021v-4.139l-.077.054-.08.054-.083.054-.085.052-.087.053-.09.051-.093.051-.095.051-.097.05-.1.049-.102.049-.105.048-.106.047-.109.047-.111.046-.114.045-.115.044-.118.044-.12.044-.122.042-.124.042-.126.041-.128.04-.13.039-.132.039-.134.038-.135.037-.138.036-.139.036-.142.035-.143.033-.144.033-.147.033-.148.031-.15.03-.151.03-.153.028-.154.028-.156.027-.158.026-.159.025-.161.024-.162.023-.163.022-.165.021-.166.02-.167.019-.169.018-.169.017-.171.016-.173.015-.173.014-.175.013-.175.012-.177.011-.178.009-.179.009-.179.007-.181.007-.182.005-.182.004-.184.003-.184.002h-.37l-.184-.002-.184-.003-.182-.004-.182-.005-.181-.007-.179-.007-.179-.009-.178-.009-.176-.011-.176-.012-.175-.013-.173-.014-.172-.015-.171-.016-.17-.017-.169-.018-.167-.019-.166-.02-.165-.021-.163-.022-.162-.023-.161-.024-.159-.025-.157-.026-.156-.027-.155-.028-.153-.028-.151-.03-.15-.03-.148-.031-.146-.033-.145-.033-.143-.033-.141-.035-.14-.036-.137-.036-.136-.037-.134-.038-.132-.039-.13-.039-.128-.04-.126-.041-.124-.042-.122-.043-.12-.043-.117-.044-.116-.044-.113-.046-.112-.046-.109-.046-.106-.047-.105-.048-.102-.049-.1-.049-.097-.05-.095-.051-.093-.051-.09-.051-.087-.053-.085-.052-.083-.054-.08-.054-.077-.054v4.139zm0-5.666v.011l.001.02.003.022.004.021.005.022.006.021.007.022.009.023.01.022.011.023.012.023.013.023.015.023.016.024.017.024.018.023.019.024.021.025.022.024.023.024.024.025.052.05.056.05.061.05.066.051.07.051.075.052.079.051.084.052.088.052.092.052.097.052.102.052.105.051.11.052.114.051.119.051.123.051.127.05.131.05.135.05.139.049.144.048.147.048.152.047.155.046.16.045.163.045.167.043.171.043.176.042.178.04.183.04.187.038.19.037.194.036.197.034.202.033.204.032.209.03.212.028.216.027.219.025.222.024.226.021.23.02.233.018.236.017.24.014.243.012.246.01.249.008.253.006.256.003.259.001.26-.001.257-.003.254-.006.25-.008.247-.01.244-.013.241-.014.237-.016.233-.018.231-.02.226-.022.224-.024.22-.025.216-.027.212-.029.21-.03.205-.032.202-.033.198-.035.194-.036.191-.037.187-.039.183-.039.179-.041.175-.042.172-.043.168-.044.163-.045.16-.045.155-.047.152-.047.148-.048.143-.049.139-.049.136-.049.131-.051.126-.05.123-.051.118-.052.114-.051.11-.052.106-.052.101-.052.096-.052.092-.052.088-.052.083-.052.079-.052.074-.052.07-.051.065-.051.06-.051.056-.05.051-.049.023-.025.023-.025.021-.024.02-.024.019-.024.018-.024.017-.024.015-.023.014-.024.013-.023.012-.023.01-.022.01-.023.008-.022.006-.022.006-.022.004-.022.004-.021.001-.021.001-.021v-4.153l-.077.054-.08.054-.083.053-.085.053-.087.053-.09.051-.093.051-.095.051-.097.05-.1.049-.102.048-.105.048-.106.048-.109.046-.111.046-.114.046-.115.044-.118.044-.12.043-.122.043-.124.042-.126.041-.128.04-.13.039-.132.039-.134.038-.135.037-.138.036-.139.036-.142.034-.143.034-.144.033-.147.032-.148.032-.15.03-.151.03-.153.028-.154.028-.156.027-.158.026-.159.024-.161.024-.162.023-.163.023-.165.021-.166.02-.167.019-.169.018-.169.017-.171.016-.173.015-.173.014-.175.013-.175.012-.177.01-.178.01-.179.009-.179.007-.181.006-.182.006-.182.004-.184.003-.184.001-.185.001-.185-.001-.184-.001-.184-.003-.182-.004-.182-.006-.181-.006-.179-.007-.179-.009-.178-.01-.176-.01-.176-.012-.175-.013-.173-.014-.172-.015-.171-.016-.17-.017-.169-.018-.167-.019-.166-.02-.165-.021-.163-.023-.162-.023-.161-.024-.159-.024-.157-.026-.156-.027-.155-.028-.153-.028-.151-.03-.15-.03-.148-.032-.146-.032-.145-.033-.143-.034-.141-.034-.14-.036-.137-.036-.136-.037-.134-.038-.132-.039-.13-.039-.128-.041-.126-.041-.124-.041-.122-.043-.12-.043-.117-.044-.116-.044-.113-.046-.112-.046-.109-.046-.106-.048-.105-.048-.102-.048-.1-.05-.097-.049-.095-.051-.093-.051-.09-.052-.087-.052-.085-.053-.083-.053-.08-.054-.077-.054v4.153zm8.74-8.179l-.257.004-.254.005-.25.008-.247.011-.244.012-.241.014-.237.016-.233.018-.231.021-.226.022-.224.023-.22.026-.216.027-.212.028-.21.031-.205.032-.202.033-.198.034-.194.036-.191.038-.187.038-.183.04-.179.041-.175.042-.172.043-.168.043-.163.045-.16.046-.155.046-.152.048-.148.048-.143.048-.139.049-.136.05-.131.05-.126.051-.123.051-.118.051-.114.052-.11.052-.106.052-.101.052-.096.052-.092.052-.088.052-.083.052-.079.052-.074.051-.07.052-.065.051-.06.05-.056.05-.051.05-.023.025-.023.024-.021.024-.02.025-.019.024-.018.024-.017.023-.015.024-.014.023-.013.023-.012.023-.01.023-.01.022-.008.022-.006.023-.006.021-.004.022-.004.021-.001.021-.001.021.001.021.001.021.004.021.004.022.006.021.006.023.008.022.01.022.01.023.012.023.013.023.014.023.015.024.017.023.018.024.019.024.02.025.021.024.023.024.023.025.051.05.056.05.06.05.065.051.07.052.074.051.079.052.083.052.088.052.092.052.096.052.101.052.106.052.11.052.114.052.118.051.123.051.126.051.131.05.136.05.139.049.143.048.148.048.152.048.155.046.16.046.163.045.168.043.172.043.175.042.179.041.183.04.187.038.191.038.194.036.198.034.202.033.205.032.21.031.212.028.216.027.22.026.224.023.226.022.231.021.233.018.237.016.241.014.244.012.247.011.25.008.254.005.257.004.26.001.26-.001.257-.004.254-.005.25-.008.247-.011.244-.012.241-.014.237-.016.233-.018.231-.021.226-.022.224-.023.22-.026.216-.027.212-.028.21-.031.205-.032.202-.033.198-.034.194-.036.191-.038.187-.038.183-.04.179-.041.175-.042.172-.043.168-.043.163-.045.16-.046.155-.046.152-.048.148-.048.143-.048.139-.049.136-.05.131-.05.126-.051.123-.051.118-.051.114-.052.11-.052.106-.052.101-.052.096-.052.092-.052.088-.052.083-.052.079-.052.074-.051.07-.052.065-.051.06-.05.056-.05.051-.05.023-.025.023-.024.021-.024.02-.025.019-.024.018-.024.017-.023.015-.024.014-.023.013-.023.012-.023.01-.023.01-.022.008-.022.006-.023.006-.021.004-.022.004-.021.001-.021.001-.021-.001-.021-.001-.021-.004-.021-.004-.022-.006-.021-.006-.023-.008-.022-.01-.022-.01-.023-.012-.023-.013-.023-.014-.023-.015-.024-.017-.023-.018-.024-.019-.024-.02-.025-.021-.024-.023-.024-.023-.025-.051-.05-.056-.05-.06-.05-.065-.051-.07-.052-.074-.051-.079-.052-.083-.052-.088-.052-.092-.052-.096-.052-.101-.052-.106-.052-.11-.052-.114-.052-.118-.051-.123-.051-.126-.051-.131-.05-.136-.05-.139-.049-.143-.048-.148-.048-.152-.048-.155-.046-.16-.046-.163-.045-.168-.043-.172-.043-.175-.042-.179-.041-.183-.04-.187-.038-.191-.038-.194-.036-.198-.034-.202-.033-.205-.032-.21-.031-.212-.028-.216-.027-.22-.026-.224-.023-.226-.022-.231-.021-.233-.018-.237-.016-.241-.014-.244-.012-.247-.011-.25-.008-.254-.005-.257-.004-.26-.001-.26.001z" transform="scale(.5)"></path>
+              </symbol>
+            </defs>
+            <defs>
+              <symbol height="24" id="clock" width="24">
+                <path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm5.848 12.459c.202.038.202.333.001.372-1.907.361-6.045 1.111-6.547 1.111-.719 0-1.301-.582-1.301-1.301 0-.512.77-5.447 1.125-7.445.034-.192.312-.181.343.014l.985 6.238 5.394 1.011z" transform="scale(.5)"></path>
+              </symbol>
+            </defs>
+            <defs>
+              <marker id="arrowhead" markerHeight="12" markerUnits="userSpaceOnUse" markerWidth="12" orient="auto" refX="7.9" refY="5">
+                <path d="M 0 0 L 10 5 L 0 10 z"></path>
+              </marker>
+            </defs>
+            <defs>
+              <marker id="crosshead" markerHeight="8" markerWidth="15" orient="auto" refX="4" refY="4.5">
+                <path d="M 1,2 L 6,7 M 6,2 L 1,7" fill="none" stroke="#000000" stroke-width="1pt" style="stroke-dasharray: 0, 0;"></path>
+              </marker>
+            </defs>
+            <defs>
+              <marker id="filled-head" markerHeight="28" markerWidth="20" orient="auto" refX="15.5" refY="7">
+                <path d="M 18,7 L9,13 L14,7 L9,1 Z"></path>
+              </marker>
+            </defs>
+            <defs>
+              <marker id="sequencenumber" markerHeight="40" markerWidth="60" orient="auto" refX="15" refY="15">
+                <circle cx="15" cy="15" r="6"></circle>
+              </marker>
+            </defs><text alignment-baseline="middle" class="messageText" dominant-baseline="middle" dy="1em" style="font-size: 16px; font-weight: 400;" text-anchor="middle" x="234" y="80">"SK하이닉스 HBM 관련 뉴스
+              보여줘"</text>
+            <line class="messageLine0" marker-end="url(#arrowhead)" stroke="none" stroke-width="2" style="fill: none;" x1="76" x2="391" y1="123" y2="123"></line><text alignment-baseline="middle" class="messageText" dominant-baseline="middle" dy="1em" style="font-size: 16px; font-weight: 400;" text-anchor="middle" x="494" y="138">chat()</text>
+            <line class="messageLine0" marker-end="url(#arrowhead)" stroke="none" stroke-width="2" style="fill: none;" x1="396" x2="591" y1="181" y2="181"></line><text alignment-baseline="middle" class="messageText" dominant-baseline="middle" dy="1em" style="font-size: 16px; font-weight: 400;" text-anchor="middle" x="694" y="196">키워드 추출</text>
+            <line class="messageLine0" marker-end="url(#arrowhead)" stroke="none" stroke-width="2" style="fill: none;" x1="596" x2="791" y1="239" y2="239"></line><text alignment-baseline="middle" class="messageText" dominant-baseline="middle" dy="1em" style="font-size: 16px; font-weight: 400;" text-anchor="middle" x="697" y="254">keyword JSON</text>
+            <line class="messageLine1" marker-end="url(#arrowhead)" stroke="none" stroke-width="2" style="stroke-dasharray: 3, 3; fill: none;" x1="794" x2="599" y1="297" y2="297"></line><text alignment-baseline="middle" class="messageText" dominant-baseline="middle" dy="1em" style="font-size: 16px; font-weight: 400;" text-anchor="middle" x="807" y="312">collect_news_data()</text>
+            <line class="messageLine0" marker-end="url(#arrowhead)" stroke="none" stroke-width="2" style="fill: none;" x1="596" x2="1018" y1="355" y2="355"></line><text alignment-baseline="middle" class="messageText" dominant-baseline="middle" dy="1em" style="font-size: 16px; font-weight: 400;" text-anchor="middle" x="1123" y="370">뉴스 수집</text>
+            <line class="messageLine0" marker-end="url(#arrowhead)" stroke="none" stroke-width="2" style="fill: none;" x1="1023" x2="1223" y1="413" y2="413"></line><text alignment-baseline="middle" class="messageText" dominant-baseline="middle" dy="1em" style="font-size: 16px; font-weight: 400;" text-anchor="middle" x="1126" y="428">기사 목록</text>
+            <line class="messageLine1" marker-end="url(#arrowhead)" stroke="none" stroke-width="2" style="stroke-dasharray: 3, 3; fill: none;" x1="1226" x2="1026" y1="471" y2="471"></line><text alignment-baseline="middle" class="messageText" dominant-baseline="middle" dy="1em" style="font-size: 16px; font-weight: 400;" text-anchor="middle" x="910" y="486">필터링 / 중복 제거 보조</text>
+            <line class="messageLine0" marker-end="url(#arrowhead)" stroke="none" stroke-width="2" style="fill: none;" x1="1021" x2="799" y1="529" y2="529"></line><text alignment-baseline="middle" class="messageText" dominant-baseline="middle" dy="1em" style="font-size: 16px; font-weight: 400;" text-anchor="middle" x="810" y="544">최종 뉴스</text>
+            <line class="messageLine1" marker-end="url(#arrowhead)" stroke="none" stroke-width="2" style="stroke-dasharray: 3, 3; fill: none;" x1="1021" x2="599" y1="587" y2="587"></line><text alignment-baseline="middle" class="messageText" dominant-baseline="middle" dy="1em" style="font-size: 16px; font-weight: 400;" text-anchor="middle" x="497" y="602">response</text>
+            <line class="messageLine1" marker-end="url(#arrowhead)" stroke="none" stroke-width="2" style="stroke-dasharray: 3, 3; fill: none;" x1="594" x2="399" y1="645" y2="645"></line><text alignment-baseline="middle" class="messageText" dominant-baseline="middle" dy="1em" style="font-size: 16px; font-weight: 400;" text-anchor="middle" x="237" y="660">결과 반환</text>
+            <line class="messageLine1" marker-end="url(#arrowhead)" stroke="none" stroke-width="2" style="stroke-dasharray: 3, 3; fill: none;" x1="394" x2="79" y1="703" y2="703"></line>
+          </svg></div>
+      </div>
+      <h3>기술적으로 인상적이었던 부분</h3>
+      <ul>
+        <li>사용자 질의에서 LLM을 사용한 뉴스검색 keyword 분류 및 추출</li>
+        <li>Naver API와 Deep Search API를 외부 API로 뉴스 검색</li>
+        <li>Shingle 유사도 기반 중복 제거 후, LLM을 사용한 최종 뉴스 결과 선별</li>
+        <li>Docker / Helm / GitHub Actions / Grafana / OpenTelemetry로 운영 까지 연결</li>
+      </ul>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>구간</th>
+              <th>역할</th>
+              <th>포트폴리오 관점 의미</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>LLM 키워드 추출</td>
+              <td>자연어 요청을 검색 가능한 질의로 정규화</td>
+              <td>LLM을 생성기보다 라우터/전처리기로 활용</td>
+            </tr>
+            <tr>
+              <td>중복 제거</td>
+              <td>유사 기사 제거</td>
+              <td>실서비스 품질은 “무엇을 제거하느냐”도 중요하다는 점을 보여줌</td>
+            </tr>
+            <tr>
+              <td>배치 LLM 필터링</td>
+              <td>최종 기사 선별</td>
+              <td>LLM 비용과 처리량을 함께 고민한 흔적</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="figure-slot short">
+        <div class="image-frame">
+          <img src="./captures/04_news.png" alt="뉴스 검색" class="content-image">
+          <div class="caption">실제 서비스의 캡처는 불가하여, 개인 프로젝트로 구현한 '뉴스 키워드' 에이전트 화면을 캡처하여 첨부합니다.</div>
+        </div>
+      </div>
+    </section>
+    <section class="page" id="enterprise-legal">
+      <span class="chapter-label">3.6 Expansion Case B</span>
+      <h2>3-6. 법무서비스 Agent</h2>
+      <p>법무서비스 Agent는 법률 검색, 자문, 계약서 추천·작성·검토를 자동화하는 멀티 Agent 구조입니다. 이 프로젝트에서 중요했던 점은 단순 검색이 아니라, 원본 데이터 저장소와 검색 최적화
+        인덱스를 분리하고, 하이브리드 검색과 다단계 Reasoning을 결합했다는 데 있습니다.</p>
+      <div class="two-col">
+        <div class="card">
+          <h3 style="margin-top:0;">데이터 계층 분리</h3>
+          <p>
+            PostgreSQL은 원본 법령/판례/자문 메타데이터와 관계형 구조를 보관합니다. Azure AI Search는 벡터와 키워드 검색을 위한 인덱스를 담당합니다.
+            검색 시에는 Azure AI Search가 먼저 후보를 찾고, 이후 PostgreSQL에서 메타데이터와 참조 정보를 보강합니다.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top:0;">검색 전략</h3>
+          <p>
+            벡터 검색, 키워드 검색(BM25), 시멘틱 검색을 조합해 RRF로 최종 순위를 구성합니다. NER/키워드 추출과 Reasoning 노드가 검색 쿼리 자체를 재구성하며,
+            단순 FAQ를 넘어서 구조화된 법률 질의를 처리하도록 설계되어 있습니다.
+          </p>
+        </div>
+      </div>
+      <pre class="code"># Representative Retrieval Concept (sanitized)
+query_vector = get_embedding(user_query)
+
+law_results = law_client.hybrid_search(
+    query="민법 제750조 불법행위",
+    vector=query_vector,
+    k=3,
+)
+prec_results = prec_client.hybrid_search(
+    query="불법행위 손해배상",
+    vector=query_vector,
+    k=3,
+)
+
+all_results = enrich_with_metadata(law_results + prec_results)
+return all_results</pre>
+      <div class="ascii-box">
+        <pre>[원본 법령/판례/자문] ──▶ [PostgreSQL 저장]
+          │
+          ├─ 청킹 / 임베딩
+          ▼
+   [Azure AI Search 인덱스]
+          │
+          ▼
+[검색 실행 시]
+  Query Embedding + Keyword + Semantic Ranking
+          │
+          ▼
+   후보 문서 반환 → PostgreSQL 메타데이터 보강 → Agent 응답 생성
+        </pre>
+      </div>
+      <!-- Azure AI Search 역할 분리 구조 이미지 2장 나란히 배치 -->
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:18px 0 22px;">
+        <div class="image-frame">
+          <img src="./captures/azure_search_role_diagram.png" alt="Azure AI Search 역할 분리 구조" class="content-image">
+          <div class="caption">PostgreSQL vs Azure AI Search — 역할 분리 원칙</div>
+        </div>
+        <div class="image-frame">
+          <img src="./captures/azure_search_index_structure.png" alt="Azure AI Search 인덱스 구조 상세" class="content-image">
+          <div class="caption">PostgreSQL 메타데이터 저장 + Azure AI Search 인덱스 구조</div>
+        </div>
+      </div>
+    </section>
+    <section class="page" id="enterprise-learnings">
+      <span class="chapter-label">3.7 Learnings</span>
+      <h2>3-7. 설계 판단과 회고</h2>
+      <p>
+        이 프로젝트를 통해 제가 가장 크게 배운 것은, AI Agent 서비스를 설명할 때 “모델이 무엇을 답했는가”보다
+        <strong>요청이 어떤 구조를 지나갔고, 어떤 상태가 저장되며, 어떤 Prompt와 Tool이 결합되었는가</strong>가 더 중요하다는 점입니다.
+      </p>
+      <div class="card-grid">
+        <div class="card">
+          <h3 style="margin-top:0;">학습 1</h3>
+          <p>LangGraph는 단순 체인이 아니라 상태 전이와 책임 분할을 설계하는 도구다.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top:0;">학습 2</h3>
+          <p>Prompt는 모델 지시문이면서 동시에 업무 규칙과 API 제약을 번역한 실행 사양서다.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top:0;">학습 3</h3>
+          <p>실서비스형 AI는 인증, 로그, 상태 복원, 사용자 피드백 루프를 함께 고려해야 한다.</p>
+        </div>
+      </div>
+      <div class="quote-box">
+        <p>
+          이 프로젝트는 저에게 “AI를 잘 쓰는 법”보다 “AI가 실제 업무 시스템 속에서 동작하도록 만드는 법”을 더 강하게 가르쳐 준 프로젝트였습니다.
+        </p>
+      </div>
+    </section>
+    <section class="page" id="chapter-mcp">
+      <span class="chapter-label">Project II</span>
+      <h2>4. Microsoft 365 MCP Platform 설계 및 구현</h2>
+      <p>
+        두 번째 프로젝트는 Microsoft 365 기능을 AI Agent에서 재사용할 수 있도록 MCP 형태로 표준화한 작업입니다.
+        저는 이 프로젝트를 단순한 API 중계가 아니라, <strong>공통 인증·로깅·토큰 컨텍스트와 도메인별 Tool 서버를 분리한 플랫폼화</strong>로 이해하고 설계했습니다.
+      </p>
+      <p>
+        특히 메일/Teams처럼 개인 보안 성격이 강한 기능과, 일정/To Do처럼 앱 권한 기반으로 타인 일정 조회 요구가 생길 수 있는 기능을 하나의 권한 모델로 처리하지 않고,
+        <strong>위임 권한(Delegated Permission)과 앱 권한(Application Permission)을 기능 특성에 맞게 분리</strong>한 점이 핵심입니다.
+      </p>
+      <div class="pill-list">
+        <span class="pill">FastAPI Common Service</span>
+        <span class="pill">FastMCP Domain Servers</span>
+        <span class="pill">Microsoft Graph</span>
+        <span class="pill">Delegated Permission</span>
+        <span class="pill">Application Permission</span>
+        <span class="pill">Traceable Logging</span>
+      </div>
+    </section>
+    <section class="page" id="mcp-problem">
+      <span class="chapter-label">4.1 Problem</span>
+      <h2>4-1. 문제 정의와 설계 원칙</h2>
+      <p>
+        AI Agent가 실제 업무에서 유용해지려면, 모델이 스스로 아무 일도 하지 못하는 상태에서 벗어나야 합니다. 일정 조회, 메일 확인, Teams 메시지 조회,
+        SharePoint 문서 연계 같은 기능을 Agent가 도구처럼 재사용할 수 있어야 합니다. 그러나 이 과정은 단순 API wrapping으로 끝나지 않습니다.
+      </p>
+      <p>
+        인증은 누가 소유할 것인지, 토큰은 어디에서 갱신할 것인지, 로그는 어떤 단위로 남길 것인지, 사용자 컨텍스트는 어떻게 전파할 것인지가 모두 설계 대상입니다.
+        따라서 이 프로젝트의 목표는 “Graph API를 몇 개 붙였다”가 아니라, <strong>다양한 Microsoft 365 기능을 안전하게 호출 가능한 공통 실행 모델을 만드는
+          것</strong>이었습니다.
+      </p>
+      <div class="two-col">
+        <div class="card">
+          <h3 style="margin-top:0;">설계 원칙 1</h3>
+          <p>인증, 토큰, 요청 추적, 공통 로깅은 도메인 기능과 분리한다.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top:0;">설계 원칙 2</h3>
+          <p>기능 보안 성격에 따라 권한 모델을 분리하고, Agent가 직접 Credential을 소유하지 않도록 한다.</p>
+        </div>
+      </div>
+    </section>
+    <section class="page" id="mcp-auth">
+      <span class="chapter-label">4.2 Permission Strategy</span>
+      <h2>4-2. 위임 권한 / 앱 권한 분리 전략</h2>
+      <p>이 프로젝트에서 핵심적으로 보여주고 싶은 부분은 권한 분리 전략입니다. 메일과 Teams는 개인 계정 맥락과 보안 요구가 강하게 연결되므로, 사용자를 대신해 동작하는 위임 권한이 더 자연스럽습니다.
+        반면 일정 조회나 To Do는 조직 기준의 공용 읽기나 타인 일정 조회 요구가 발생할 수 있어, 별도 시나리오에서는 앱 권한 기반 처리가 더 적절할 수 있습니다.</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>기능군</th>
+              <th>권한 모델</th>
+              <th>설계 이유</th>
+              <th>포트폴리오에서 강조할 포인트</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Mail / Teams</td>
+              <td>Delegated Permission</td>
+              <td>개인 사용자 문맥과 보안 요구가 강함</td>
+              <td>사용자 토큰을 state에 연결하고, 위임 흐름을 안전하게 제어</td>
+            </tr>
+            <tr>
+              <td>Calendar / To Do</td>
+              <td>Application Permission (시나리오 분리)</td>
+              <td>타인 일정 조회나 조직 단위 자동화 요구에 대응</td>
+              <td>기능 요구에 따라 권한 모델을 달리 선택한 설계 판단</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="quote-box">
+        <p>
+          저는 이 프로젝트를 통해 “하나의 Graph API라도 기능마다 권한 경계가 다르다”는 점을 더 분명하게 이해했습니다.
+          권한 모델을 기술 기준이 아니라 <strong>업무 맥락과 보안 성격 기준</strong>으로 나누는 것이 중요했습니다.
+        </p>
+      </div>
+    </section>
+    <section class="page" id="mcp-architecture">
+      <span class="chapter-label">4.3 Architecture</span>
+      <h2>4-3. 공통 서비스 + 도메인별 FastMCP 구조</h2>
+      <p>구현 구조는 크게 공통부와 도메인부로 나뉩니다. 현재 공개 저장소 기준으로 Mail·Teams 도메인과 공통 소스(cmn)를 함께 관리하고, 공통부는 FastAPI 기반으로 인증, 로깅, 사용자
+        컨텍스트, trace_id, 토큰 상태를 담당합니다. 도메인별 MCP 서버는 FastMCP 기반 Tool 실행에 집중합니다. 이 구조는 기능이 늘어날수록 장점이 커집니다. 공통부는 한 곳에서 진화하고,
+        도메인 Tool은 일정, 메일, Teams, SharePoint 등으로 독립적으로 확장할 수 있기 때문입니다.</p>
+      <div class="mermaid-wrap">
+        <div class="mermaid" data-processed="true"><svg aria-roledescription="flowchart-v2" id="mermaid-1775034910770" role="graphics-document document" style="max-width: 1042.40625px;" viewBox="-8 -8 1042.40625 339.875" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <style>
+              #mermaid-1775034910770 {
+                font-family: Noto Sans KR, sans-serif;
+                font-size: 16px;
+                fill: #4A4A4A;
+              }
+
+              #mermaid-1775034910770 .error-icon {
+                fill: #E7DED1;
+              }
+
+              #mermaid-1775034910770 .error-text {
+                fill: #18212e;
+                stroke: #18212e;
+              }
+
+              #mermaid-1775034910770 .edge-thickness-normal {
+                stroke-width: 2px;
+              }
+
+              #mermaid-1775034910770 .edge-thickness-thick {
+                stroke-width: 3.5px;
+              }
+
+              #mermaid-1775034910770 .edge-pattern-solid {
+                stroke-dasharray: 0;
+              }
+
+              #mermaid-1775034910770 .edge-pattern-dashed {
+                stroke-dasharray: 3;
+              }
+
+              #mermaid-1775034910770 .edge-pattern-dotted {
+                stroke-dasharray: 2;
+              }
+
+              #mermaid-1775034910770 .marker {
+                fill: #8B7355;
+                stroke: #8B7355;
+              }
+
+              #mermaid-1775034910770 .marker.cross {
+                stroke: #8B7355;
+              }
+
+              #mermaid-1775034910770 svg {
+                font-family: Noto Sans KR, sans-serif;
+                font-size: 16px;
+              }
+
+              #mermaid-1775034910770 .label {
+                font-family: Noto Sans KR, sans-serif;
+                color: #4A4A4A;
+              }
+
+              #mermaid-1775034910770 .cluster-label text {
+                fill: #18212e;
+              }
+
+              #mermaid-1775034910770 .cluster-label span,
+              #mermaid-1775034910770 p {
+                color: #18212e;
+              }
+
+              #mermaid-1775034910770 .label text,
+              #mermaid-1775034910770 span,
+              #mermaid-1775034910770 p {
+                fill: #4A4A4A;
+                color: #4A4A4A;
+              }
+
+              #mermaid-1775034910770 .node rect,
+              #mermaid-1775034910770 .node circle,
+              #mermaid-1775034910770 .node ellipse,
+              #mermaid-1775034910770 .node polygon,
+              #mermaid-1775034910770 .node path {
+                fill: #F5F5F0;
+                stroke: #8B7355;
+                stroke-width: 1px;
+              }
+
+              #mermaid-1775034910770 .flowchart-label text {
+                text-anchor: middle;
+              }
+
+              #mermaid-1775034910770 .node .katex path {
+                fill: #000;
+                stroke: #000;
+                stroke-width: 1px;
+              }
+
+              #mermaid-1775034910770 .node .label {
+                text-align: center;
+              }
+
+              #mermaid-1775034910770 .node.clickable {
+                cursor: pointer;
+              }
+
+              #mermaid-1775034910770 .arrowheadPath {
+                fill: #04050a;
+              }
+
+              #mermaid-1775034910770 .edgePath .path {
+                stroke: #8B7355;
+                stroke-width: 2.0px;
+              }
+
+              #mermaid-1775034910770 .flowchart-link {
+                stroke: #8B7355;
+                fill: none;
+              }
+
+              #mermaid-1775034910770 .edgeLabel {
+                background-color: #FBFAF5;
+                text-align: center;
+              }
+
+              #mermaid-1775034910770 .edgeLabel rect {
+                opacity: 0.5;
+                background-color: #FBFAF5;
+                fill: #FBFAF5;
+              }
+
+              #mermaid-1775034910770 .labelBkg {
+                background-color: rgba(251, 250, 245, 0.5);
+              }
+
+              #mermaid-1775034910770 .cluster rect {
+                fill: #E7DED1;
+                stroke: hsl(35.4545454545, 0%, 76.2745098039%);
+                stroke-width: 1px;
+              }
+
+              #mermaid-1775034910770 .cluster text {
+                fill: #18212e;
+              }
+
+              #mermaid-1775034910770 .cluster span,
+              #mermaid-1775034910770 p {
+                color: #18212e;
+              }
+
+              #mermaid-1775034910770 div.mermaidTooltip {
+                position: absolute;
+                text-align: center;
+                max-width: 200px;
+                padding: 2px;
+                font-family: Noto Sans KR, sans-serif;
+                font-size: 12px;
+                background: #E7DED1;
+                border: 1px solid hsl(35.4545454545, 0%, 76.2745098039%);
+                border-radius: 2px;
+                pointer-events: none;
+                z-index: 100;
+              }
+
+              #mermaid-1775034910770 .flowchartTitleText {
+                text-anchor: middle;
+                font-size: 18px;
+                fill: #4A4A4A;
+              }
+
+              #mermaid-1775034910770 :root {
+                --mermaid-font-family: "trebuchet ms", verdana, arial, sans-serif;
+              }
+            </style>
+            <g>
+              <marker class="marker flowchart" id="mermaid-1775034910770_flowchart-pointEnd" markerHeight="12" markerUnits="userSpaceOnUse" markerWidth="12" orient="auto" refX="6" refY="5" viewBox="0 0 10 10">
+                <path class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path>
+              </marker>
+              <marker class="marker flowchart" id="mermaid-1775034910770_flowchart-pointStart" markerHeight="12" markerUnits="userSpaceOnUse" markerWidth="12" orient="auto" refX="4.5" refY="5" viewBox="0 0 10 10">
+                <path class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path>
+              </marker>
+              <marker class="marker flowchart" id="mermaid-1775034910770_flowchart-circleEnd" markerHeight="11" markerUnits="userSpaceOnUse" markerWidth="11" orient="auto" refX="11" refY="5" viewBox="0 0 10 10">
+                <circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 1; stroke-dasharray: 1, 0;">
+                </circle>
+              </marker>
+              <marker class="marker flowchart" id="mermaid-1775034910770_flowchart-circleStart" markerHeight="11" markerUnits="userSpaceOnUse" markerWidth="11" orient="auto" refX="-1" refY="5" viewBox="0 0 10 10">
+                <circle class="arrowMarkerPath" cx="5" cy="5" r="5" style="stroke-width: 1; stroke-dasharray: 1, 0;">
+                </circle>
+              </marker>
+              <marker class="marker cross flowchart" id="mermaid-1775034910770_flowchart-crossEnd" markerHeight="11" markerUnits="userSpaceOnUse" markerWidth="11" orient="auto" refX="12" refY="5.2" viewBox="0 0 11 11">
+                <path class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path>
+              </marker>
+              <marker class="marker cross flowchart" id="mermaid-1775034910770_flowchart-crossStart" markerHeight="11" markerUnits="userSpaceOnUse" markerWidth="11" orient="auto" refX="-1" refY="5.2" viewBox="0 0 11 11">
+                <path class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path>
+              </marker>
+              <g class="root">
+                <g class="clusters"></g>
+                <g class="edgePaths">
+                  <path class="edge-thickness-normal edge-pattern-solid flowchart-link LS-Client LE-Common" d="M529.555,43.469L529.555,47.635C529.555,51.802,529.555,60.135,529.555,67.585C529.555,75.035,529.555,81.602,529.555,84.885L529.555,88.169" id="L-Client-Common-0" marker-end="url(#mermaid-1775034910770_flowchart-pointEnd)" style="fill:none;"></path>
+                  <path class="edge-thickness-normal edge-pattern-solid flowchart-link LS-Common LE-Auth" d="M428.469,126.487L375.539,132.395C322.609,138.304,216.75,150.121,163.82,159.312C110.891,168.504,110.891,175.071,110.891,178.354L110.891,181.638" id="L-Common-Auth-0" marker-end="url(#mermaid-1775034910770_flowchart-pointEnd)" style="fill:none;">
+                  </path>
+                  <path class="edge-thickness-normal edge-pattern-solid flowchart-link LS-Common LE-Log" d="M467.302,136.938L455.367,141.104C443.433,145.271,419.564,153.604,407.63,161.054C395.695,168.504,395.695,175.071,395.695,178.354L395.695,181.638" id="L-Common-Log-0" marker-end="url(#mermaid-1775034910770_flowchart-pointEnd)" style="fill:none;">
+                  </path>
+                  <path class="edge-thickness-normal edge-pattern-solid flowchart-link LS-Common LE-MCP1" d="M591.808,136.938L603.742,141.104C615.676,145.271,639.545,153.604,651.48,161.054C663.414,168.504,663.414,175.071,663.414,178.354L663.414,181.638" id="L-Common-MCP1-0" marker-end="url(#mermaid-1775034910770_flowchart-pointEnd)" style="fill:none;">
+                  </path>
+                  <path class="edge-thickness-normal edge-pattern-solid flowchart-link LS-Common LE-MCP2" d="M630.641,127.402L678.336,133.158C726.031,138.914,821.422,150.426,869.117,159.465C916.813,168.504,916.813,175.071,916.813,178.354L916.813,181.638" id="L-Common-MCP2-0" marker-end="url(#mermaid-1775034910770_flowchart-pointEnd)" style="fill:none;">
+                  </path>
+                  <path class="edge-thickness-normal edge-pattern-solid flowchart-link LS-MCP1 LE-Graph1" d="M663.414,230.406L663.414,234.573C663.414,238.74,663.414,247.073,663.414,254.523C663.414,261.973,663.414,268.54,663.414,271.823L663.414,275.106" id="L-MCP1-Graph1-0" marker-end="url(#mermaid-1775034910770_flowchart-pointEnd)" style="fill:none;">
+                  </path>
+                  <path class="edge-thickness-normal edge-pattern-solid flowchart-link LS-MCP2 LE-Graph2" d="M916.813,230.406L916.813,234.573C916.813,238.74,916.813,247.073,916.813,254.523C916.813,261.973,916.813,268.54,916.813,271.823L916.813,275.106" id="L-MCP2-Graph2-0" marker-end="url(#mermaid-1775034910770_flowchart-pointEnd)" style="fill:none;">
+                  </path>
+                </g>
+                <g class="edgeLabels">
+                  <g class="edgeLabel">
+                    <g class="label" transform="translate(0, 0)">
+                      <foreignObject height="0" width="0">
+                        <div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml">
+                          <span class="edgeLabel"></span>
+                        </div>
+                      </foreignObject>
+                    </g>
+                  </g>
+                  <g class="edgeLabel">
+                    <g class="label" transform="translate(0, 0)">
+                      <foreignObject height="0" width="0">
+                        <div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml">
+                          <span class="edgeLabel"></span>
+                        </div>
+                      </foreignObject>
+                    </g>
+                  </g>
+                  <g class="edgeLabel">
+                    <g class="label" transform="translate(0, 0)">
+                      <foreignObject height="0" width="0">
+                        <div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml">
+                          <span class="edgeLabel"></span>
+                        </div>
+                      </foreignObject>
+                    </g>
+                  </g>
+                  <g class="edgeLabel">
+                    <g class="label" transform="translate(0, 0)">
+                      <foreignObject height="0" width="0">
+                        <div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml">
+                          <span class="edgeLabel"></span>
+                        </div>
+                      </foreignObject>
+                    </g>
+                  </g>
+                  <g class="edgeLabel">
+                    <g class="label" transform="translate(0, 0)">
+                      <foreignObject height="0" width="0">
+                        <div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml">
+                          <span class="edgeLabel"></span>
+                        </div>
+                      </foreignObject>
+                    </g>
+                  </g>
+                  <g class="edgeLabel">
+                    <g class="label" transform="translate(0, 0)">
+                      <foreignObject height="0" width="0">
+                        <div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml">
+                          <span class="edgeLabel"></span>
+                        </div>
+                      </foreignObject>
+                    </g>
+                  </g>
+                  <g class="edgeLabel">
+                    <g class="label" transform="translate(0, 0)">
+                      <foreignObject height="0" width="0">
+                        <div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml">
+                          <span class="edgeLabel"></span>
+                        </div>
+                      </foreignObject>
+                    </g>
+                  </g>
+                </g>
+                <g class="nodes">
+                  <g class="node default default flowchart-label" data-id="Client" data-node="true" id="flowchart-Client-70" transform="translate(529.5546875, 21.734375)">
+                    <rect class="basic label-container" height="43.46875" rx="0" ry="0" style="" width="136.078125" x="-68.0390625" y="-21.734375"></rect>
+                    <g class="label" style="" transform="translate(-60.5390625, -14.234375)">
+                      <rect></rect>
+                      <foreignObject height="28.46875" width="121.078125">
+                        <div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml">
+                          <span class="nodeLabel">AI Agent / Client</span>
+                        </div>
+                      </foreignObject>
+                    </g>
+                  </g>
+                  <g class="node default default flowchart-label" data-id="Common" data-node="true" id="flowchart-Common-71" transform="translate(529.5546875, 115.203125)">
+                    <rect class="basic label-container" height="43.46875" rx="0" ry="0" style="" width="202.171875" x="-101.0859375" y="-21.734375"></rect>
+                    <g class="label" style="" transform="translate(-93.5859375, -14.234375)">
+                      <rect></rect>
+                      <foreignObject height="28.46875" width="187.171875">
+                        <div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml">
+                          <span class="nodeLabel">FastAPI Common Service</span>
+                        </div>
+                      </foreignObject>
+                    </g>
+                  </g>
+                  <g class="node default default flowchart-label" data-id="Auth" data-node="true" id="flowchart-Auth-73" transform="translate(110.890625, 208.671875)">
+                    <rect class="basic label-container" height="43.46875" rx="0" ry="0" style="" width="221.78125" x="-110.890625" y="-21.734375"></rect>
+                    <g class="label" style="" transform="translate(-103.390625, -14.234375)">
+                      <rect></rect>
+                      <foreignObject height="28.46875" width="206.78125">
+                        <div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml">
+                          <span class="nodeLabel">Auth / Token / User Context</span>
+                        </div>
+                      </foreignObject>
+                    </g>
+                  </g>
+                  <g class="node default default flowchart-label" data-id="Log" data-node="true" id="flowchart-Log-75" transform="translate(395.6953125, 208.671875)">
+                    <rect class="basic label-container" height="43.46875" rx="0" ry="0" style="" width="247.828125" x="-123.9140625" y="-21.734375"></rect>
+                    <g class="label" style="" transform="translate(-116.4140625, -14.234375)">
+                      <rect></rect>
+                      <foreignObject height="28.46875" width="232.828125">
+                        <div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml">
+                          <span class="nodeLabel">Trace / Logging / Request State</span>
+                        </div>
+                      </foreignObject>
+                    </g>
+                  </g>
+                  <g class="node default default flowchart-label" data-id="MCP1" data-node="true" id="flowchart-MCP1-77" transform="translate(663.4140625, 208.671875)">
+                    <rect class="basic label-container" height="43.46875" rx="0" ry="0" style="" width="187.609375" x="-93.8046875" y="-21.734375"></rect>
+                    <g class="label" style="" transform="translate(-86.3046875, -14.234375)">
+                      <rect></rect>
+                      <foreignObject height="28.46875" width="172.609375">
+                        <div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml">
+                          <span class="nodeLabel">FastMCP - Mail / Teams</span>
+                        </div>
+                      </foreignObject>
+                    </g>
+                  </g>
+                  <g class="node default default flowchart-label" data-id="MCP2" data-node="true" id="flowchart-MCP2-79" transform="translate(916.8125, 208.671875)">
+                    <rect class="basic label-container" height="43.46875" rx="0" ry="0" style="" width="219.1875" x="-109.59375" y="-21.734375"></rect>
+                    <g class="label" style="" transform="translate(-102.09375, -14.234375)">
+                      <rect></rect>
+                      <foreignObject height="28.46875" width="204.1875">
+                        <div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml">
+                          <span class="nodeLabel">FastMCP - Calendar / To Do</span>
+                        </div>
+                      </foreignObject>
+                    </g>
+                  </g>
+                  <g class="node default default flowchart-label" data-id="Graph1" data-node="true" id="flowchart-Graph1-81" transform="translate(663.4140625, 302.140625)">
+                    <rect class="basic label-container" height="43.46875" rx="0" ry="0" style="" width="134.375" x="-67.1875" y="-21.734375"></rect>
+                    <g class="label" style="" transform="translate(-59.6875, -14.234375)">
+                      <rect></rect>
+                      <foreignObject height="28.46875" width="119.375">
+                        <div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml">
+                          <span class="nodeLabel">Microsoft Graph</span>
+                        </div>
+                      </foreignObject>
+                    </g>
+                  </g>
+                  <g class="node default default flowchart-label" data-id="Graph2" data-node="true" id="flowchart-Graph2-83" transform="translate(916.8125, 302.140625)">
+                    <rect class="basic label-container" height="43.46875" rx="0" ry="0" style="" width="134.375" x="-67.1875" y="-21.734375"></rect>
+                    <g class="label" style="" transform="translate(-59.6875, -14.234375)">
+                      <rect></rect>
+                      <foreignObject height="28.46875" width="119.375">
+                        <div style="display: inline-block; white-space: nowrap;" xmlns="http://www.w3.org/1999/xhtml">
+                          <span class="nodeLabel">Microsoft Graph</span>
+                        </div>
+                      </foreignObject>
+                    </g>
+                  </g>
+                </g>
+              </g>
+            </g>
+          </svg></div>
+      </div>
+      <p class="caption">Figure 4. 공통부와 도메인별 MCP 서버 분리 구조</p>
+      <pre class="code"># Representative Architecture Idea (sanitized)
+# common (FastAPI)
+app = FastAPI()
+app.add_middleware(HttpMiddleware)
+app.add_middleware(HttpLoggingASGIMiddleware)
+app.add_middleware(MCPLoggingMiddleware)
+
+# domain MCPs (FastMCP)
+mail_mcp = FastMCP(name="mail-teams-mcp")
+calendar_mcp = FastMCP(name="calendar-todo-mcp")
+
+# common context
+request.state.trace_id = get_or_create_trace_id(headers)
+request.state.user_token = headers.get("mcp_user_token")
+request.state.user_info = lazy_decode_if_needed(request.state.user_token)</pre>
+      <div class="figure-slot tall">
+        <div class="image-frame">
+          <img src="./captures/05_mcp.png" alt="MCP 아키텍처" class="content-image">
+          <div class="caption">MCP 아키텍처</div>
+        </div>
+      </div>
+    </section>
+    <section class="page" id="mcp-logging">
+      <span class="chapter-label">4.4 Observability</span>
+      <h2>4-4. 요청 상태, 로깅, 추적성 설계</h2>
+      <p>
+        MCP Platform의 강점은 기능 목록보다도 추적성에 있습니다. 요청 헤더에서 `x-request-id`와 `mcp_user_token`을 읽어 `request.state`에 담고,
+        도구 실행 과정 전체를 동일한 trace_id로 연결합니다. 이 구조는 단일 요청이 어떤 Tool을 호출했고, Graph API까지 어떻게 흘러갔는지 한 번에 추적할 수 있게 합니다.
+      </p>
+      <div class="ascii-box">
+        <pre>HTTP Header x-request-id (없으면 생성)
+   │
+   ├─ [http_request]  로그
+   ├─ [mcp_tool_call] 로그
+   └─ [GraphAPI Request] 로그
+           │
+           └─ 응답 헤더 x-request-id 로 반환
+        </pre>
+      </div>
+      <p>또한 사용자 토큰을 요청 초기에 모두 해석하지 않고, 실제 Tool 실행 시점에 한 번만 Lazy 파싱한 뒤 state에 캐시하는 방식은 효율성과 구조의 명확성을 함께 확보합니다. 각 Tool 함수는
+        이메일과 회사코드를 다시 파싱하지 않고 state의 저장된 정보로부터 꺼내 사용할 수 있습니다.</p>
+      <pre class="code">def resolve_email(explicit_email: str | None, user_info, default_email: str | None):
+    if explicit_email:
+        return explicit_email
+    if user_info and user_info.email:
+        return user_info.email
+    return default_email
+
+async def before_tool_call(request):
+    if not getattr(request.state, "user_info", None):
+        request.state.user_info = lazy_decode_user_token(request.state.user_token)
+    logger.info("[mcp_tool_call] trace_id=%s tool=%s", request.state.trace_id, request.url.path)
+
+@calendar_mcp.tool()
+async def list_calendar(...):
+    email = resolve_email(email, request.state.user_info, DEFAULT_EMAIL)
+    return await graph_calendar_client.list_events(email=email, ...)</pre>
+      <ul>
+      </ul>
+      <div class="figure-slot short">
+        <div class="image-frame">
+          <img src="./captures/06_tool_log.png" alt="호출 로그" class="content-image">
+          <div class="caption">Agent에서 MCP Tool 호출 로깅 (DB)</div>
+        </div>
+      </div>
+      <div class="figure-slot short">
+        <div class="image-frame">
+          <img src="./captures/07. mcp_logging.png" alt="MCP tool 호출 로깅 미들웨어 구조" class="content-image">
+          <div class="caption">MCP tool 호출 로깅 미들웨어 구조</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="chapter-rag">
+      <span class="chapter-label">Project III</span>
+      <h2>5. 차량 매뉴얼 문서 검색형 RAG PoC</h2>
+      <p>세 번째 프로젝트는 차량 매뉴얼을 대상으로 한 문서 검색형 RAG PoC입니다. 이번 장은 첨부된 코드 파일을 기준으로만 설명합니다. 별도의 제품 소개나 외부 설명 없이, 실제 파이썬 스크립트에서
+        확인되는 구현 흐름을 그대로 포트폴리오 언어로 정리했습니다.</p>
+      <p>이 PoC의 구조는 비교적 명확합니다. PDF를 의미 단위 chunk로 파싱하고, 제목·본문·표 내용을 임베딩 가능한 텍스트로 변환한 뒤, 모델명 필터 기반으로 검색 가능한 저장소에 적재하고,
+        최종적으로 질의 임베딩과 키워드 기반 하이브리드 검색을 수행합니다.</p>
+    </section>
+    <section class="page" id="rag-problem">
+      <span class="chapter-label">5.1 Problem</span>
+      <h2>5-1. 문제 정의</h2>
+      <p>
+        차량 매뉴얼은 단순 텍스트 문서가 아닙니다. 본문 외에도 표, 제목 구조, 페이지 번호, 헤더·푸터, 중복 문구가 섞여 있습니다.
+        따라서 문서를 그대로 임베딩하면 검색 품질이 떨어질 수 있습니다. 이 PoC는 먼저 <strong>문서를 검색 친화적인 구조로 재구성</strong>하는 데 초점을 둡니다.
+      </p>
+      <div class="card-grid">
+        <div class="card">
+          <h3 style="margin-top:0;">문제 1</h3>
+          <p>표가 텍스트와 섞여 추출되면 같은 내용이 중복 저장될 수 있다.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top:0;">문제 2</h3>
+          <p>헤더·푸터·페이지 번호는 검색에 노이즈가 된다.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top:0;">문제 3</h3>
+          <p>제목 구조를 반영하지 않으면 답변의 문맥성이 약해진다.</p>
+        </div>
+      </div>
+    </section>
+    <section class="page" id="rag-parser">
+      <span class="chapter-label">5.2 Parser</span>
+      <h2>5-2. PDF 파싱과 청킹 전략</h2>
+      <p>
+        `AdvancedManualParser`는 PyMuPDF를 이용해 PDF를 열고, 각 페이지를 순회하면서 표와 텍스트를 분리 추출합니다.
+        핵심은 표를 먼저 Markdown으로 변환하고, 해당 표 영역의 bbox를 기록해 이후 텍스트 블록 추출 시 중복을 방지하는 점입니다.
+      </p>
+      <pre class="code"># Representative Parser Logic (sanitized from AdvancedManualParser)
+class AdvancedManualParser:
+    HEADING_MIN_SIZE = 11.0
+    MARGIN_TOP = 50
+    MARGIN_BOTTOM = 50
+
+    def parse_page(self, page_num):
+        page = self.doc[page_num]
+        md_tables, table_bboxes = self.extract_tables_to_markdown(page)
+        blocks = page.get_text("dict", sort=True)["blocks"]
+
+        current_chunk = {"page": page_num + 1, "heading": "Intro/General", "content": [], "tables": []}
+
+        for block in blocks:
+            if "image" in block:
+                continue
+            block_bbox = fitz.Rect(block["bbox"])
+            if block_bbox.y1 &lt; self.MARGIN_TOP or block_bbox.y0 &gt; (page.rect.height - self.MARGIN_BOTTOM):
+                continue
+            if any(block_bbox.intersects(tb) for tb in table_bboxes):
+                continue
+
+            # 글자 크기 기준으로 제목/본문 판별
+            ...</pre>
+      <h3>핵심 포인트</h3>
+      <ul>
+        <li>표를 단순 텍스트로 흩뜨리지 않고 Markdown 구조로 보존함</li>
+        <li>헤더/푸터 제거로 검색 노이즈를 줄임</li>
+        <li>글자 크기 기준으로 제목을 감지해 문맥을 보존한 Chunk 전략</li>
+      </ul>
+      <div class="figure-slot short">
+        <div class="image-frame" style="max-width: 50%; margin: 0 auto;">
+          <img src="./captures/차량_매뉴얼_파싱전.png" alt="차량 매뉴얼 파싱 전" class="content-image">
+          <div class="caption">차량 매뉴얼 파싱 전</div>
+        </div>
+      </div>
+      <div class="figure-slot short">
+        <div class="image-frame">
+          <img src="./captures/차량_메뉴얼_임베딩.png" alt="차량 매뉴얼 임베딩 적재 후(DB)" class="content-image">
+          <div class="caption">차량 매뉴얼 임베딩 적재 후(DB)</div>
+        </div>
+      </div>
+    </section>
+    <section class="page" id="rag-embedding">
+      <span class="chapter-label">5.3 Embedding Pipeline</span>
+      <h2>5-3. 임베딩 적재</h2>
+      <p>
+        적재 스크립트는 파싱된 chunk를 제목 + 본문 + 표 내용으로 합친 뒤, `multilingual-e5-large` 모델로 임베딩합니다.
+        여기서 e5 계열 모델 특성에 맞춰 문서 임베딩 시 `passage:` 접두어를 붙였습니다.
+      </p>
+      <pre class="code"># Representative Embedding Logic (sanitized)
+def generate_embedding_text(chunk):
+    content_str = " ".join(chunk["content"])
+    table_str = "\n".join(chunk["tables"]) if chunk["tables"] else ""
+    full_text = f"passage: 제목: {chunk['heading']} 내용: {content_str} {table_str}"
+    return full_text.strip()
+
+for chunk in chunks:
+    text_to_embed = generate_embedding_text(chunk)
+    vector = model.encode(text_to_embed).tolist()
+    row = {
+        "model_name": TARGET_MODEL_NAME,
+        "heading": chunk["heading"],
+        "content": " ".join(chunk["content"]),
+        "page_num": chunk["page"],
+        "metadata": {"tables": chunk["tables"]},
+        "embedding": vector,
+    }
+    batch_data.append(row)
+    # 50건 단위 업로드</pre>
+      <p>
+        또한 차량 모델명을 기준으로 필터링할 수 있도록 `model_name`을 임베딩과 함께 저장하고, 50건씩 배치 업로드하는 방식으로 대량 적재 부담을 줄였습니다.
+        이 구조는 PoC 단계에서는 단순하지만, 이후 모델별 문서군이 늘어날 때 상당히 실용적인 설계입니다.
+      </p>
+    </section>
+    <section class="page" id="rag-search">
+      <span class="chapter-label">5.4 Search</span>
+      <h2>5-4. 하이브리드 검색 설계</h2>
+      <p>
+        검색 스크립트는 질의에 대해 `query:` 접두어를 붙여 임베딩을 생성하고, 동시에 원문 질의를 키워드 검색용 텍스트로 전달합니다.
+        그리고 `full_text_weight`와 `semantic_weight`를 분리해 의미 기반 검색 비중을 더 높게 주고 있습니다.
+      </p>
+      <pre class="code"># Representative Hybrid Search Logic (sanitized)
+def search_hybrid(user_query, top_k=3):
+    query_prefix = f"query: {user_query}"
+    query_vector = model.encode(query_prefix).tolist()
+
+    params = {
+        "query_text": user_query,
+        "query_embedding": query_vector,
+        "match_count": top_k,
+        "filter_model": TARGET_MODEL_NAME,
+        "full_text_weight": 1.0,
+        "semantic_weight": 2.0,
+    }
+
+    response = supabase.rpc("hybrid_search", params).execute()
+    return response.data</pre>
+      <div class="two-col">
+        <div class="card">
+          <h3 style="margin-top:0;">이 검색의 장점</h3>
+          <ul>
+            <li>정확한 키워드 매칭과 의미 유사도를 동시에 고려</li>
+            <li>차량 모델별 필터링이 가능</li>
+            <li>결과를 `heading` + `page_num` 단위로 보여줄 수 있어 문맥 설명이 쉬움</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3 style="margin-top:0;">남아 있는 과제</h3>
+          <ul>
+            <li>검색 결과 재정렬(re-ranking) 여부 검토</li>
+            <li>질의 유형별 가중치 튜닝 자동화</li>
+            <li>표 내용 요약과 본문 요약을 분리하는 후처리</li>
+          </ul>
+        </div>
+      </div>
+      <div class="figure-slot short">
+        <div class="image-frame">
+          <img src="./captures/차량_매뉴얼_검색결과.png" alt="차량 매뉴얼 검색결과" class="content-image">
+          <div class="caption">차량 매뉴얼 검색결과</div>
+        </div>
+      </div>
+    </section>
+    <section class="page" id="rag-learnings">
+      <span class="chapter-label">5.5 Learnings</span>
+      <h2>5-5. 결과, 한계, 확장 아이디어</h2>
+      <p>
+        이 PoC는 “RAG를 붙였다” 수준이 아니라, 문서를 검색 가능한 지식 단위로 바꾸기 위한 전처리 작업이 얼마나 중요한지 보여줍니다.
+        특히 차량 매뉴얼처럼 구조가 복합적인 문서는 파서 품질이 검색 품질에 그대로 연결됩니다.
+      </p>
+      <p>
+        향후 확장 방향으로는 다음을 생각할 수 있습니다. 첫째, 사용자 질문을 질의 유형별로 분류해 검색 전략을 다르게 적용하는 것,
+        둘째, 결과 chunk를 그대로 보여주는 대신 답변 생성 단계에서 문맥 재조합을 넣는 것, 셋째, 이미지/도표 이해가 필요한 경우 OCR이나 별도 멀티모달 경로를 추가하는 것입니다.
+      </p>
+      <div class="quote-box">
+        <p>
+          이 프로젝트는 문서 검색형 RAG에서 “임베딩 모델 선택”보다 먼저, <strong>문서를 어떤 단위로 잘라서 어떤 형태로 저장할 것인가</strong>가 핵심이라는 점을 잘 보여줍니다.
+        </p>
+      </div>
+    </section>
+    <section class="page" id="summary">
+      <span class="chapter-label">Conclusion</span>
+      <h2>6. 종합 정리: 구현하고 싶은 엔지니어링 가치</h2>
+      <p>
+        이번 포트폴리오에서 한 가지만 남긴다면, 저는 새로운 AI 프레임워크를 빠르게 써보는 개발자이기도 하지만,
+        그보다는 <strong>실제로 돌아가는 서비스를 만드는 일이 더 몸에 배어 있는 엔지니어</strong>입니다.
+      </p>
+      <p>
+        폐쇄망 Enterprise AI Agent 프로젝트에서는 상태, 계획, 도구 실행, Prompt, 안전성 검증, 스트리밍 응답, 업무 적용 구조를 하나의 운영 시스템으로 바라보는 관점을 보여주었습니다.
+        Microsoft 365 MCP 프로젝트에서는 공통 인증과 로깅, 토큰 컨텍스트, 권한 분리 설계를 통해 외부 시스템 연동을 플랫폼화하는 능력을 보여주었습니다.
+        차량 매뉴얼 RAG PoC에서는 문서를 파싱하고 임베딩 적재와 하이브리드 검색까지 이어지는 문서 기반 AI 파이프라인을 직접 구현했습니다.
+      </p>
+      <p>제가 지향하는 AI Engineer의 역할은 단순한 챗봇 구현보다도, 현장의 데이터와 시스템을 실제로 연결해 행동 가능한 Agent를 만드는 데 가깝다고 생각합니다. 저의 강점은 바로 이 지점, 즉
+        업무 시스템 이해와 백엔드·운영 안정성, 그리고 AI Agent 구조화 경험이 한데 연결된다는 데 있습니다.</p>
+      <div class="card-grid">
+        <div class="card">
+          <h3 style="margin-top:0;">제가 잘하는 일</h3>
+          <p>복잡한 요구사항을 워크플로우, API, 데이터 구조로 바꾸고 운영 가능한 시스템으로 정리하는 일</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top:0;">제가 기여하고 싶은 일</h3>
+          <p>LLM과 Agent를 현장 데이터·업무 시스템·운영 제약과 연결해 실효성 있는 AI로 만드는 일</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top:0;">제가 지키고 싶은 원칙</h3>
+          <p>AI 기능은 멋있게 보이는 것보다, 실제 사용자와 운영 환경에서 신뢰 가능해야 한다는 원칙</p>
+        </div>
+      </div>
+    </section>
+    <section class="page" id="appendix">
+      <span class="chapter-label">Appendix</span>
+      <h2>부록</h2>
+      <h3>부록 A. 개인 포트폴리오 홈페이지</h3>
+      <ul class="appendix-list">
+        <li><a href="https://leodev901.github.io/portfolio" rel="noreferrer" target="_blank">https://leodev901.github.io/portfolio</a>&nbsp;— 개인 포트폴리오 사이트</li>
+      </ul>
+      <h3>부록 B. GitHub 공개 저장소 링크</h3>
+      <ul class="appendix-list">
+        <li><a href="https://github.com/leodev901/mcp-mail" rel="noreferrer" target="_blank">mcp-mail</a> — Mail / Teams
+          도메인과 MCP 공통 소스(cmn)를 포함한 MCP 서버</li>
+        <li><a href="https://github.com/leodev901/mcp-sample" rel="noreferrer" target="_blank">mcp-sample</a> — Calendar
+          / To Do 중심 MCP 서버</li>
+        <li><a href="https://github.com/leodev901/llm-multi-agent-backend" rel="noreferrer" target="_blank">llm-multi-agent-backend</a> — 개인 Multi-Agent 챗봇 백엔드</li>
+        <li><a href="https://github.com/leodev901/health-chat" rel="noreferrer" target="_blank">health-chat</a> LLM을 사용한
+          의도분류 및 Langgraph 샘플 Health Care 챗봇</li>
+      </ul>
+
+    </section>
+  </main>
+  <script>
+    (function () {
+      const STORAGE_KEY = 'interx_portfolio_editable_v1';
+      const main = document.querySelector('main.document');
+      const pages = () => Array.from(document.querySelectorAll('.page'));
+      const editToggle = document.getElementById('editToggle');
+      const saveLocal = document.getElementById('saveLocal');
+      const exportHtml = document.getElementById('exportHtml');
+      const printPdf = document.getElementById('printPdf');
+      const resetLocal = document.getElementById('resetLocal');
+      let editing = false;
+
+      function setEditing(flag) {
+        editing = flag;
+        document.body.classList.toggle('editing', flag);
+        pages().forEach(p => p.setAttribute('contenteditable', flag ? 'true' : 'false'));
+        editToggle.textContent = flag ? '편집 종료' : '편집 모드';
+      }
+
+      function save() {
+        localStorage.setItem(STORAGE_KEY, main.innerHTML);
+      }
+
+      function load() {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved) main.innerHTML = saved;
+      }
+
+      function exportCurrentHtml() {
+        const clone = document.documentElement.cloneNode(true);
+        clone.querySelectorAll('.toolbar').forEach(el => el.remove());
+        clone.querySelectorAll('.page').forEach(el => el.removeAttribute('contenteditable'));
+        const htmlText = '<!DOCTYPE html>' + clone.outerHTML;
+        const blob = new Blob([htmlText], { type: 'text/html;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'interx_portfolio_editable_printsafe.html';
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        URL.revokeObjectURL(url);
+      }
+
+      load();
+      setEditing(false);
+
+      editToggle.addEventListener('click', () => setEditing(!editing));
+      saveLocal.addEventListener('click', save);
+      exportHtml.addEventListener('click', exportCurrentHtml);
+      printPdf.addEventListener('click', () => window.print());
+      resetLocal.addEventListener('click', () => {
+        localStorage.removeItem(STORAGE_KEY);
+        location.reload();
+      });
+      main.addEventListener('input', () => { if (editing) save(); });
+    })();
+  </script>
+
+
+
+
+
+
+</body></html>

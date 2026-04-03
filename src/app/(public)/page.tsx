@@ -26,6 +26,15 @@ export default function Home() {
               <Link href="/projects" className="inline-flex h-12 items-center justify-center rounded-full border border-slate-200 bg-white px-8 text-sm font-semibold text-slate-900 transition-colors hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 dark:hover:bg-slate-700">
                 프로젝트 이력
               </Link>
+              {/* PDF 문서 다운로드 버튼 */}
+              <a 
+                href="/files/임진수_AI_Agent_개발_포트폴리오.pdf" 
+                download 
+                className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-8 text-sm font-semibold text-slate-900 transition-colors hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 dark:hover:bg-slate-700"
+              >
+                <span className="material-symbols-outlined text-[18px]">download</span>
+                포트폴리오 문서 다운로드
+              </a>
             </div>
           </div>
         </section>

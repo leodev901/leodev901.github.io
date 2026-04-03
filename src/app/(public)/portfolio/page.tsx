@@ -16,6 +16,31 @@ export default function Projects() {
                         각 프로젝트 카드를 클릭하시면 <strong className="font-semibold text-slate-900 dark:text-white">실제 동작을 테스트해 볼 수 있는 라이브 사이트</strong>로 연결되어,<br className="hidden sm:block" />
                         AI 에이전트 서비스가 어떻게 유기적으로 동작하는지 직접 경험해 보실 수 있습니다.
                     </p>
+
+                    {/* 포트폴리오 문서 배너 */}
+                    <div className="mt-8 flex flex-col md:flex-row items-center justify-between gap-6 rounded-2xl bg-gradient-to-r from-slate-50 to-indigo-50/50 p-6 sm:p-8 border border-indigo-100/50 shadow-inner dark:from-slate-800/80 dark:to-indigo-900/20 dark:border-indigo-800/30">
+                        <div className="flex-1 space-y-3">
+                            <div className="inline-flex items-center gap-1.5 rounded-md bg-indigo-100/80 px-2 py-1 text-xs font-bold text-indigo-800 dark:bg-indigo-900/50 dark:text-indigo-300">
+                                <span className="material-symbols-outlined text-[14px]">article</span> AI Agent 개발 경험 문서 다운로드
+                            </div>
+                            <h2 className="text-xl font-bold text-slate-900 dark:text-white break-keep">실무형 AI Agent 시스템 설계와 구현 과정</h2>
+                            <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed break-keep">
+                                <strong>Enterprise AI Agent 파이프라인</strong>(LangGraph Workflow, Dynamic Prompt),
+                                <strong>Microsoft 365 MCP Platform 아키텍처</strong> 설계,
+                                그리고 파싱부터 구축까지 직접 구현한 <strong>하이브리드 RAG PoC</strong> 등 구체적인 문제 해결 과정과 전체 기술 이력이 담겨있는 문서입니다.
+                            </p>
+                        </div>
+                        <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto shrink-0 mt-4 md:mt-0">
+                            <a href="/files/임진수_AI_Agent_개발_포트폴리오.html" target="_blank" rel="noopener noreferrer" className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-indigo-600 px-6 text-sm font-semibold text-white shadow-sm transition-all hover:bg-indigo-700 hover:shadow-md hover:shadow-indigo-200 dark:hover:shadow-indigo-900/50 w-full sm:w-auto">
+                                <span className="material-symbols-outlined text-[18px]">open_in_new</span>
+                                웹 브라우저에서 보기
+                            </a>
+                            <a href="/files/임진수_AI_Agent_개발_포트폴리오.pdf" download className="inline-flex h-12 items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-6 text-sm font-semibold text-slate-700 shadow-sm transition-colors hover:bg-slate-50 hover:text-slate-900 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700 dark:hover:text-white w-full sm:w-auto">
+                                <span className="material-symbols-outlined text-[18px]">download</span>
+                                PDF 다운로드
+                            </a>
+                        </div>
+                    </div>
                 </div>
                 <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
                     {/* Multi-Agent Chat Service Project Entry */}
@@ -55,7 +80,7 @@ export default function Projects() {
                                     </div>
                                 </div>
                                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                             </div>
+                            </div>
                         </div>
                         <div className="flex flex-1 flex-col p-6 sm:p-8">
                             <div className="mb-4">
