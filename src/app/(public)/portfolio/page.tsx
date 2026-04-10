@@ -1,4 +1,3 @@
-import Link from "next/link";
 import ComingSoonAlert from "@/components/ComingSoonAlert";
 
 export const metadata = {
@@ -43,6 +42,92 @@ export default function Projects() {
                     </div>
                 </div>
                 <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+                    <a href="https://engineer-render-boom-fundamental.trycloudflare.com/" target="_blank" rel="noopener noreferrer" className="group relative flex flex-col overflow-hidden rounded-xl border border-emerald-200/80 bg-white shadow-[0_16px_40px_-18px_rgba(16,185,129,0.45)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_60px_-20px_rgba(16,185,129,0.45)] dark:border-emerald-900/60 dark:bg-slate-900">
+                        <div className="aspect-video w-full overflow-hidden bg-gradient-to-br from-emerald-50 via-teal-50/80 to-white dark:from-slate-800 dark:via-slate-900 dark:to-slate-900 relative">
+                            <div className="absolute left-4 top-4 z-10 inline-flex items-center gap-1.5 rounded-full border border-emerald-200 bg-white/90 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-emerald-700 shadow-sm backdrop-blur dark:border-emerald-800 dark:bg-slate-900/90 dark:text-emerald-300">
+                                <span className="material-symbols-outlined text-[12px]">auto_awesome</span>
+                                Featured Project
+                            </div>
+                            <div className="absolute inset-0 flex items-center justify-center p-4">
+                                <div className="w-full h-full bg-white/95 dark:bg-slate-900 rounded-lg shadow-sm border border-emerald-100 dark:border-slate-700 overflow-hidden flex flex-col group-hover:scale-105 transition-transform duration-500">
+                                    <div className="h-8 border-b border-slate-100 dark:border-slate-800 flex items-center px-3 justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <span className="material-symbols-outlined text-[14px] text-emerald-700 dark:text-emerald-500">directions_car</span>
+                                            <div className="text-[10px] font-bold text-emerald-900 dark:text-emerald-400">차량 매뉴얼 AI 어시스턴트</div>
+                                        </div>
+                                        <div className="px-1.5 py-0.5 rounded bg-emerald-100 text-[8px] font-bold text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300">
+                                            RAG
+                                        </div>
+                                    </div>
+                                    <div className="flex-1 p-3 flex gap-3 bg-slate-50/70 dark:bg-slate-900/60">
+                                        <div className="w-24 shrink-0 rounded-lg border border-slate-200 bg-white p-2 shadow-sm dark:border-slate-700 dark:bg-slate-800">
+                                            <div className="mb-2 text-[8px] font-bold uppercase tracking-wider text-slate-400">Vehicle</div>
+                                            <div className="space-y-1.5">
+                                                <div className="rounded-md bg-emerald-50 px-2 py-1 text-[8px] font-medium text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300">Hyundai</div>
+                                                <div className="rounded-md bg-slate-100 px-2 py-1 text-[8px] font-medium text-slate-600 dark:bg-slate-700 dark:text-slate-300">Tucson</div>
+                                                <div className="rounded-md bg-slate-100 px-2 py-1 text-[8px] font-medium text-slate-600 dark:bg-slate-700 dark:text-slate-300">Hybrid</div>
+                                            </div>
+                                        </div>
+                                        <div className="flex-1 flex flex-col gap-2">
+                                            <div className="self-start rounded-2xl bg-white px-3 py-2 text-[8px] leading-relaxed text-slate-600 shadow-sm border border-slate-200 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300">
+                                                스마트키 배터리 교체 방법 알려줘
+                                            </div>
+                                            <div className="self-start rounded-2xl bg-emerald-100/80 px-3 py-2 text-[8px] leading-relaxed text-emerald-900 shadow-sm border border-emerald-200 dark:border-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-200">
+                                                매뉴얼 기준 절차를 단계별로 안내하고 관련 페이지를 함께 제공합니다.
+                                            </div>
+                                            <div className="mt-auto flex items-center gap-2 text-[7px] text-slate-400 font-mono">
+                                                <span>Hybrid RAG</span>
+                                                <span>•</span>
+                                                <span>SSE Streaming</span>
+                                                <span>•</span>
+                                                <span>pgvector</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="h-6 border-t border-slate-100 dark:border-slate-800 flex items-center px-3 bg-white dark:bg-slate-900">
+                                        <div className="text-[7px] text-slate-400 font-mono">FastAPI | Inference Server | Next.js App Router</div>
+                                    </div>
+                                </div>
+                                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            </div>
+                        </div>
+                        <div className="flex flex-1 flex-col p-6 sm:p-8">
+                            <div className="mb-4">
+                                <h3 className="mb-2 text-xl font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">차량 매뉴얼 AI 어시스턴트</h3>
+                                <p className="text-sm font-medium text-slate-500 dark:text-slate-400">차량 매뉴얼 PDF를 하이브리드 RAG로 검색하고, 실시간 스트리밍으로 답변하는 차량 전용 AI 어시스턴트</p>
+                            </div>
+                            <div className="mb-6 flex-1">
+                                <ul className="space-y-2 text-sm text-slate-600 dark:text-slate-300">
+                                    <li className="flex items-start gap-2">
+                                        <span className="material-symbols-outlined mt-0.5 text-[18px] text-primary">check_circle</span>
+                                        <span>FastAPI 기반 `Router → Service → Repository` 계층형 백엔드를 설계하고 차량 질의 전용 API를 직접 구현</span>
+                                    </li>
+                                    <li className="flex items-start gap-2">
+                                        <span className="material-symbols-outlined mt-0.5 text-[18px] text-primary">check_circle</span>
+                                        <span>Supabase `pgvector` RPC를 활용해 벡터 검색과 Full-Text Search를 결합한 하이브리드 RAG 검색 파이프라인 구축</span>
+                                    </li>
+                                    <li className="flex items-start gap-2">
+                                        <span className="material-symbols-outlined mt-0.5 text-[18px] text-primary">check_circle</span>
+                                        <span>`multilingual-e5-large` 임베딩 서버를 별도 마이크로서비스로 분리해 추론 부하와 메인 API를 분산하는 MSA 구조 설계</span>
+                                    </li>
+                                    <li className="flex items-start gap-2">
+                                        <span className="material-symbols-outlined mt-0.5 text-[18px] text-primary">check_circle</span>
+                                        <span>PDF 폰트 구조 분석, 표 보존, 청킹 전략을 포함한 문서 파이프라인을 구성해 차량 매뉴얼 데이터 품질을 직접 정제</span>
+                                    </li>
+                                    <li className="flex items-start gap-2">
+                                        <span className="material-symbols-outlined mt-0.5 text-[18px] text-primary">check_circle</span>
+                                        <span>Next.js App Router 프론트엔드에 차량 선택 위젯과 SSE 스트리밍 채팅 UX를 연결해 실제 서비스형 사용자 경험 완성</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div className="flex flex-wrap gap-2 pt-4 border-t border-slate-100 dark:border-slate-800">
+                                {['FastAPI', 'Supabase', 'pgvector', 'Hybrid RAG', 'SentenceTransformers', 'SSE', 'Next.js', 'MSA'].map(tag => (
+                                    <span key={tag} className="inline-flex items-center rounded-md bg-slate-100 px-2.5 py-1 text-xs font-medium text-slate-600 dark:bg-slate-800 dark:text-slate-400">{tag}</span>
+                                ))}
+                            </div>
+                        </div>
+                    </a>
+
                     {/* Multi-Agent Chat Service Project Entry */}
                     <a href="https://shots-fashion-processors-dining.trycloudflare.com/" target="_blank" rel="noopener noreferrer" className="group relative flex flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900">
                         <div className="aspect-video w-full overflow-hidden bg-indigo-50/50 dark:bg-slate-800 relative">
