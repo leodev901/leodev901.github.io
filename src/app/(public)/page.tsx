@@ -29,9 +29,9 @@ export default function Home() {
     {
       title: "차량 매뉴얼 RAG 문서 검색 AI 어시스턴트",
       desc: "차량 매뉴얼 PDF를 하이브리드 RAG로 검색하고, 실시간 스트리밍으로 답변하는 차량 전용 AI 어시스턴트.",
-      href: "/portfolio",
-      imageSrc: "/files/captures/차량_매뉴얼_검색결과.png",
-      imageAlt: "차량 매뉴얼 AI 검색 결과 화면",
+      href: "https://author-delete-lecture-pointed.trycloudflare.com/",
+      imageSrc: "/files/captures/차량_매뉴얼_통합.png",
+      imageAlt: "차량 매뉴얼 AI 어시스턴트 통합 화면",
       badge: "Hybrid RAG",
       badgeIcon: "directions_car",
       badgeClassName: "border-emerald-200 bg-white/90 text-emerald-700 dark:border-emerald-800 dark:bg-slate-900/90 dark:text-emerald-300",
@@ -40,7 +40,7 @@ export default function Home() {
     {
       title: "멀티 에이전트 챗 서비스",
       desc: "검색, 기억, 내부 문서 참고 RAG, 다중 토론 등 최신 에이전트 기법이 통합된 AI 서비스.",
-      href: "/portfolio",
+      href: "https://shots-fashion-processors-dining.trycloudflare.com/",
       imageSrc: "/files/captures/01_site.png",
       imageAlt: "멀티 에이전트 챗 서비스 화면",
       badge: "Multi-Agent",
@@ -52,7 +52,7 @@ export default function Home() {
     {
       title: "헬스케어 AI 챗봇",
       desc: "환자의 병원 이용 편의를 높이기 위해 자연어 질의와 멀티턴 대화를 지원하는 의료 AI 챗봇.",
-      href: "/portfolio",
+      href: "https://yards-appointed-primary-buy.trycloudflare.com/",
       imageSrc: "/portfolio-smart-home-abstract.png",
       imageAlt: "헬스케어 AI 챗봇 프로젝트 비주얼",
       badge: "Healthcare AI",
@@ -140,9 +140,11 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {featuredProjects.map((project, idx) => (
-              <Link
+              <a
                 key={idx}
                 href={project.href}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group flex flex-col rounded-xl border border-slate-200 bg-white transition-all duration-300 hover:-translate-y-1 hover:border-blue-500/50 hover:shadow-[0_0_40px_-10px_rgba(59,130,246,0.25)] focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 dark:border-slate-700 dark:bg-slate-800/50"
               >
                 <div className="aspect-video w-full overflow-hidden rounded-t-xl">
@@ -159,7 +161,7 @@ export default function Home() {
                     ))}
                   </div>
                 </div>
-              </Link>
+              </a>
             ))}
           </div>
 
