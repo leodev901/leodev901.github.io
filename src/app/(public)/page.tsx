@@ -1,6 +1,68 @@
 import Link from "next/link";
 
+function renderFeaturedProjectPreview(project: {
+  imageSrc: string;
+  imageAlt: string;
+  badge: string;
+  badgeIcon: string;
+  badgeClassName: string;
+  imageClassName?: string;
+}) {
+  return (
+    <div className="relative h-full w-full overflow-hidden rounded-t-xl bg-slate-100 dark:bg-slate-800">
+      <img
+        src={project.imageSrc}
+        alt={project.imageAlt}
+        className={`h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105 ${project.imageClassName ?? ""}`}
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/35 via-slate-900/5 to-transparent" />
+      <div className={`absolute left-4 top-4 inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-[10px] font-bold uppercase tracking-[0.18em] shadow-sm backdrop-blur ${project.badgeClassName}`}>
+        <span className="material-symbols-outlined text-[12px]">{project.badgeIcon}</span>
+        {project.badge}
+      </div>
+    </div>
+  );
+}
+
 export default function Home() {
+  const featuredProjects = [
+    {
+      title: "차량 매뉴얼 RAG 문서 검색 AI 어시스턴트",
+      desc: "차량 매뉴얼 PDF를 하이브리드 RAG로 검색하고, 실시간 스트리밍으로 답변하는 차량 전용 AI 어시스턴트.",
+      href: "/portfolio",
+      imageSrc: "/files/captures/차량_매뉴얼_검색결과.png",
+      imageAlt: "차량 매뉴얼 AI 검색 결과 화면",
+      badge: "Hybrid RAG",
+      badgeIcon: "directions_car",
+      badgeClassName: "border-emerald-200 bg-white/90 text-emerald-700 dark:border-emerald-800 dark:bg-slate-900/90 dark:text-emerald-300",
+      tags: ["FastAPI", "Supabase", "Hybrid RAG", "SSE"]
+    },
+    {
+      title: "멀티 에이전트 챗 서비스",
+      desc: "검색, 기억, 내부 문서 참고 RAG, 다중 토론 등 최신 에이전트 기법이 통합된 AI 서비스.",
+      href: "/portfolio",
+      imageSrc: "/files/captures/01_site.png",
+      imageAlt: "멀티 에이전트 챗 서비스 화면",
+      badge: "Multi-Agent",
+      badgeIcon: "hub",
+      badgeClassName: "border-indigo-200 bg-white/90 text-indigo-700 dark:border-indigo-800 dark:bg-slate-900/90 dark:text-indigo-300",
+      imageClassName: "object-center",
+      tags: ["LangChain", "RAG", "Redis", "Multi-Agent"]
+    },
+    {
+      title: "헬스케어 AI 챗봇",
+      desc: "환자의 병원 이용 편의를 높이기 위해 자연어 질의와 멀티턴 대화를 지원하는 의료 AI 챗봇.",
+      href: "/portfolio",
+      imageSrc: "/portfolio-smart-home-abstract.png",
+      imageAlt: "헬스케어 AI 챗봇 프로젝트 비주얼",
+      badge: "Healthcare AI",
+      badgeIcon: "health_and_safety",
+      badgeClassName: "border-sky-200 bg-white/90 text-sky-700 dark:border-sky-800 dark:bg-slate-900/90 dark:text-sky-300",
+      imageClassName: "object-center",
+      tags: ["LangChain", "LangGraph", "LLM", "AI Chatbot"]
+    }
+  ];
+
   return (
     <main className="flex-1 w-full">
       <div className="mx-auto max-w-[1200px] w-full px-6 lg:px-8 py-12 md:py-24 flex flex-col gap-24">
@@ -77,31 +139,14 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                title: "차량 매뉴얼 RAG 문서 검색 AI 어시스턴트",
-                desc: "차량 매뉴얼 PDF를 하이브리드 RAG로 검색하고, 실시간 스트리밍으로 답변하는 차량 전용 AI 어시스턴트.",
-                icon: "directions_car",
-                tags: ["FastAPI", "Supabase", "Hybrid RAG", "SSE"]
-              },
-              {
-                title: "멀티 에이전트 챗 서비스",
-                desc: "검색, 기억, 내부 문서 참고 RAG, 다중 토론 등 최신 에이전트 기법이 통합된 AI 서비스.",
-                icon: "hub",
-                tags: ["LangChain", "RAG", "Redis", "Multi-Agent"]
-              },
-              {
-                title: "헬스케어 AI 챗봇",
-                desc: "환자의 병원 이용 편의를 높이기 위해 자연어 질의와 멀티턴 대화를 지원하는 의료 AI 챗봇.",
-                icon: "health_and_safety",
-                tags: ["LangChain", "LangGraph", "LLM", "AI Chatbot"]
-              }
-            ].map((project, idx) => (
-              <div key={idx} className="group flex flex-col rounded-xl border border-slate-200 bg-white transition-all duration-300 hover:-translate-y-1 hover:border-blue-500/50 hover:shadow-[0_0_40px_-10px_rgba(59,130,246,0.25)] dark:border-slate-700 dark:bg-slate-800/50">
-                <div className="aspect-video w-full rounded-t-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center overflow-hidden transition-colors duration-300 group-hover:bg-blue-50/50 dark:group-hover:bg-blue-900/20">
-                  <div className="text-slate-400">
-                    <span className="material-symbols-outlined text-6xl opacity-20">{project.icon}</span>
-                  </div>
+            {featuredProjects.map((project, idx) => (
+              <Link
+                key={idx}
+                href={project.href}
+                className="group flex flex-col rounded-xl border border-slate-200 bg-white transition-all duration-300 hover:-translate-y-1 hover:border-blue-500/50 hover:shadow-[0_0_40px_-10px_rgba(59,130,246,0.25)] focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 dark:border-slate-700 dark:bg-slate-800/50"
+              >
+                <div className="aspect-video w-full overflow-hidden rounded-t-xl">
+                  {renderFeaturedProjectPreview(project)}
                 </div>
                 <div className="flex flex-1 flex-col p-6">
                   <h3 className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">{project.title}</h3>
@@ -114,7 +159,7 @@ export default function Home() {
                     ))}
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
 
