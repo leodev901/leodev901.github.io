@@ -1,89 +1,14 @@
-import Link from 'next/link';
+import { Suspense } from "react";
+import StudioBlogEditorPageClient from "@/app/components/studio/StudioBlogEditorPageClient";
 
 export const metadata = {
-  title: '새 포스트 작성 - CMS Studio',
+  title: "블로그 포스트 작성 - CMS Studio",
 };
 
-/**
- * 💡 [학습노트] 에디터 페이지 (새 글 작성)
- * URL: /studio/editor
- * 
- * 대시보드와 달리 사이드바가 없는 "전체 화면(Full-screen)" 뷰입니다.
- * (dashboard) 폴더 바깥에 위치하기 때문에, 대시보드의 layout.tsx의 영향을 받지 않습니다.
- * 
- * h-screen과 flex-col 조합을 사용하여 화면 전체 높이를 차지하도록 하고,
- * textarea 영역이 남은 공간을 모두 차지하도록 flex-1을 주었습니다.
- */
-export default function NewEditorPage() {
+export default function StudioBlogEditorPage() {
   return (
-    <div className="flex flex-col h-screen bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased overflow-hidden">
-      
-      {/* 1. Top Action Bar (에디터 전용 상단바) */}
-      <header className="flex h-14 items-center justify-between px-4 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shrink-0">
-        <div className="flex items-center gap-4">
-          <Link href="/studio" className="flex items-center gap-2 text-slate-500 hover:text-primary transition-colors text-sm font-medium">
-            <span className="material-symbols-outlined text-lg">arrow_back</span>
-            목록으로
-          </Link>
-          <div className="h-4 w-px bg-slate-200 dark:bg-slate-800"></div>
-          <div className="flex items-center gap-2">
-            <span className="material-symbols-outlined text-primary text-xl">edit_note</span>
-            <span className="text-sm font-semibold">새로운 블로그 포스트 작성</span>
-          </div>
-        </div>
-        
-        <div className="flex items-center gap-2">
-          <button className="flex items-center gap-2 px-3 py-1.5 text-sm font-medium rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
-            <span className="material-symbols-outlined text-lg">save</span>
-            저장(Draft)
-          </button>
-          <button className="flex items-center gap-2 px-3 py-1.5 text-sm font-medium rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
-            <span className="material-symbols-outlined text-lg">visibility</span>
-            미리보기
-          </button>
-          <button className="flex items-center gap-2 px-4 py-1.5 text-sm font-bold rounded-lg bg-primary text-white hover:bg-primary/90 transition-colors shadow-sm">
-            <span className="material-symbols-outlined text-lg">rocket_launch</span>
-            발행(Publish)
-          </button>
-        </div>
-      </header>
-
-      {/* 2. Main Workspace (에디터 영역) */}
-      <main className="flex flex-1 overflow-hidden">
-        <div className="flex flex-1 overflow-hidden">
-          
-          {/* Left Pane: Markdown Editor */}
-          <div className="flex-1 flex flex-col border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
-            <div className="flex items-center justify-between px-4 py-2 bg-slate-50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-800">
-              <span className="text-xs font-bold uppercase tracking-wider text-slate-500">Editor</span>
-              <div className="flex gap-2">
-                <button className="p-1 text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 rounded transition-colors" title="Bold">
-                  <span className="material-symbols-outlined text-lg">format_bold</span>
-                </button>
-                <button className="p-1 text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 rounded transition-colors" title="Italic">
-                  <span className="material-symbols-outlined text-lg">format_italic</span>
-                </button>
-                <button className="p-1 text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 rounded transition-colors" title="Link">
-                  <span className="material-symbols-outlined text-lg">link</span>
-                </button>
-                <button className="p-1 text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 rounded transition-colors" title="Image">
-                  <span className="material-symbols-outlined text-lg">image</span>
-                </button>
-              </div>
-            </div>
-            
-            {/* 텍스트 입력 영역 */}
-            <textarea 
-              className="flex-1 w-full p-6 bg-transparent border-none focus:ring-0 font-mono text-sm leading-relaxed resize-none text-slate-800 dark:text-slate-300 outline-none" 
-              spellCheck="false"
-              placeholder="# 마크다운 내용 입력..."
-              defaultValue={`# 안녕하세요, 새로운 포스트를 시작하세요\n\n여기에 내용을 작성해보세요. **마크다운** 문법이 실시간으로 지원됩니다.\n\n## 주요 기능들\n\n1. **실시간 프리뷰**: 우측에서 렌더링된 결과를 확인하세요.\n2. **반응형 디자인**: 다양한 화면에서 최적화된 편집 환경을 제공합니다.\n3. **메타데이터 관리**: 우측 사이드바에서 SEO와 태그를 관리하세요.`}
-            />
-          </div>
-          
-          {/* (선택사항) 우측 프리뷰 또는 설정 사이드바가 들어갈 공간을 위해 디자인 템플릿의 여백 유지 */}
-        </div>
-      </main>
-    </div>
+    <Suspense fallback={<div className="p-8 text-sm text-slate-500">에디터를 불러오는 중입니다...</div>}>
+      <StudioBlogEditorPageClient />
+    </Suspense>
   );
 }
