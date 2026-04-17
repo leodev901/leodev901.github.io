@@ -66,33 +66,33 @@ export default function Home() {
   return (
     <main className="flex-1 w-full">
       <div className="mx-auto max-w-[1200px] w-full px-6 lg:px-8 py-12 md:py-24 flex flex-col gap-24">
-        <section className="flex flex-col gap-8 max-w-4xl">
+        <section className="home-hero flex flex-col gap-7 max-w-[860px]">
           <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-medium text-slate-600 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300 w-fit">
             <span className="flex h-2 w-2 rounded-full bg-green-500 animate-pulse"></span>
             Available for new projects
           </div>
           <div className="space-y-4">
-            <h1 className="text-[40px] md:text-[56px] font-extrabold tracking-tight leading-[1.1] mb-6 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-600 animate-gradient-x bg-[length:200%_auto] break-keep">
+            <h1 className="max-w-[720px] text-[24px] md:text-[32px] lg:text-[36px] font-extrabold tracking-[-0.035em] leading-[1.24] mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-500 to-sky-500 animate-gradient-x bg-[length:200%_auto] break-keep">
               엔터프라이즈 운영부터 AI 에이전트까지, 비즈니스 프로세스에 AI를 결합합니다.
             </h1>
-            <p className="text-[18px] md:text-[20px] text-slate-600 dark:text-slate-400 leading-relaxed mb-10 max-w-2xl animate-fade-in-up break-keep">
+            <p className="text-[15px] md:text-[16px] text-slate-600 dark:text-slate-400 leading-7 mb-8 max-w-[700px] animate-fade-in-up break-keep">
               모빌리티 도메인에서의 10년 차 풀스택/DevOps 역량과 최신 기반 AI Agent 구현 기술을 결합하여, 실제 프로덕션 환경에서 견고하게 작동하는 지능형 시스템을 설계합니다.
             </p>
-            <div className="flex flex-wrap gap-4 pt-4">
-              <Link href="/about" className="inline-flex h-12 items-center justify-center rounded-full bg-blue-600 px-8 text-sm font-semibold text-white transition-all hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-200">
+            <div className="flex flex-wrap gap-3 pt-3">
+              <Link href="/about" className="inline-flex h-11 items-center justify-center rounded-full bg-blue-600 px-7 text-sm font-semibold text-white transition-all hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-200">
                 About Me
               </Link>
-              <Link href="/portfolio" className="inline-flex h-12 items-center justify-center rounded-full border border-slate-200 bg-white px-8 text-sm font-semibold text-slate-900 transition-colors hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 dark:hover:bg-slate-700">
+              <Link href="/portfolio" className="inline-flex h-11 items-center justify-center rounded-full border border-slate-200 bg-white px-7 text-sm font-semibold text-slate-900 transition-colors hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 dark:hover:bg-slate-700">
                 포트폴리오 보기
               </Link>
-              <Link href="/projects" className="inline-flex h-12 items-center justify-center rounded-full border border-slate-200 bg-white px-8 text-sm font-semibold text-slate-900 transition-colors hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 dark:hover:bg-slate-700">
+              <Link href="/projects" className="inline-flex h-11 items-center justify-center rounded-full border border-slate-200 bg-white px-7 text-sm font-semibold text-slate-900 transition-colors hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 dark:hover:bg-slate-700">
                 프로젝트 이력
               </Link>
               {/* PDF 문서 다운로드 버튼 */}
               <a 
                 href="/files/임진수_AI_Agent_개발_포트폴리오.pdf" 
                 download 
-                className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-8 text-sm font-semibold text-slate-900 transition-colors hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 dark:hover:bg-slate-700"
+                className="inline-flex h-11 items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-7 text-sm font-semibold text-slate-900 transition-colors hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 dark:hover:bg-slate-700"
               >
                 <span className="material-symbols-outlined text-[18px]">download</span>
                 포트폴리오 문서 다운로드
@@ -101,24 +101,24 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="bg-slate-50/30 dark:bg-slate-900/30 py-24 border-y border-slate-100 dark:border-slate-800">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="group p-8 rounded-2xl border border-slate-100 bg-white dark:bg-slate-900 dark:border-slate-800 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_40px_-10px_rgba(59,130,246,0.3)] hover:border-blue-500/30">
-              <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white group-hover:bg-blue-50 group-hover:text-blue-600 dark:group-hover:bg-blue-900/30 dark:group-hover:text-blue-400 transition-colors">
+        <section className="bg-slate-50/30 dark:bg-slate-900/30 py-20 border-y border-slate-100 dark:border-slate-800">
+          <div className="home-strength-grid grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="home-strength-card group p-7 rounded-2xl border border-slate-100 bg-white dark:bg-slate-900 dark:border-slate-800 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_32px_-14px_rgba(59,130,246,0.22)] hover:border-blue-500/20">
+              <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white group-hover:bg-blue-50 group-hover:text-blue-600 dark:group-hover:bg-blue-900/30 dark:group-hover:text-blue-400 transition-colors">
                 <span className="material-symbols-outlined">settings_suggest</span>
               </div>
               <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">안정적인 엔터프라이즈 운영</h3>
               <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-sm break-keep">대규모 시스템 통합(SI), 데이터 마이그레이션, 계열사 분리(Carve-out) 등 엔터프라이즈 환경에서의 견고한 백엔드 아키텍처 수립 및 유지보수에 강점이 있습니다.</p>
             </div>
-            <div className="group p-8 rounded-2xl border border-slate-100 bg-white dark:bg-slate-900 dark:border-slate-800 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_40px_-10px_rgba(59,130,246,0.3)] hover:border-blue-500/30">
-              <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white group-hover:bg-blue-50 group-hover:text-blue-600 dark:group-hover:bg-blue-900/30 dark:group-hover:text-blue-400 transition-colors">
+            <div className="home-strength-card group p-7 rounded-2xl border border-slate-100 bg-white dark:bg-slate-900 dark:border-slate-800 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_32px_-14px_rgba(59,130,246,0.22)] hover:border-blue-500/20">
+              <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white group-hover:bg-blue-50 group-hover:text-blue-600 dark:group-hover:bg-blue-900/30 dark:group-hover:text-blue-400 transition-colors">
                 <span className="material-symbols-outlined">hub</span>
               </div>
               <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">Cloud MSA 아키텍처</h3>
               <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-sm break-keep">Azure Cloud 인프라와 Kubernetes(AKS), CI/CD 파이프라인을 구축하여 고가용성 마이크로서비스(MSA)를 성공적으로 배포 및 운영합니다.</p>
             </div>
-            <div className="group p-8 rounded-2xl border border-slate-100 bg-white dark:bg-slate-900 dark:border-slate-800 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_40px_-10px_rgba(59,130,246,0.3)] hover:border-blue-500/30">
-              <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white group-hover:bg-blue-50 group-hover:text-blue-600 dark:group-hover:bg-blue-900/30 dark:group-hover:text-blue-400 transition-colors">
+            <div className="home-strength-card group p-7 rounded-2xl border border-slate-100 bg-white dark:bg-slate-900 dark:border-slate-800 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_32px_-14px_rgba(59,130,246,0.22)] hover:border-blue-500/20">
+              <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white group-hover:bg-blue-50 group-hover:text-blue-600 dark:group-hover:bg-blue-900/30 dark:group-hover:text-blue-400 transition-colors">
                 <span className="material-symbols-outlined">psychology</span>
               </div>
               <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">SKT AI Agent 개발</h3>
@@ -215,7 +215,7 @@ export default function Home() {
                 <div className="flex items-start gap-3">
                   <span className="material-symbols-outlined text-slate-400 text-xl">lightbulb</span>
                   <div>
-                    <p className="text-sm font-medium text-slate-900 dark:text-white">Conceptual thought: Using Vector DBs as "Short-term Memory" for stateless agents.</p>
+                    <p className="text-sm font-medium text-slate-900 dark:text-white">Conceptual thought: Using Vector DBs as &quot;Short-term Memory&quot; for stateless agents.</p>
                     <span className="text-[11px] text-slate-400 mt-2 block">#ai #architecture</span>
                   </div>
                 </div>

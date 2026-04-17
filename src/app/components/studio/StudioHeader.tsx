@@ -1,45 +1,70 @@
-import Link from 'next/link';
+"use client";
 
-/**
- * 💡 [학습노트] StudioHeader 컴포넌트
- * 대시보드의 상단(Top Bar)을 담당합니다.
- * 
- * - sticky 속성을 사용하여 스크롤 시 상단에 고정되게 만들었습니다.
- * - backdrop-blur-md: 헤더 뒤쪽이 살짝 블러 처리되게 하는 이쁜 효과(Glassmorphism)를 줍니다.
- */
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+
+function getHeaderMeta(pathname: string) {
+  if (pathname === "/studio") {
+    return {
+      section: "Workspace",
+      description: "최근 작업과 관리 화면으로 빠르게 이동합니다.",
+    };
+  }
+
+  if (pathname.startsWith("/studio/blog") || pathname.startsWith("/studio/editor")) {
+    return {
+      section: "Blog Posts",
+      description: "최근 30개 기본 목록과 서버 검색으로 블로그 글을 찾고 수정합니다.",
+    };
+  }
+
+  if (pathname.startsWith("/studio/scrap")) {
+    return {
+      section: "Scraps",
+      description: "스크랩과 메모를 검색하고 상태별로 정리합니다.",
+    };
+  }
+
+  if (pathname === "/studio/settings") {
+    return {
+      section: "Settings",
+      description: "홈페이지 자산과 운영용 설정 UI를 준비합니다.",
+    };
+  }
+
+  return {
+    section: "Studio",
+    description: "콘텐츠 작업 공간",
+  };
+}
+
 export default function StudioHeader() {
+  const pathname = usePathname();
+  const meta = getHeaderMeta(pathname);
+
   return (
-    <header className="h-16 border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md sticky top-0 z-10 flex items-center justify-between px-8">
-      {/* 왼쪽: 빵부스러기(Breadcrumb) 영역 */}
-      <div className="flex items-center gap-3 text-sm text-slate-500">
-        <Link href="/studio" className="hover:text-slate-900 dark:hover:text-slate-300 transition-colors">
-          Dashboard
-        </Link>
-        <span className="material-symbols-outlined !text-xs">chevron_right</span>
-        <span className="text-slate-900 dark:text-slate-100 font-medium tracking-tight">All Content</span>
+    <header className="sticky top-0 z-10 flex h-16 items-center justify-between border-b border-slate-200 bg-white/90 px-8 backdrop-blur-md dark:border-slate-800 dark:bg-slate-900/90">
+      <div className="min-w-0">
+        <div className="flex items-center gap-3 text-sm text-slate-500">
+          <Link href="/studio" className="transition-colors hover:text-slate-900 dark:hover:text-slate-300">
+            Studio
+          </Link>
+          <span className="material-symbols-outlined !text-xs">chevron_right</span>
+          <span className="truncate font-medium tracking-tight text-slate-900 dark:text-slate-100">
+            {meta.section}
+          </span>
+        </div>
+        <p className="mt-1 text-xs text-slate-500">{meta.description}</p>
       </div>
 
-      {/* 오른쪽: 액션 메뉴 (검색, 알림, 도움말) */}
-      <div className="flex items-center gap-4">
-        {/* 검색창 */}
-        <div className="relative group">
-          <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400">
-            <span className="material-symbols-outlined !text-lg">search</span>
-          </span>
-          <input 
-            type="text" 
-            placeholder="Quick search..." 
-            className="pl-10 pr-4 py-1.5 text-sm bg-slate-100 dark:bg-slate-800 border-none rounded-lg focus:ring-1 focus:ring-primary w-64 transition-all focus:outline-none text-slate-900 dark:text-slate-100 placeholder:text-slate-400"
-          />
-        </div>
-        
-        {/* 아이콘 버튼들 */}
-        <button className="p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors">
-          <span className="material-symbols-outlined">notifications</span>
-        </button>
-        <button className="p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors">
-          <span className="material-symbols-outlined">help_outline</span>
-        </button>
+      <div className="hidden items-center gap-2 md:flex">
+        <Link
+          href="/learning"
+          className="inline-flex items-center gap-2 rounded-lg border border-slate-200 px-3 py-2 text-xs font-semibold text-slate-600 transition-colors hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
+        >
+          <span className="material-symbols-outlined !text-[16px]">open_in_new</span>
+          View Learning
+        </Link>
       </div>
     </header>
   );

@@ -32,3 +32,24 @@
     @apply bg-background-light dark:bg-background-dark text-text-main dark:text-slate-100 font-display antialiased min-h-screen flex flex-col;
   }
 }
+
+@layer components {
+  .home-hero h1 {
+    max-width: 860px;
+    letter-spacing: -0.03em;
+  }
+
+  .home-hero p {
+    max-width: 760px;
+  }
+
+  .home-strength-card h3 {
+    font-size: 18px;
+    line-height: 1.35;
+  }
+
+  .home-strength-card p {
+    font-size: 13px;
+    line-height: 1.7;
+  }
+}

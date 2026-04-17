@@ -23,9 +23,7 @@ export function useStudioSession() {
           .eq("user_id", userId)
           .maybeSingle();
 
-        if (!active) {
-          return;
-        }
+        if (!active) return;
 
         if (roleError) {
           console.warn("[studio] failed to load role, falling back to user", roleError);
@@ -35,10 +33,7 @@ export function useStudioSession() {
 
         setRole((data?.role ?? "user") as AppRole);
       } catch (caughtError) {
-        if (!active) {
-          return;
-        }
-
+        if (!active) return;
         console.warn("[studio] unexpected role lookup failure, falling back to user", caughtError);
         setRole("user");
       }
@@ -54,13 +49,8 @@ export function useStudioSession() {
           error: userError,
         } = await supabase.auth.getUser();
 
-        if (userError) {
-          throw userError;
-        }
-
-        if (!active) {
-          return;
-        }
+        if (userError) throw userError;
+        if (!active) return;
 
         setUser(currentUser);
         setRole(currentUser ? null : null);
@@ -70,14 +60,10 @@ export function useStudioSession() {
           void loadRole(currentUser.id);
         }
       } catch (caughtError) {
-        if (!active) {
-          return;
-        }
+        if (!active) return;
 
         const message =
-          caughtError instanceof Error
-            ? caughtError.message
-            : "Studio 세션 정보를 가져오지 못했습니다.";
+          caughtError instanceof Error ? caughtError.message : "Studio 세션 정보를 불러오지 못했습니다.";
         setError(message);
         setLoading(false);
       }
@@ -88,9 +74,7 @@ export function useStudioSession() {
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange((_event, session) => {
-      if (!active) {
-        return;
-      }
+      if (!active) return;
 
       setError(null);
       setUser(session?.user ?? null);

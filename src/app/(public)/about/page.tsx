@@ -2,6 +2,8 @@ export const metadata = {
     title: "About | Leo - Senior Full-Stack & AI Engineer",
 };
 
+/* eslint-disable react/no-unescaped-entities */
+
 export default function About() {
     return (
         <main className="flex-grow flex flex-col items-center justify-start py-12 px-4 md:px-10 w-full">
@@ -22,10 +24,10 @@ export default function About() {
                             <span className="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold tracking-wide uppercase">#SeniorBackend</span>
                             <span className="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold tracking-wide uppercase">#AIAgent</span>
                         </div>
-                        <h1 className="text-slate-900 dark:text-white text-4xl md:text-5xl font-black leading-tight tracking-[-0.033em] break-keep">
+                        <h1 className="max-w-[640px] text-slate-900 dark:text-white text-2xl md:text-3xl font-black leading-[1.28] tracking-[-0.025em] break-keep">
                             대기업 엔터프라이즈 개발·운영 경험 기반 AI Agent 개발자
                         </h1>
-                        <p className="text-slate-600 dark:text-slate-400 text-lg md:text-xl font-normal leading-relaxed break-keep">
+                        <p className="text-slate-600 dark:text-slate-400 text-base md:text-lg font-normal leading-8 break-keep">
                             저는 10년간 대기업 IT 조직에서 백엔드(Java, Spring)·프론트엔드·클라우드 운영(Azure, K8s, DevOps)을 개발·운영해 왔고, 최근에는 LLM 기반 AI Agent 서비스 개발로 확장했습니다. 기술 트렌드와 비즈니스 로직을 함께 이해하며 현업과 협업하고, PM·PL로서 안정성과 혁신을 갖춘 시스템 가치를 창출합니다.
                         </p>
                     </div>

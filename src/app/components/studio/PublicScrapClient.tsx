@@ -86,7 +86,7 @@ export default function PublicScrapClient() {
             <span className="material-symbols-outlined text-[32px]">bookmark</span>
           </div>
           <div>
-            <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900 dark:text-white mb-2">Scrap</h1>
+            <h1 className="text-[2rem] md:text-[2.5rem] font-bold tracking-tight text-slate-900 dark:text-white mb-2">Scrap</h1>
             <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
               읽은 자료를 단순 링크로 쌓지 않고, 한 줄 요약과 짧은 코멘트까지 붙여 정리한 공개 스크랩입니다.
             </p>
@@ -187,4 +187,3 @@ export default function PublicScrapClient() {
     </main>
   );
 }
-

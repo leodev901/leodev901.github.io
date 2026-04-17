@@ -18,7 +18,7 @@ export default function Contact() {
                 <div className="flex flex-col gap-6 items-start">
                     <div className="flex flex-col gap-2">
                         <span className="text-primary font-bold tracking-wider uppercase text-sm">Get in touch</span>
-                        <h1 className="text-slate-900 dark:text-white text-5xl md:text-6xl font-black leading-tight tracking-[-0.033em]">
+                        <h1 className="text-slate-900 dark:text-white text-4xl md:text-[3.2rem] font-black leading-[1.08] tracking-[-0.033em]">
                             Let&apos;s Build Together
                         </h1>
                     </div>

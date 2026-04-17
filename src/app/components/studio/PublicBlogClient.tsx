@@ -280,25 +280,25 @@ function MarkdownArticle({ markdown }: { markdown: string }) {
         blog-markdown
         [&_a]:text-primary [&_a]:underline-offset-2 hover:[&_a]:underline
         [&_blockquote]:border-l-4 [&_blockquote]:border-slate-200 [&_blockquote]:pl-4 [&_blockquote]:italic [&_blockquote]:text-slate-500
-        [&_code]:rounded [&_code]:bg-slate-100 [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:font-mono [&_code]:text-[0.95em]
+        [&_code]:rounded [&_code]:bg-slate-100 [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:font-mono [&_code]:text-[0.9em]
         [&_del]:text-slate-400
-        [&_h1]:mb-4 [&_h1]:mt-8 [&_h1]:text-3xl [&_h1]:font-bold
-        [&_h2]:mb-3 [&_h2]:mt-8 [&_h2]:text-2xl [&_h2]:font-bold
-        [&_h3]:mb-3 [&_h3]:mt-6 [&_h3]:text-xl [&_h3]:font-semibold
-        [&_hr]:my-8 [&_hr]:border-slate-200
-        [&_img]:my-6 [&_img]:rounded-xl
-        [&_li]:my-1
-        [&_ol]:my-4 [&_ol]:list-decimal [&_ol]:pl-6
-        [&_p]:my-4 [&_p]:leading-8
-        [&_pre]:my-5 [&_pre]:overflow-x-auto [&_pre]:rounded-2xl [&_pre]:bg-slate-950 [&_pre]:p-4 [&_pre]:text-slate-100
-        [&_pre_code]:bg-transparent [&_pre_code]:p-0 [&_pre_code]:text-sm
+        [&_h1]:mb-4 [&_h1]:mt-7 [&_h1]:text-2xl [&_h1]:font-bold
+        [&_h2]:mb-3 [&_h2]:mt-7 [&_h2]:text-[1.45rem] [&_h2]:font-bold
+        [&_h3]:mb-2.5 [&_h3]:mt-5 [&_h3]:text-[1.15rem] [&_h3]:font-semibold
+        [&_hr]:my-6 [&_hr]:border-slate-200
+        [&_img]:my-5 [&_img]:rounded-xl
+        [&_li]:my-0.5
+        [&_ol]:my-3 [&_ol]:list-decimal [&_ol]:pl-5
+        [&_p]:my-3 [&_p]:leading-7
+        [&_pre]:my-4 [&_pre]:overflow-x-auto [&_pre]:rounded-2xl [&_pre]:bg-slate-950 [&_pre]:p-4 [&_pre]:text-slate-100
+        [&_pre_code]:bg-transparent [&_pre_code]:p-0 [&_pre_code]:text-[13px]
         [&_strong]:font-semibold
-        [&_table]:my-6 [&_table]:w-full [&_table]:border-collapse [&_table]:overflow-hidden [&_table]:rounded-xl
+        [&_table]:my-5 [&_table]:w-full [&_table]:border-collapse [&_table]:overflow-hidden [&_table]:rounded-xl
         [&_tbody_tr]:border-b [&_tbody_tr]:border-slate-200
         [&_td]:border [&_td]:border-slate-200 [&_td]:px-3 [&_td]:py-2 [&_td]:align-top
         [&_th]:border [&_th]:border-slate-200 [&_th]:bg-slate-50 [&_th]:px-3 [&_th]:py-2 [&_th]:text-left
-        [&_ul]:my-4 [&_ul]:list-disc [&_ul]:pl-6
-        text-[15px] leading-7 text-slate-700 dark:[&_blockquote]:border-slate-700 dark:[&_code]:bg-slate-800 dark:[&_hr]:border-slate-800 dark:[&_tbody_tr]:border-slate-800 dark:[&_td]:border-slate-800 dark:[&_th]:border-slate-800 dark:[&_th]:bg-slate-800/60 dark:text-slate-300
+        [&_ul]:my-3 [&_ul]:list-disc [&_ul]:pl-5
+        text-[14px] leading-7 text-slate-700 dark:[&_blockquote]:border-slate-700 dark:[&_code]:bg-slate-800 dark:[&_hr]:border-slate-800 dark:[&_tbody_tr]:border-slate-800 dark:[&_td]:border-slate-800 dark:[&_th]:border-slate-800 dark:[&_th]:bg-slate-800/60 dark:text-slate-300
       "
       dangerouslySetInnerHTML={{ __html: html }}
     />
@@ -565,19 +565,17 @@ export default function PublicBlogClient() {
     }
   };
 
-  const selectedTagLabel = activeTag === "all" ? "All Posts" : `# ${activeTag}`;
-
   return (
-    <div className="mx-auto flex w-full max-w-[1400px] flex-1 flex-col md:flex-row">
-      <aside className="w-full shrink-0 border-r border-slate-200 bg-slate-50/50 px-4 py-8 dark:border-slate-800 dark:bg-slate-900/30 md:sticky md:top-16 md:min-h-[calc(100vh-4rem)] md:w-72">
-        <div className="mb-6 px-2">
-          <h3 className="mb-2 text-xs font-bold uppercase tracking-wider text-slate-400">Explorer</h3>
+    <div className="mx-auto flex w-full max-w-none flex-1 flex-col md:flex-row">
+      <aside className="w-full shrink-0 border-r border-slate-200 bg-slate-50/50 px-4 py-6 dark:border-slate-800 dark:bg-slate-900/30 md:sticky md:top-16 md:min-h-[calc(100vh-4rem)] md:w-72">
+        <div className="mb-5 px-2">
+          <h3 className="mb-2 text-[11px] font-bold uppercase tracking-wider text-slate-400">Explorer</h3>
           <div className="relative">
             <span className="absolute inset-y-0 left-0 flex items-center pl-2 text-slate-400">
               <span className="material-symbols-outlined text-[18px]">search</span>
             </span>
             <input
-              className="w-full rounded-md border border-slate-200 bg-white py-2 pl-8 pr-3 text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-primary dark:border-slate-700 dark:bg-slate-800 dark:placeholder:text-slate-600"
+              className="w-full rounded-md border border-slate-200 bg-white py-2 pl-8 pr-3 text-[13px] placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-primary dark:border-slate-700 dark:bg-slate-800 dark:placeholder:text-slate-600"
               placeholder={
                 scope === "all" ? "제목, 요약, 본문 전체 검색..." : "제목, 요약, 태그 빠른검색..."
               }
@@ -590,7 +588,7 @@ export default function PublicBlogClient() {
             <button
               type="button"
               onClick={() => setScope("loaded")}
-              className={`flex-1 rounded-md px-3 py-1.5 text-xs font-semibold transition-colors ${
+              className={`flex-1 rounded-md px-3 py-1.5 text-[11px] font-semibold transition-colors ${
                 scope === "loaded"
                   ? "bg-white text-slate-900 shadow-sm dark:bg-slate-900 dark:text-white"
                   : "text-slate-500"
@@ -601,7 +599,7 @@ export default function PublicBlogClient() {
             <button
               type="button"
               onClick={() => setScope("all")}
-              className={`flex-1 rounded-md px-3 py-1.5 text-xs font-semibold transition-colors ${
+              className={`flex-1 rounded-md px-3 py-1.5 text-[11px] font-semibold transition-colors ${
                 scope === "all"
                   ? "bg-white text-slate-900 shadow-sm dark:bg-slate-900 dark:text-white"
                   : "text-slate-500"
@@ -610,13 +608,13 @@ export default function PublicBlogClient() {
               서버검색
             </button>
           </div>
-          <p className="mt-2 text-xs text-slate-400">{resultSummary}</p>
+          <p className="mt-2 text-[11px] text-slate-400">{resultSummary}</p>
         </div>
 
         <nav className="space-y-1">
           <button
             onClick={() => setActiveTag("all")}
-            className={`flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-sm font-medium transition-colors ${
+            className={`flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-[13px] font-medium transition-colors ${
               activeTag === "all"
                 ? "bg-slate-200/50 text-slate-900 dark:bg-slate-800 dark:text-white"
                 : "text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800"
@@ -629,7 +627,7 @@ export default function PublicBlogClient() {
             <button
               key={tag}
               onClick={() => setActiveTag(tag)}
-              className={`flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-left text-sm transition-colors ${
+              className={`flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-left text-[13px] transition-colors ${
                 activeTag === tag
                   ? "bg-primary/10 font-medium text-primary"
                   : "text-slate-600 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800"
@@ -642,24 +640,24 @@ export default function PublicBlogClient() {
         </nav>
       </aside>
 
-      <main className="w-full max-w-4xl flex-1 px-6 py-12 md:px-12">
-        <div className="mb-12 border-b border-slate-100 pb-8 dark:border-slate-800">
-          <div className="mb-4 flex items-start gap-4">
-            <div className="flex size-12 shrink-0 items-center justify-center rounded-lg bg-slate-100 text-slate-500 dark:bg-slate-800 dark:text-slate-400">
-              <span className="material-symbols-outlined text-[28px]">article</span>
+      <main className="min-w-0 flex-1 px-4 py-8 md:px-8 lg:px-10">
+        <div className="mb-8 border-b border-slate-100 pb-5 dark:border-slate-800">
+          <div className="flex items-start gap-3">
+            <div className="mt-0.5 flex size-11 shrink-0 items-center justify-center rounded-lg bg-slate-100 text-slate-500 dark:bg-slate-800 dark:text-slate-400">
+              <span className="material-symbols-outlined text-[24px]">article</span>
             </div>
             <div>
-              <h1 className="mb-2 text-3xl font-bold tracking-tight text-slate-900 dark:text-white md:text-[2.5rem]">
+              <h1 className="text-[2rem] font-bold tracking-tight text-slate-900 dark:text-white">
                 Blog
               </h1>
-              <p className="text-base leading-relaxed text-slate-600 dark:text-slate-400">
+              <p className="mt-1 text-[14px] leading-6 text-slate-600 dark:text-slate-400">
                 다시 찾아보기 좋은 기술 메모와 기록을 모아둔 아카이브입니다.
               </p>
             </div>
           </div>
         </div>
 
-        {error ? <p className="mb-6 text-sm text-red-500">{error}</p> : null}
+        {error ? <p className="mb-5 text-sm text-red-500">{error}</p> : null}
 
         {selectedSlug ? (
           detailLoading ? (
@@ -673,36 +671,35 @@ export default function PublicBlogClient() {
               <p className="text-sm text-red-500">{detailError}</p>
             </div>
           ) : detailPost ? (
-            <article className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+            <article className="w-full rounded-3xl border border-slate-200 bg-white px-5 py-6 shadow-sm dark:border-slate-800 dark:bg-slate-900 md:px-8">
               <Link href="/blog" className="inline-flex items-center gap-2 text-sm font-medium text-primary">
                 <span className="material-symbols-outlined !text-base">arrow_back</span>
                 목록으로
               </Link>
-              <div className="mt-6 flex flex-wrap items-center gap-3 text-xs font-medium text-slate-500 dark:text-slate-400">
-                <span className="rounded-full bg-slate-100 px-3 py-1 dark:bg-slate-800">{selectedTagLabel}</span>
+              <div className="mt-5 flex flex-wrap items-center gap-3 text-[12px] font-medium text-slate-500 dark:text-slate-400">
                 <time>{formatDisplayDate(detailPost.published_at ?? detailPost.created_at)}</time>
                 <span>·</span>
                 <span>{detailPost.reading_time_minutes} min read</span>
               </div>
-              <h2 className="mt-4 text-[2rem] font-bold tracking-tight text-slate-900 dark:text-white">
+              <h2 className="mt-3 text-[1.85rem] font-bold tracking-tight text-slate-900 dark:text-white">
                 {detailPost.title}
               </h2>
-              <p className="mt-4 text-base leading-8 text-slate-600 dark:text-slate-400">
+              <p className="mt-3 text-[14px] leading-7 text-slate-600 dark:text-slate-400">
                 {detailPost.summary}
               </p>
-              <div className="mt-5 flex flex-wrap gap-2">
+              <div className="mt-4 flex flex-wrap gap-2">
                 {(detailPost.tags ?? []).map((tag) => (
                   <button
                     key={`${detailPost.id}-${tag}`}
                     type="button"
                     onClick={() => setActiveTag(tag)}
-                    className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-600 transition-colors hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-300"
+                    className="rounded-full bg-slate-100 px-3 py-1 text-[11px] font-medium text-slate-600 transition-colors hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-300"
                   >
                     #{tag}
                   </button>
                 ))}
               </div>
-              <div className="mt-8 border-t border-dashed border-slate-200 pt-8 dark:border-slate-800">
+              <div className="mt-6 border-t border-dashed border-slate-200 pt-6 dark:border-slate-800">
                 <MarkdownArticle markdown={detailPost.content_md} />
               </div>
             </article>
@@ -712,30 +709,30 @@ export default function PublicBlogClient() {
         ) : visiblePosts.length === 0 ? (
           <p className="text-sm text-slate-500 dark:text-slate-400">조건에 맞는 게시글이 없습니다.</p>
         ) : (
-          <div className="space-y-6">
+          <div className="space-y-4">
             {visiblePosts.map((post) => (
               <article
                 key={post.id}
-                className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-colors dark:border-slate-800 dark:bg-slate-900"
+                className="rounded-2xl border border-slate-200 bg-white px-5 py-4 shadow-sm transition-colors dark:border-slate-800 dark:bg-slate-900"
               >
-                <div className="mb-3 flex flex-wrap items-center gap-3 text-[12px] font-medium text-slate-500 dark:text-slate-400">
+                <div className="mb-2 flex flex-wrap items-center gap-3 text-[11px] font-medium text-slate-500 dark:text-slate-400">
                   <time>{formatDisplayDate(post.published_at ?? post.created_at)}</time>
                   <span>·</span>
                   <span>{post.reading_time_minutes} min read</span>
                 </div>
                 <Link href={`/blog?post=${encodeURIComponent(post.slug)}`} className="block">
-                  <h3 className="text-xl font-bold text-slate-900 transition-colors hover:text-primary dark:text-white">
+                  <h3 className="text-[1.05rem] font-bold text-slate-900 transition-colors hover:text-primary dark:text-white">
                     {post.title}
                   </h3>
                 </Link>
-                <p className="mt-3 text-[15px] leading-7 text-slate-600 dark:text-slate-400">{post.summary}</p>
-                <div className="mt-4 flex flex-wrap gap-2">
+                <p className="mt-2 text-[13px] leading-6 text-slate-600 dark:text-slate-400">{post.summary}</p>
+                <div className="mt-3 flex flex-wrap gap-2">
                   {(post.tags ?? []).map((tag) => (
                     <button
                       key={`${post.id}-${tag}`}
                       type="button"
                       onClick={() => setActiveTag(tag)}
-                      className="inline-flex items-center rounded-md bg-slate-100 px-2.5 py-1 text-xs font-medium text-slate-600 transition-colors hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-400"
+                      className="inline-flex items-center rounded-md bg-slate-100 px-2 py-1 text-[11px] font-medium text-slate-600 transition-colors hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-400"
                     >
                       #{tag}
                     </button>
@@ -745,12 +742,12 @@ export default function PublicBlogClient() {
             ))}
 
             {hasMore ? (
-              <div className="pt-2">
+              <div className="pt-1">
                 <button
                   type="button"
                   onClick={() => void handleLoadMore()}
                   disabled={loadingMore}
-                  className="rounded-xl border border-slate-200 px-4 py-2.5 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-50 disabled:opacity-60 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800"
+                  className="rounded-xl border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-50 disabled:opacity-60 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800"
                 >
                   {loadingMore ? "불러오는 중..." : "더보기"}
                 </button>

@@ -1,10 +1,14 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import {
+  formatDisplayDate,
   formatRelativeDate,
   type BlogPostRecord,
+  type ContentStatus,
+  type ContentVisibility,
   type ScrapRecord,
   type StudioContentRecord,
 } from "@/app/lib/studio-types";
@@ -16,6 +20,27 @@ import {
 } from "@/app/components/studio/StudioFeedback";
 
 type DashboardContentType = "all" | "blog" | "scrap";
+type SearchField = "all" | "title" | "tags" | "content" | "slug";
+type SortOption = "updated_desc" | "published_desc" | "title_asc";
+
+type QueryState = {
+  q: string;
+  field: SearchField;
+  status: "all" | ContentStatus;
+  visibility: "all" | ContentVisibility;
+  sort: SortOption;
+  page: number;
+};
+
+const PAGE_SIZE = 30;
+const defaultQueryState: QueryState = {
+  q: "",
+  field: "all",
+  status: "all",
+  visibility: "all",
+  sort: "updated_desc",
+  page: 1,
+};
 
 function mapBlogPostsToContents(rows: BlogPostRecord[]): StudioContentRecord[] {
   return rows.map((row) => ({
@@ -51,22 +76,91 @@ function mapScrapsToContents(rows: ScrapRecord[]): StudioContentRecord[] {
   }));
 }
 
-export default function StudioDashboardClient({
-  defaultType = "all",
-}: {
-  defaultType?: DashboardContentType;
-}) {
+function parseQueryState() {
+  if (typeof window === "undefined") return defaultQueryState;
+
+  const params = new URLSearchParams(window.location.search);
+  const page = Number(params.get("page") ?? "1");
+  return {
+    q: params.get("q") ?? "",
+    field: (params.get("field") as SearchField) || "all",
+    status: (params.get("status") as QueryState["status"]) || "all",
+    visibility: (params.get("visibility") as QueryState["visibility"]) || "all",
+    sort: (params.get("sort") as SortOption) || "updated_desc",
+    page: Number.isFinite(page) && page > 0 ? page : 1,
+  };
+}
+
+function toSearch(state: QueryState) {
+  const params = new URLSearchParams();
+  if (state.q.trim()) params.set("q", state.q.trim());
+  if (state.field !== "all") params.set("field", state.field);
+  if (state.status !== "all") params.set("status", state.status);
+  if (state.visibility !== "all") params.set("visibility", state.visibility);
+  if (state.sort !== "updated_desc") params.set("sort", state.sort);
+  if (state.page > 1) params.set("page", String(state.page));
+  return params.toString();
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function applyQueryOptions(query: any, state: QueryState) {
+  let next = query;
+  if (state.status !== "all") next = next.eq("status", state.status);
+  if (state.visibility !== "all") next = next.eq("visibility", state.visibility);
+
+  if (state.sort === "published_desc") return next.order("published_at", { ascending: false, nullsFirst: false });
+  if (state.sort === "title_asc") return next.order("title", { ascending: true });
+  return next.order("updated_at", { ascending: false });
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function applyBlogSearch(query: any, field: SearchField, term: string) {
+  const like = `%${term}%`;
+  if (field === "title") return query.ilike("title", like);
+  if (field === "slug") return query.ilike("slug", like);
+  if (field === "tags") return query.contains("tags", [term]);
+  if (field === "content") return query.or(`summary.ilike.${like},content_md.ilike.${like}`);
+  return query.or(`title.ilike.${like},slug.ilike.${like},summary.ilike.${like},content_md.ilike.${like}`);
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function applyScrapSearch(query: any, field: SearchField, term: string) {
+  const like = `%${term}%`;
+  if (field === "title") return query.or(`title.ilike.${like},source.ilike.${like}`);
+  if (field === "slug") return query.ilike("slug", like);
+  if (field === "tags") return query.contains("tags", [term]);
+  if (field === "content") return query.or(`one_line_summary.ilike.${like},comment_md.ilike.${like},url.ilike.${like}`);
+  return query.or(`title.ilike.${like},slug.ilike.${like},source.ilike.${like},one_line_summary.ilike.${like},comment_md.ilike.${like},url.ilike.${like}`);
+}
+
+function getEditHref(content: StudioContentRecord) {
+  return content.contentType === "blog" ? `/studio/editor?postId=${content.id}` : `/studio/scrap/edit?scrapId=${content.id}`;
+}
+
+export default function StudioDashboardClient({ defaultType = "all" }: { defaultType?: DashboardContentType }) {
+  const pathname = usePathname();
   const { supabase, user, isAdmin, loading, error } = useStudioSession();
-  const [contents, setContents] = useState<StudioContentRecord[]>([]);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [statusFilter, setStatusFilter] = useState<"all" | "draft" | "published" | "archived">("all");
+  const [queryState, setQueryState] = useState<QueryState>(parseQueryState);
+  const [queryInput, setQueryInput] = useState(parseQueryState().q);
+  const [items, setItems] = useState<StudioContentRecord[]>([]);
+  const [recentItems, setRecentItems] = useState<StudioContentRecord[]>([]);
+  const [totalCount, setTotalCount] = useState(0);
   const [isFetching, setIsFetching] = useState(true);
   const [fetchError, setFetchError] = useState<string | null>(null);
   const [deletingId, setDeletingId] = useState<string | null>(null);
 
-  const fetchContents = useCallback(async () => {
+  const totalPages = Math.max(1, Math.ceil(totalCount / PAGE_SIZE));
+  const hasSearch = queryState.q.trim().length > 0;
+
+  useEffect(() => {
+    if (defaultType === "all" || typeof window === "undefined") return;
+    const search = toSearch(queryState);
+    window.history.replaceState(null, "", search ? `${pathname}?${search}` : pathname);
+  }, [defaultType, pathname, queryState]);
+
+  const fetchWorkspace = useCallback(async () => {
     if (!user) {
-      setContents([]);
+      setRecentItems([]);
       setIsFetching(false);
       return;
     }
@@ -75,361 +169,308 @@ export default function StudioDashboardClient({
     setFetchError(null);
 
     try {
-      const blogQuery = supabase
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      let blogQuery: any = supabase
         .from("blog_posts")
-        .select(
-          "id, author_user_id, slug, title, summary, tags, status, visibility, published_at, created_at, updated_at"
-        )
-        .order("updated_at", { ascending: false });
-
-      const scrapQuery = supabase
+        .select("id, author_user_id, slug, title, summary, tags, status, visibility, published_at, created_at, updated_at")
+        .order("updated_at", { ascending: false })
+        .limit(4);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      let scrapQuery: any = supabase
         .from("scraps")
-        .select(
-          "id, author_user_id, slug, title, source, one_line_summary, tags, status, visibility, published_at, created_at, updated_at"
-        )
-        .order("updated_at", { ascending: false });
+        .select("id, author_user_id, slug, title, source, one_line_summary, tags, status, visibility, published_at, created_at, updated_at")
+        .order("updated_at", { ascending: false })
+        .limit(4);
 
-      const resolvedBlogQuery = isAdmin ? blogQuery : blogQuery.eq("author_user_id", user.id);
-      const resolvedScrapQuery = isAdmin ? scrapQuery : scrapQuery.eq("author_user_id", user.id);
-
-      const [{ data: blogRows, error: blogError }, { data: scrapRows, error: scrapError }] =
-        await Promise.all([resolvedBlogQuery, resolvedScrapQuery]);
-
-      if (blogError) {
-        throw blogError;
+      if (!isAdmin) {
+        blogQuery = blogQuery.eq("author_user_id", user.id);
+        scrapQuery = scrapQuery.eq("author_user_id", user.id);
       }
 
-      if (scrapError) {
-        throw scrapError;
-      }
+      const [{ data: blogRows, error: blogError }, { data: scrapRows, error: scrapError }] = await Promise.all([blogQuery, scrapQuery]);
+      if (blogError) throw blogError;
+      if (scrapError) throw scrapError;
 
       const merged = [
         ...mapBlogPostsToContents((blogRows ?? []) as BlogPostRecord[]),
         ...mapScrapsToContents((scrapRows ?? []) as ScrapRecord[]),
-      ].sort((left, right) => {
-        const rightTime = new Date(right.updatedAt).getTime();
-        const leftTime = new Date(left.updatedAt).getTime();
-        return rightTime - leftTime;
-      });
+      ].sort((a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime());
 
-      setContents(merged);
+      setRecentItems(merged.slice(0, 6));
     } catch (caughtError) {
-      const message =
-        caughtError instanceof Error ? caughtError.message : "콘텐츠 목록을 불러오지 못했습니다.";
-      setFetchError(message);
+      setFetchError(caughtError instanceof Error ? caughtError.message : "최근 작업을 불러오지 못했습니다.");
     } finally {
       setIsFetching(false);
     }
   }, [isAdmin, supabase, user]);
 
-  useEffect(() => {
-    if (loading) {
+  const fetchCollection = useCallback(async () => {
+    if (!user || defaultType === "all") {
+      setItems([]);
+      setTotalCount(0);
+      setIsFetching(false);
       return;
     }
 
-    void fetchContents();
-  }, [fetchContents, loading]);
+    setIsFetching(true);
+    setFetchError(null);
 
-  const filteredContents = useMemo(() => {
-    return contents.filter((content) => {
-      if (defaultType !== "all" && content.contentType !== defaultType) {
-        return false;
+    try {
+      const from = (queryState.page - 1) * PAGE_SIZE;
+      const to = from + PAGE_SIZE - 1;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      let query: any =
+        defaultType === "blog"
+          ? supabase
+              .from("blog_posts")
+              .select("id, author_user_id, slug, title, summary, tags, status, visibility, published_at, created_at, updated_at", { count: "exact" })
+          : supabase
+              .from("scraps")
+              .select("id, author_user_id, slug, title, source, one_line_summary, tags, status, visibility, published_at, created_at, updated_at", { count: "exact" });
+
+      if (!isAdmin) query = query.eq("author_user_id", user.id);
+      query = applyQueryOptions(query, queryState);
+
+      if (hasSearch) {
+        query = defaultType === "blog" ? applyBlogSearch(query, queryState.field, queryState.q.trim()) : applyScrapSearch(query, queryState.field, queryState.q.trim());
       }
 
-      if (statusFilter !== "all" && content.status !== statusFilter) {
-        return false;
-      }
+      const { data, count, error: queryError } = await query.range(from, to);
+      if (queryError) throw queryError;
 
-      if (!searchTerm.trim()) {
-        return true;
-      }
+      setItems(defaultType === "blog" ? mapBlogPostsToContents((data ?? []) as BlogPostRecord[]) : mapScrapsToContents((data ?? []) as ScrapRecord[]));
+      setTotalCount(count ?? 0);
+    } catch (caughtError) {
+      setFetchError(caughtError instanceof Error ? caughtError.message : "콘텐츠 목록을 불러오지 못했습니다.");
+      setItems([]);
+      setTotalCount(0);
+    } finally {
+      setIsFetching(false);
+    }
+  }, [defaultType, hasSearch, isAdmin, queryState, supabase, user]);
 
-      const normalized = searchTerm.trim().toLowerCase();
-      return (
-        content.title.toLowerCase().includes(normalized) ||
-        content.slug.toLowerCase().includes(normalized) ||
-        content.tags.some((tag) => tag.toLowerCase().includes(normalized))
-      );
-    });
-  }, [contents, defaultType, searchTerm, statusFilter]);
+  useEffect(() => {
+    if (loading) return;
+    if (defaultType === "all") void fetchWorkspace();
+    else void fetchCollection();
+  }, [defaultType, fetchCollection, fetchWorkspace, loading]);
+
+  const updateQueryState = (patch: Partial<QueryState>, resetPage = false) => {
+    setQueryState((prev) => ({ ...prev, ...patch, page: resetPage ? 1 : patch.page ?? prev.page }));
+  };
 
   const handleDelete = async (content: StudioContentRecord) => {
-    const confirmed = window.confirm(`"${content.title}" 항목을 삭제할까요? 이 작업은 되돌릴 수 없습니다.`);
-    if (!confirmed) {
-      return;
-    }
-
+    if (!window.confirm(`"${content.title}" 항목을 삭제할까요?`)) return;
     setDeletingId(content.id);
 
     try {
       const table = content.contentType === "blog" ? "blog_posts" : "scraps";
       const { error: deleteError } = await supabase.from(table).delete().eq("id", content.id);
-
-      if (deleteError) {
-        throw deleteError;
-      }
-
-      setContents((prev) => prev.filter((item) => item.id !== content.id));
+      if (deleteError) throw deleteError;
+      if (defaultType === "all") await fetchWorkspace();
+      else await fetchCollection();
     } catch (caughtError) {
-      const message =
-        caughtError instanceof Error ? caughtError.message : "삭제 중 오류가 발생했습니다.";
-      window.alert(message);
+      window.alert(caughtError instanceof Error ? caughtError.message : "삭제 중 오류가 발생했습니다.");
     } finally {
       setDeletingId(null);
     }
   };
 
-  if (loading) {
-    return <StudioLoadingState message="Studio 세션을 확인하는 중입니다..." />;
-  }
+  const overviewCards = useMemo(
+    () => [
+      { href: "/studio/blog", title: "Blog Posts", desc: "최근 30개 + 서버 검색", icon: "edit_note" },
+      { href: "/studio/scrap", title: "Scraps", desc: "출처/태그 기준 검색", icon: "delete_outline" },
+      { href: "/studio/settings", title: "Settings", desc: "홈/포트폴리오 자산 UI", icon: "settings" },
+    ],
+    []
+  );
 
-  if (error) {
-    return <StudioErrorState message={error} />;
-  }
-
+  if (loading) return <StudioLoadingState message="Studio 세션을 확인하는 중입니다..." />;
+  if (error) return <StudioErrorState message={error} />;
   if (!user) {
-    return (
-      <StudioLoginRequired
-        title="Studio 로그인이 필요합니다"
-        description="브라우저에서 직접 Supabase에 연결해 콘텐츠를 관리합니다. 로그인 후 본인 글을 작성하거나 수정할 수 있습니다."
-      />
-    );
+    return <StudioLoginRequired title="Studio 로그인 필요" description="브라우저에서 Supabase와 연결해 글과 스크랩을 검색하고 수정합니다." />;
   }
-
   if (isFetching) {
-    return <StudioLoadingState message="콘텐츠 목록을 불러오는 중입니다..." />;
+    return <StudioLoadingState message={defaultType === "all" ? "작업 공간을 불러오는 중입니다..." : "콘텐츠 목록을 불러오는 중입니다..."} />;
   }
 
-  const heading =
-    defaultType === "blog"
-      ? "Blog Posts"
-      : defaultType === "scrap"
-        ? "Scraps"
-        : "Content Manager";
-
-  const description =
-    defaultType === "blog"
-      ? "블로그 포스트만 모아서 관리합니다."
-      : defaultType === "scrap"
-        ? "링크 스크랩과 메모를 모아서 관리합니다."
-        : "블로그와 스크랩 전체를 한 번에 관리합니다.";
-
-  return (
-    <div className="mx-auto w-full max-w-6xl p-8">
-      <div className="mb-8 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-        <div>
-          <h2 className="mb-2 text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white">
-            {heading}
-          </h2>
-          <p className="max-w-2xl text-slate-500">{description}</p>
-          <p className="mt-2 text-xs font-medium text-slate-400">
-            {isAdmin ? "admin 권한으로 전체 콘텐츠를 관리 중입니다." : "본인이 작성한 콘텐츠만 표시됩니다."}
-          </p>
-        </div>
-        <div className="flex flex-wrap items-center gap-3">
-          <Link
-            href="/studio/scrap/new"
-            className="flex items-center gap-2 rounded-lg border border-slate-200 px-4 py-2 text-sm font-semibold transition-all hover:bg-slate-50 dark:border-slate-700 dark:hover:bg-slate-800"
-          >
-            <span className="material-symbols-outlined !text-lg">add</span>
-            New Scrap
-          </Link>
-          <Link
-            href="/studio/editor"
-            className="flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-primary/20 transition-all hover:bg-primary/90"
-          >
-            <span className="material-symbols-outlined !text-lg">edit</span>
-            New Blog Post
-          </Link>
-        </div>
-      </div>
-
-      {fetchError ? (
-        <div className="mb-6 rounded-2xl border border-red-200 bg-red-50 px-5 py-4 text-red-700 dark:border-red-900/40 dark:bg-red-950/20 dark:text-red-300">
-          <div className="flex items-start gap-3">
-            <span className="material-symbols-outlined !text-lg">error</span>
-            <div>
-              <p className="font-semibold">콘텐츠 목록을 불러오지 못했습니다.</p>
-              <p className="mt-1 text-xs opacity-80">{fetchError}</p>
-            </div>
+  if (defaultType === "all") {
+    return (
+      <div className="mx-auto w-full max-w-6xl p-8">
+        <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <h2 className="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white">Workspace</h2>
+            <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-500">전체 목록 대신 최근 작업과 주요 관리 화면으로 빠르게 이동하는 허브로 정리했습니다.</p>
+          </div>
+          <div className="flex gap-3">
+            <Link href="/studio/editor" className="rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-white">New Blog Post</Link>
+            <Link href="/studio/scrap/new" className="rounded-lg border border-slate-200 px-4 py-2 text-sm font-semibold dark:border-slate-700">New Scrap</Link>
           </div>
         </div>
-      ) : null}
 
-      <div className="mb-6 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-        <div className="flex gap-3 border-b border-slate-200 dark:border-slate-800">
-          {[
-            { key: "all", label: "All Status" },
-            { key: "draft", label: "Drafts" },
-            { key: "published", label: "Published" },
-            { key: "archived", label: "Archived" },
-          ].map((item) => (
-            <button
-              key={item.key}
-              onClick={() => setStatusFilter(item.key as "all" | "draft" | "published" | "archived")}
-              className={`border-b-2 pb-3 text-sm transition-colors ${
-                statusFilter === item.key
-                  ? "border-primary font-semibold text-primary"
-                  : "border-transparent font-medium text-slate-500 hover:text-slate-900 dark:hover:text-slate-200"
-              }`}
-            >
-              {item.label}
-            </button>
+        {fetchError ? <div className="mb-6 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">{fetchError}</div> : null}
+
+        <div className="grid gap-4 md:grid-cols-3">
+          {overviewCards.map((card) => (
+            <Link key={card.href} href={card.href} className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:border-primary/30 dark:border-slate-800 dark:bg-slate-900">
+              <span className="material-symbols-outlined text-primary">{card.icon}</span>
+              <h3 className="mt-4 text-lg font-semibold text-slate-900 dark:text-slate-100">{card.title}</h3>
+              <p className="mt-2 text-sm text-slate-500">{card.desc}</p>
+            </Link>
           ))}
         </div>
 
-        <div className="relative w-full max-w-sm">
-          <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400">
-            <span className="material-symbols-outlined !text-lg">search</span>
-          </span>
-          <input
-            type="text"
-            value={searchTerm}
-            onChange={(event) => setSearchTerm(event.target.value)}
-            placeholder="제목, slug, tag 검색..."
-            className="w-full rounded-lg border border-slate-200 bg-white py-2 pl-10 pr-4 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 dark:border-slate-700 dark:bg-slate-900"
-          />
+        <div className="mt-8 rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
+          <div className="flex items-center justify-between border-b border-slate-200 px-6 py-4 dark:border-slate-800">
+            <div>
+              <h3 className="text-base font-semibold text-slate-900 dark:text-slate-100">Recent Activity</h3>
+              <p className="mt-1 text-xs text-slate-500">최근 수정한 항목만 보여줍니다.</p>
+            </div>
+            <button type="button" onClick={() => void fetchWorkspace()} className="rounded-lg border border-slate-200 px-3 py-1.5 text-xs font-semibold dark:border-slate-700">Refresh</button>
+          </div>
+          <div className="divide-y divide-slate-100 dark:divide-slate-800">
+            {recentItems.length === 0 ? (
+              <div className="px-6 py-14 text-center text-sm text-slate-500">최근 작업 항목이 없습니다.</div>
+            ) : (
+              recentItems.map((content) => (
+                <div key={`${content.contentType}-${content.id}`} className="flex flex-wrap items-center justify-between gap-3 px-6 py-4">
+                  <div className="min-w-0">
+                    <div className="flex items-center gap-2 text-xs text-slate-400">
+                      <span className="rounded bg-slate-100 px-2 py-0.5 dark:bg-slate-800">{content.contentType}</span>
+                      <span>{formatRelativeDate(content.updatedAt)}</span>
+                    </div>
+                    <p className="mt-1 truncate text-sm font-semibold text-slate-900 dark:text-slate-100">{content.title}</p>
+                    <p className="mt-1 line-clamp-1 text-xs text-slate-500">{content.previewText}</p>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Link href={getEditHref(content)} className="rounded-lg border border-slate-200 px-3 py-1.5 text-xs font-semibold dark:border-slate-700">Edit</Link>
+                    <button type="button" disabled={deletingId === content.id} onClick={() => void handleDelete(content)} className="rounded-lg px-3 py-1.5 text-xs font-semibold text-slate-500 hover:bg-red-50 hover:text-red-600 disabled:opacity-50 dark:hover:bg-red-950/20">
+                      {deletingId === content.id ? "Deleting..." : "Delete"}
+                    </button>
+                  </div>
+                </div>
+              ))
+            )}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="mx-auto w-full max-w-6xl p-8">
+      <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <h2 className="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white">{defaultType === "blog" ? "Blog Posts" : "Scraps"}</h2>
+          <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-500">검색어 없이 열면 최근 30개만 불러오고, 검색을 실행하면 서버에서 다시 조회합니다.</p>
+        </div>
+        <Link href={defaultType === "blog" ? "/studio/editor" : "/studio/scrap/new"} className="rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-white">
+          {defaultType === "blog" ? "New Blog Post" : "New Scrap"}
+        </Link>
+      </div>
+
+      {fetchError ? <div className="mb-6 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">{fetchError}</div> : null}
+
+      <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+        <div className="grid gap-3 lg:grid-cols-[minmax(0,1.6fr)_repeat(4,minmax(0,0.8fr))]">
+          <div className="flex flex-col gap-1.5">
+            <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-500">Search</span>
+            <div className="flex gap-2">
+              <input value={queryInput} onChange={(e) => setQueryInput(e.target.value)} onKeyDown={(e) => { if (e.key === "Enter") updateQueryState({ q: queryInput.trim() }, true); }} placeholder={queryState.field === "tags" ? "정확한 태그 입력" : "검색어 입력"} className="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 dark:border-slate-700 dark:bg-slate-900" />
+              <button type="button" onClick={() => updateQueryState({ q: queryInput.trim() }, true)} className="rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-white">Search</button>
+            </div>
+          </div>
+          <label className="flex flex-col gap-1.5">
+            <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-500">Field</span>
+            <select value={queryState.field} onChange={(e) => updateQueryState({ field: e.target.value as SearchField }, true)} className="rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm dark:border-slate-700 dark:bg-slate-900">
+              <option value="all">전체</option>
+              <option value="title">{defaultType === "blog" ? "제목" : "제목/출처"}</option>
+              <option value="tags">태그</option>
+              <option value="content">본문/요약</option>
+              <option value="slug">Slug</option>
+            </select>
+          </label>
+          <label className="flex flex-col gap-1.5">
+            <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-500">Status</span>
+            <select value={queryState.status} onChange={(e) => updateQueryState({ status: e.target.value as QueryState["status"] }, true)} className="rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm dark:border-slate-700 dark:bg-slate-900">
+              <option value="all">All</option>
+              <option value="draft">Draft</option>
+              <option value="published">Published</option>
+              <option value="archived">Archived</option>
+            </select>
+          </label>
+          <label className="flex flex-col gap-1.5">
+            <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-500">Visibility</span>
+            <select value={queryState.visibility} onChange={(e) => updateQueryState({ visibility: e.target.value as QueryState["visibility"] }, true)} className="rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm dark:border-slate-700 dark:bg-slate-900">
+              <option value="all">All</option>
+              <option value="public">Public</option>
+              <option value="private">Private</option>
+            </select>
+          </label>
+          <label className="flex flex-col gap-1.5">
+            <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-500">Sort</span>
+            <select value={queryState.sort} onChange={(e) => updateQueryState({ sort: e.target.value as SortOption }, true)} className="rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm dark:border-slate-700 dark:bg-slate-900">
+              <option value="updated_desc">최근 수정순</option>
+              <option value="published_desc">최근 발행순</option>
+              <option value="title_asc">제목순</option>
+            </select>
+          </label>
+        </div>
+
+        <div className="mt-4 flex flex-wrap items-center justify-between gap-3 border-t border-slate-100 pt-4 text-xs text-slate-500 dark:border-slate-800">
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="rounded-full bg-slate-100 px-2.5 py-1 font-medium text-slate-600 dark:bg-slate-800 dark:text-slate-300">{hasSearch ? "서버 검색 모드" : "기본 최근 30개"}</span>
+            <span>검색 결과는 URL에 유지되어 다시 돌아왔을 때 그대로 복원됩니다.</span>
+          </div>
+          <div className="flex gap-2">
+            <button type="button" onClick={() => { setQueryInput(""); setQueryState(defaultQueryState); }} className="rounded-lg border border-slate-200 px-3 py-1.5 font-semibold dark:border-slate-700">Reset</button>
+            <button type="button" onClick={() => void fetchCollection()} className="rounded-lg border border-slate-200 px-3 py-1.5 font-semibold dark:border-slate-700">Refresh</button>
+          </div>
         </div>
       </div>
 
-      <div className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
-        <table className="w-full border-collapse text-left">
-          <thead>
-            <tr className="border-b border-slate-200 bg-slate-50 text-[11px] font-bold uppercase tracking-wider text-slate-500 dark:border-slate-800 dark:bg-slate-800/50">
-              <th className="px-6 py-4">Title</th>
-              <th className="px-6 py-4">Type</th>
-              <th className="px-6 py-4">Tags</th>
-              <th className="px-6 py-4">Last Updated</th>
-              <th className="px-6 py-4">Status</th>
-              <th className="px-6 py-4 text-right">Actions</th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
-            {filteredContents.length === 0 ? (
-              <tr>
-                <td colSpan={6} className="px-6 py-16 text-center">
-                  <div className="mx-auto max-w-sm">
-                    <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-slate-100 text-slate-400 dark:bg-slate-800">
-                      <span className="material-symbols-outlined">description</span>
-                    </div>
-                    <h3 className="text-lg font-semibold text-slate-900 dark:text-white">
-                      표시할 콘텐츠가 없습니다
-                    </h3>
-                    <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">
-                      새 글이나 스크랩을 작성하면 이 목록에 나타납니다.
-                    </p>
+      <div className="mt-6 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
+        <div className="flex items-center justify-between border-b border-slate-200 px-6 py-4 text-xs text-slate-500 dark:border-slate-800">
+          <span>총 {totalCount}건</span>
+          <span>{queryState.page} / {totalPages} page</span>
+        </div>
+        <div className="divide-y divide-slate-100 dark:divide-slate-800">
+          {items.length === 0 ? (
+            <div className="px-6 py-16 text-center text-sm text-slate-500">검색 결과가 없습니다.</div>
+          ) : (
+            items.map((content) => (
+              <div key={`${content.contentType}-${content.id}`} className="flex flex-col gap-4 px-6 py-4 lg:flex-row lg:items-center lg:justify-between">
+                <div className="min-w-0">
+                  <div className="flex flex-wrap items-center gap-2 text-[11px] text-slate-400">
+                    <span className="rounded bg-slate-100 px-2 py-0.5 dark:bg-slate-800">{content.contentType}</span>
+                    <span>{content.status}</span>
+                    <span>{content.visibility}</span>
+                    <span>수정 {formatRelativeDate(content.updatedAt)}</span>
                   </div>
-                </td>
-              </tr>
-            ) : (
-              filteredContents.map((content) => {
-                const editHref =
-                  content.contentType === "blog"
-                    ? `/studio/editor?postId=${content.id}`
-                    : `/studio/scrap/edit?scrapId=${content.id}`;
-
-                return (
-                  <tr
-                    key={`${content.contentType}-${content.id}`}
-                    className="group transition-colors hover:bg-slate-50 dark:hover:bg-slate-800/30"
-                  >
-                    <td className="px-6 py-4">
-                      <div className="flex flex-col">
-                        <span className="text-sm font-semibold text-slate-900 dark:text-slate-100">
-                          {content.title}
-                        </span>
-                        <span className="font-mono text-[11px] tracking-tight text-slate-400">
-                          /{content.contentType === "blog" ? "blog" : "scrap"}/{content.slug}
-                        </span>
-                        <span className="mt-1 line-clamp-1 text-xs text-slate-500">
-                          {content.previewText}
-                        </span>
-                      </div>
-                    </td>
-                    <td className="px-6 py-4">
-                      <span
-                        className={`rounded px-2 py-0.5 text-[10px] font-bold uppercase tracking-tighter ${
-                          content.contentType === "blog"
-                            ? "bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400"
-                            : "bg-amber-50 text-amber-700 dark:bg-amber-900/20 dark:text-amber-500"
-                        }`}
-                      >
-                        {content.contentType === "blog" ? "Blog" : "Scrap"}
-                      </span>
-                    </td>
-                    <td className="px-6 py-4">
-                      <div className="flex flex-wrap gap-1">
-                        {content.tags.length > 0 ? (
-                          content.tags.map((tag) => (
-                            <span
-                              key={`${content.id}-${tag}`}
-                              className="rounded border border-primary/20 bg-primary/5 px-1.5 py-0.5 text-[10px] font-medium text-primary"
-                            >
-                              {tag}
-                            </span>
-                          ))
-                        ) : (
-                          <span className="text-xs text-slate-400">No tags</span>
-                        )}
-                      </div>
-                    </td>
-                    <td className="px-6 py-4 text-xs text-slate-500">
-                      {formatRelativeDate(content.updatedAt)}
-                    </td>
-                    <td className="px-6 py-4">
-                      <div className="flex items-center gap-2">
-                        <span
-                          className={`size-2 rounded-full ${
-                            content.status === "published"
-                              ? "bg-emerald-500"
-                              : content.status === "archived"
-                                ? "bg-slate-400"
-                                : "bg-amber-500"
-                          }`}
-                        />
-                        <span className="text-xs font-medium capitalize">{content.status}</span>
-                        <span className="text-[10px] uppercase text-slate-400">{content.visibility}</span>
-                      </div>
-                    </td>
-                    <td className="px-6 py-4 text-right">
-                      <div className="flex items-center justify-end gap-2 opacity-100 transition-opacity md:opacity-0 md:group-hover:opacity-100">
-                        <Link
-                          href={editHref}
-                          className="flex items-center p-1 transition-colors hover:text-primary"
-                        >
-                          <span className="material-symbols-outlined !text-base">edit</span>
-                        </Link>
-                        <button
-                          type="button"
-                          disabled={deletingId === content.id}
-                          onClick={() => void handleDelete(content)}
-                          className="p-1 text-slate-400 transition-colors hover:text-red-500 disabled:opacity-50"
-                        >
-                          <span className="material-symbols-outlined !text-base">
-                            {deletingId === content.id ? "hourglass_top" : "delete"}
-                          </span>
-                        </button>
-                      </div>
-                    </td>
-                  </tr>
-                );
-              })
-            )}
-          </tbody>
-        </table>
-
-        <div className="flex items-center justify-between border-t border-slate-200 bg-slate-50 px-6 py-4 dark:border-slate-800 dark:bg-slate-800/50">
-          <span className="text-xs font-medium tracking-tight text-slate-500">
-            Showing {filteredContents.length} of {contents.length} entries
-          </span>
-          <button
-            type="button"
-            onClick={() => void fetchContents()}
-            className="inline-flex items-center gap-2 rounded-lg border border-slate-200 px-3 py-1.5 text-xs font-semibold transition-colors hover:bg-white dark:border-slate-700 dark:hover:bg-slate-900"
-          >
-            <span className="material-symbols-outlined !text-sm">refresh</span>
-            Refresh
-          </button>
+                  <Link href={getEditHref(content)} className="mt-2 block truncate text-sm font-semibold text-slate-900 hover:text-primary dark:text-slate-100">{content.title}</Link>
+                  <p className="mt-1 truncate font-mono text-[11px] text-slate-400">/{content.contentType}/{content.slug}</p>
+                  <p className="mt-2 line-clamp-2 text-xs leading-5 text-slate-500">{content.previewText}</p>
+                  <div className="mt-3 flex flex-wrap gap-1.5">
+                    {content.tags.length > 0 ? content.tags.map((tag) => <span key={`${content.id}-${tag}`} className="rounded border border-primary/20 bg-primary/5 px-1.5 py-0.5 text-[10px] font-medium text-primary">{tag}</span>) : <span className="text-[11px] text-slate-400">태그 없음</span>}
+                  </div>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="hidden text-right text-xs text-slate-500 md:block">
+                    <div>{formatDisplayDate(content.updatedAt)}</div>
+                    <div className="mt-1 text-slate-400">{formatDisplayDate(content.createdAt)}</div>
+                  </div>
+                  <Link href={getEditHref(content)} className="rounded-lg border border-slate-200 px-3 py-2 text-xs font-semibold dark:border-slate-700">Edit</Link>
+                  <button type="button" disabled={deletingId === content.id} onClick={() => void handleDelete(content)} className="rounded-lg px-3 py-2 text-xs font-semibold text-slate-500 hover:bg-red-50 hover:text-red-600 disabled:opacity-50 dark:hover:bg-red-950/20">
+                    {deletingId === content.id ? "Deleting..." : "Delete"}
+                  </button>
+                </div>
+              </div>
+            ))
+          )}
+        </div>
+        <div className="flex items-center justify-end gap-2 border-t border-slate-200 bg-slate-50 px-6 py-4 dark:border-slate-800 dark:bg-slate-800/50">
+          <button type="button" disabled={queryState.page <= 1} onClick={() => updateQueryState({ page: queryState.page - 1 })} className="rounded-lg border border-slate-200 px-3 py-1.5 text-xs font-semibold disabled:opacity-50 dark:border-slate-700">이전</button>
+          <button type="button" disabled={queryState.page >= totalPages} onClick={() => updateQueryState({ page: queryState.page + 1 })} className="rounded-lg border border-slate-200 px-3 py-1.5 text-xs font-semibold disabled:opacity-50 dark:border-slate-700">다음</button>
         </div>
       </div>
     </div>

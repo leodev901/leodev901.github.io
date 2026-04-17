@@ -9,7 +9,7 @@ export default function Projects() {
         <main className="flex-1">
             <div className="mx-auto flex w-full max-w-7xl flex-col px-4 py-12 sm:px-6 lg:px-8">
                 <div className="mb-12 flex flex-col gap-4">
-                    <h1 className="text-4xl font-black tracking-tight text-slate-900 dark:text-white sm:text-5xl">포트폴리오</h1>
+                    <h1 className="text-2xl font-black tracking-tight text-slate-900 dark:text-white sm:text-3xl">포트폴리오</h1>
                     <p className="max-w-3xl text-lg text-slate-600 dark:text-slate-400 leading-relaxed break-keep">
                         AI 에이전트(AI Agent) 기술을 집중적으로 연구하고, 이를 바탕으로 구현한 실무형 프로젝트 모음입니다.<br className="hidden sm:block" />
                         각 프로젝트 카드를 클릭하시면 <strong className="font-semibold text-slate-900 dark:text-white">실제 동작을 테스트해 볼 수 있는 라이브 사이트</strong>로 연결되어,<br className="hidden sm:block" />
